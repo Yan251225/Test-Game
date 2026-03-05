@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 700" width="400" height="700">
+  <defs>
+    <!-- Hair gradients - warm brown with orange highlights -->
+    <linearGradient id="lx2-hair-main" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5E3C"/>
+      <stop offset="30%" stop-color="#7A4E2C"/>
+      <stop offset="60%" stop-color="#6B4020"/>
+      <stop offset="100%" stop-color="#5C3518"/>
+    </linearGradient>
+    <linearGradient id="lx2-hair-shine" x1="30%" y1="0%" x2="70%" y2="60%">
+      <stop offset="0%" stop-color="rgba(255,200,130,0.6)"/>
+      <stop offset="40%" stop-color="rgba(255,200,130,0)"/>
+      <stop offset="60%" stop-color="rgba(255,200,130,0.35)"/>
+      <stop offset="100%" stop-color="rgba(255,200,130,0)"/>
+    </linearGradient>
+    <linearGradient id="lx2-hair-shadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(50,25,10,0)"/>
+      <stop offset="70%" stop-color="rgba(50,25,10,0.25)"/>
+      <stop offset="100%" stop-color="rgba(50,25,10,0.4)"/>
+    </linearGradient>
+    <!-- Skin - slightly more tanned / healthy -->
+    <linearGradient id="lx2-skin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFEDDA"/>
+      <stop offset="50%" stop-color="#F8DCC5"/>
+      <stop offset="100%" stop-color="#F0CBB0"/>
+    </linearGradient>
+    <linearGradient id="lx2-skin-shadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(160,110,80,0)"/>
+      <stop offset="100%" stop-color="rgba(160,110,80,0.2)"/>
+    </linearGradient>
+    <!-- Eye gradients - bright amber/gold -->
+    <radialGradient id="lx2-iris" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="30%" stop-color="#F5A623"/>
+      <stop offset="65%" stop-color="#E8890A"/>
+      <stop offset="100%" stop-color="#C46A00"/>
+    </radialGradient>
+    <radialGradient id="lx2-iris-glow" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="rgba(255,230,150,0.6)"/>
+      <stop offset="100%" stop-color="rgba(255,230,150,0)"/>
+    </radialGradient>
+    <!-- Clothing -->
+    <linearGradient id="lx2-jacket" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#F5F0F0"/>
+      <stop offset="100%" stop-color="#EBE5E5"/>
+    </linearGradient>
+    <linearGradient id="lx2-jacket-trim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="lx2-tshirt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FF8C00"/>
+      <stop offset="100%" stop-color="#E67700"/>
+    </linearGradient>
+    <!-- Face clip -->
+    <clipPath id="lx2-face-clip">
+      <ellipse cx="200" cy="252" rx="70" ry="80"/>
+    </clipPath>
+    <!-- Drop shadow -->
+    <filter id="lx2-shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="rgba(80,50,20,0.3)"/>
+    </filter>
+    <filter id="lx2-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Main group with shadow -->
+  <g filter="url(#lx2-shadow)">
+
+    <!-- === BODY / CLOTHING === -->
+    <!-- Athletic jacket - open, white with orange stripes -->
+    <path d="M115,420 Q125,380 155,360 Q175,350 200,348 Q225,350 245,360 Q275,380 285,420 L290,530 Q290,535 280,535 L120,535 Q110,535 110,530 Z" fill="url(#lx2-jacket)"/>
+    
+    <!-- Jacket orange stripes on shoulders -->
+    <path d="M155,360 Q140,370 130,385 L125,385 Q135,368 150,356 Z" fill="url(#lx2-jacket-trim)"/>
+    <path d="M245,360 Q260,370 270,385 L275,385 Q265,368 250,356 Z" fill="url(#lx2-jacket-trim)"/>
+    <!-- Sleeve stripes -->
+    <rect x="110" y="460" width="18" height="4" rx="2" fill="#F59E0B" opacity="0.7"/>
+    <rect x="110" y="468" width="18" height="4" rx="2" fill="#F59E0B" opacity="0.7"/>
+    <rect x="272" y="460" width="18" height="4" rx="2" fill="#F59E0B" opacity="0.7"/>
+    <rect x="272" y="468" width="18" height="4" rx="2" fill="#F59E0B" opacity="0.7"/>
+    
+    <!-- Jacket zipper line -->
+    <line x1="200" y1="370" x2="200" y2="530" stroke="#CCBBBB" stroke-width="1.5"/>
+    <!-- Zipper pull -->
+    <rect x="197" y="395" width="6" height="10" rx="2" fill="#DDD" stroke="#BBB" stroke-width="0.5"/>
+    
+    <!-- T-shirt visible underneath -->
+    <path d="M170,355 Q180,350 200,348 Q220,350 230,355 L225,410 Q215,415 200,416 Q185,415 175,410 Z" fill="url(#lx2-tshirt)"/>
+    <!-- T-shirt collar -->
+    <path d="M175,355 Q185,348 200,346 Q215,348 225,355 Q215,360 200,362 Q185,360 175,355 Z" fill="#FF9500" stroke="#E67700" stroke-width="0.5"/>
+    <!-- Number on shirt (小) -->
+    <text x="200" y="395" text-anchor="middle" fill="white" font-size="18" font-weight="bold" font-family="sans-serif" opacity="0.8">7</text>
+
+    <!-- === NECK === -->
+    <path d="M183,340 Q183,355 188,362 L200,360 L212,362 Q217,355 217,340 Z" fill="url(#lx2-skin)"/>
+    <path d="M183,340 Q183,355 188,362 L200,360 L212,362 Q217,355 217,340 Z" fill="url(#lx2-skin-shadow)" opacity="0.4"/>
+
+    <!-- === FACE === -->
+    <!-- Face shape - rounder, more youthful -->
+    <path d="M132,235 Q132,180 162,158 Q180,145 200,143 Q220,145 238,158 Q268,180 268,235 Q268,280 252,303 Q238,322 222,333 Q210,340 200,343 Q190,340 178,333 Q162,322 148,303 Q132,280 132,235 Z" fill="url(#lx2-skin)"/>
+    
+    <!-- Face shadows -->
+    <g clip-path="url(#lx2-face-clip)">
+      <!-- Jaw shadow -->
+      <ellipse cx="200" cy="318" rx="50" ry="25" fill="rgba(160,110,80,0.1)"/>
+      <!-- Cheek blush - more visible, he's energetic -->
+      <ellipse cx="160" cy="278" rx="18" ry="10" fill="rgba(255,130,100,0.2)"/>
+      <ellipse cx="240" cy="278" rx="18" ry="10" fill="rgba(255,130,100,0.2)"/>
+      <!-- Nose side shadow -->
+      <ellipse cx="195" cy="268" rx="4" ry="10" fill="rgba(160,110,80,0.07)"/>
+    </g>
+
+    <!-- === EYES (wide open, bright, energetic) === -->
+    <!-- Left eye -->
+    <g transform="translate(175, 242)">
+      <!-- Eye white -->
+      <ellipse cx="0" cy="0" rx="17" ry="14" fill="#FFFFFF" stroke="#E8D8C8" stroke-width="0.5"/>
+      <!-- Iris - large -->
+      <ellipse cx="0" cy="1" rx="12" ry="12" fill="url(#lx2-iris)"/>
+      <!-- Iris texture -->
+      <g opacity="0.15" stroke="#C46A00" stroke-width="0.4">
+        <line x1="0" y1="-9" x2="-2" y2="9"/>
+        <line x1="0" y1="-9" x2="2" y2="9"/>
+        <line x1="-6" y1="-7" x2="4" y2="9"/>
+        <line x1="6" y1="-7" x2="-4" y2="9"/>
+        <line x1="-9" y1="-3" x2="6" y2="8"/>
+        <line x1="9" y1="-3" x2="-6" y2="8"/>
+      </g>
+      <!-- Iris glow -->
+      <ellipse cx="-2" cy="-2" rx="9" ry="9" fill="url(#lx2-iris-glow)"/>
+      <!-- Pupil -->
+      <ellipse cx="0" cy="1" rx="5" ry="5.5" fill="#3D1A00"/>
+      <!-- Pupil glow -->
+      <ellipse cx="0" cy="2" rx="2.5" ry="2.5" fill="#5C2800" opacity="0.4"/>
+      <!-- Highlights - big and sparkly -->
+      <ellipse cx="-5" cy="-5" rx="4" ry="3" fill="white" opacity="0.95" transform="rotate(-10)"/>
+      <ellipse cx="4" cy="-3" rx="2" ry="1.5" fill="white" opacity="0.7"/>
+      <ellipse cx="-2" cy="6" rx="2.5" ry="1.2" fill="rgba(255,230,150,0.35)"/>
+      <circle cx="3" cy="5" r="1" fill="white" opacity="0.4"/>
+      <!-- Upper eyelid -->
+      <path d="M-18,0 Q-12,-14 0,-16 Q12,-14 18,0" fill="none" stroke="#5C3518" stroke-width="2" stroke-linecap="round"/>
+      <!-- Lower eyelid -->
+      <path d="M-16,4 Q0,14 16,4" fill="none" stroke="#A07850" stroke-width="0.7" opacity="0.4"/>
+      <!-- Eyelashes - shorter, masculine -->
+      <line x1="-17" y1="-1" x2="-20" y2="-5" stroke="#5C3518" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="16" y1="-1" x2="19" y2="-5" stroke="#5C3518" stroke-width="1" stroke-linecap="round"/>
+    </g>
+
+    <!-- Right eye -->
+    <g transform="translate(225, 242)">
+      <ellipse cx="0" cy="0" rx="17" ry="14" fill="#FFFFFF" stroke="#E8D8C8" stroke-width="0.5"/>
+      <ellipse cx="0" cy="1" rx="12" ry="12" fill="url(#lx2-iris)"/>
+      <g opacity="0.15" stroke="#C46A00" stroke-width="0.4">
+        <line x1="0" y1="-9" x2="-2" y2="9"/>
+        <line x1="0" y1="-9" x2="2" y2="9"/>
+        <line x1="-6" y1="-7" x2="4" y2="9"/>
+        <line x1="6" y1="-7" x2="-4" y2="9"/>
+        <line x1="-9" y1="-3" x2="6" y2="8"/>
+        <line x1="9" y1="-3" x2="-6" y2="8"/>
+      </g>
+      <ellipse cx="-2" cy="-2" rx="9" ry="9" fill="url(#lx2-iris-glow)"/>
+      <ellipse cx="0" cy="1" rx="5" ry="5.5" fill="#3D1A00"/>
+      <ellipse cx="0" cy="2" rx="2.5" ry="2.5" fill="#5C2800" opacity="0.4"/>
+      <ellipse cx="-5" cy="-5" rx="4" ry="3" fill="white" opacity="0.95" transform="rotate(-10)"/>
+      <ellipse cx="4" cy="-3" rx="2" ry="1.5" fill="white" opacity="0.7"/>
+      <ellipse cx="-2" cy="6" rx="2.5" ry="1.2" fill="rgba(255,230,150,0.35)"/>
+      <circle cx="3" cy="5" r="1" fill="white" opacity="0.4"/>
+      <path d="M-18,0 Q-12,-14 0,-16 Q12,-14 18,0" fill="none" stroke="#5C3518" stroke-width="2" stroke-linecap="round"/>
+      <path d="M-16,4 Q0,14 16,4" fill="none" stroke="#A07850" stroke-width="0.7" opacity="0.4"/>
+      <line x1="-17" y1="-1" x2="-20" y2="-5" stroke="#5C3518" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="16" y1="-1" x2="19" y2="-5" stroke="#5C3518" stroke-width="1" stroke-linecap="round"/>
+    </g>
+
+    <!-- Eyebrows - bold, energetic, slightly raised -->
+    <path d="M158,220 Q170,212 192,218" fill="none" stroke="#5C3518" stroke-width="2.8" stroke-linecap="round"/>
+    <path d="M208,218 Q230,212 242,220" fill="none" stroke="#5C3518" stroke-width="2.8" stroke-linecap="round"/>
+
+    <!-- Nose -->
+    <path d="M198,260 Q200,268 198,274 Q200,277 203,275" fill="none" stroke="rgba(160,110,80,0.3)" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Mouth - wide, bright grin showing teeth -->
+    <path d="M180,296 Q190,290 200,292 Q210,290 220,296 Q215,308 200,312 Q185,308 180,296 Z" fill="#E85050"/>
+    <!-- Teeth -->
+    <path d="M185,296 Q190,294 200,295 Q210,294 215,296 L213,300 Q208,298 200,298 Q192,298 187,300 Z" fill="white"/>
+    <!-- Mouth inner shadow -->
+    <path d="M188,304 Q195,310 200,311 Q205,310 212,304" fill="#C03030" opacity="0.6"/>
+    <!-- Fang! (cute canine tooth) -->
+    <path d="M213,297 L216,303 L213,301 Z" fill="white"/>
+    <!-- Lower lip -->
+    <ellipse cx="200" cy="309" rx="10" ry="3" fill="rgba(255,150,150,0.2)"/>
+
+    <!-- === EARS === -->
+    <path d="M132,232 Q122,227 119,242 Q118,257 128,262 Q130,252 132,242 Z" fill="url(#lx2-skin)"/>
+    <path d="M268,232 Q278,227 281,242 Q282,257 272,262 Q270,252 268,242 Z" fill="url(#lx2-skin)"/>
+
+    <!-- === BAND-AID on forehead === -->
+    <g transform="translate(235, 200) rotate(15)">
+      <rect x="-15" y="-6" width="30" height="12" rx="2" fill="#FFDAB0" stroke="#E8C090" stroke-width="0.5"/>
+      <!-- Band-aid pad -->
+      <rect x="-6" y="-4" width="12" height="8" rx="1" fill="#F5C898"/>
+      <!-- Band-aid holes -->
+      <circle cx="-3" cy="0" r="0.8" fill="#E8B878"/>
+      <circle cx="3" cy="0" r="0.8" fill="#E8B878"/>
+      <circle cx="0" cy="-2" r="0.8" fill="#E8B878"/>
+      <circle cx="0" cy="2" r="0.8" fill="#E8B878"/>
+    </g>
+
+    <!-- === HAIR === -->
+    <!-- Hair base shape - spiky, energetic -->
+    <path d="M130,210 Q128,175 140,148 Q155,122 178,112 Q192,107 200,105 Q208,107 222,112 Q245,122 260,148 Q272,175 270,210 Q265,190 250,168 Q235,148 215,140 Q200,135 185,140 Q165,148 150,168 Q135,190 130,210 Z" fill="url(#lx2-hair-main)"/>
+    
+    <!-- Spiky tufts going UP - signature energetic look -->
+    <!-- Center spike -->
+    <path d="M190,120 Q195,95 200,75 Q205,95 210,120 Q205,115 200,112 Q195,115 190,120 Z" fill="url(#lx2-hair-main)"/>
+    <path d="M193,110 Q197,88 200,78 Q203,88 207,110" fill="none" stroke="rgba(255,200,130,0.4)" stroke-width="2"/>
+    
+    <!-- Left spikes -->
+    <path d="M165,135 Q158,108 152,82 Q162,105 175,125 Z" fill="url(#lx2-hair-main)"/>
+    <path d="M175,128 Q172,105 168,88 Q175,108 182,122 Z" fill="#7A4E2C"/>
+    <path d="M150,150 Q140,120 132,95 Q145,118 158,140 Z" fill="url(#lx2-hair-main)"/>
+    
+    <!-- Right spikes -->
+    <path d="M235,135 Q242,108 248,82 Q238,105 225,125 Z" fill="url(#lx2-hair-main)"/>
+    <path d="M225,128 Q228,105 232,88 Q225,108 218,122 Z" fill="#7A4E2C"/>
+    <path d="M250,150 Q260,120 268,95 Q255,118 242,140 Z" fill="url(#lx2-hair-main)"/>
+    
+    <!-- Extra small spikes for messiness -->
+    <path d="M183,118 Q180,98 178,85 Q184,100 188,115 Z" fill="#6B4020"/>
+    <path d="M217,118 Q220,98 222,85 Q216,100 212,115 Z" fill="#6B4020"/>
+    <path d="M155,142 Q148,125 143,108 Q150,122 158,138 Z" fill="#5C3518" opacity="0.7"/>
+    <path d="M245,142 Q252,125 257,108 Q250,122 242,138 Z" fill="#5C3518" opacity="0.7"/>
+    
+    <!-- Hair fringe strands over forehead -->
+    <path d="M160,155 Q165,145 175,135 Q180,140 178,150 Q172,158 165,160 Z" fill="url(#lx2-hair-main)"/>
+    <path d="M220,150 Q225,140 235,135 Q237,142 232,152 Q226,158 222,155 Z" fill="url(#lx2-hair-main)"/>
+    
+    <!-- Side hair -->
+    <path d="M130,210 Q128,230 130,250 Q132,240 134,225 Q136,215 140,210 Z" fill="url(#lx2-hair-main)"/>
+    <path d="M270,210 Q272,230 270,250 Q268,240 266,225 Q264,215 260,210 Z" fill="url(#lx2-hair-main)"/>
+    
+    <!-- Hair shine streaks -->
+    <path d="M180,110 Q185,95 188,85" fill="none" stroke="url(#lx2-hair-shine)" stroke-width="5" opacity="0.5"/>
+    <path d="M215,108 Q220,92 222,82" fill="none" stroke="url(#lx2-hair-shine)" stroke-width="4" opacity="0.45"/>
+    <path d="M155,130 Q150,118 148,105" fill="none" stroke="url(#lx2-hair-shine)" stroke-width="4" opacity="0.4"/>
+    <path d="M200,105 Q200,90 200,78" fill="none" stroke="rgba(255,220,160,0.5)" stroke-width="3"/>
+
+    <!-- === RAISED FIST (energetic pose) === -->
+    <g transform="translate(290, 380)">
+      <!-- Forearm -->
+      <path d="M-10,50 Q-15,30 -8,10 Q-5,0 0,-5 Q5,0 8,10 Q15,30 10,50 Z" fill="url(#lx2-skin)"/>
+      <!-- Fist -->
+      <path d="M-12,-5 Q-12,-15 -5,-20 Q0,-22 5,-20 Q12,-15 12,-5 Q12,5 5,8 Q0,10 -5,8 Q-12,5 -12,-5 Z" fill="url(#lx2-skin)"/>
+      <!-- Finger lines -->
+      <path d="M-8,-10 Q-4,-18 0,-19 Q4,-18 8,-10" fill="none" stroke="rgba(160,110,80,0.2)" stroke-width="0.8"/>
+      <line x1="-2" y1="-20" x2="-2" y2="-8" stroke="rgba(160,110,80,0.15)" stroke-width="0.5"/>
+      <line x1="3" y1="-19" x2="3" y2="-8" stroke="rgba(160,110,80,0.15)" stroke-width="0.5"/>
+      <!-- Thumb -->
+      <path d="M-12,-5 Q-16,-3 -15,3 Q-14,8 -10,6" fill="url(#lx2-skin)" stroke="rgba(160,110,80,0.15)" stroke-width="0.5"/>
+    </g>
+
+    <!-- === DECORATIVE ELEMENTS === -->
+    <!-- Energy sparkles around him -->
+    <g opacity="0.5">
+      <!-- Star 1 -->
+      <g transform="translate(100, 180)">
+        <polygon points="0,-6 1.5,-1.5 6,0 1.5,1.5 0,6 -1.5,1.5 -6,0 -1.5,-1.5" fill="#FFD700"/>
+      </g>
+      <!-- Star 2 -->
+      <g transform="translate(310, 200)">
+        <polygon points="0,-5 1.2,-1.2 5,0 1.2,1.2 0,5 -1.2,1.2 -5,0 -1.2,-1.2" fill="#FFA500"/>
+      </g>
+      <!-- Star 3 -->
+      <g transform="translate(85, 320)">
+        <polygon points="0,-4 1,-1 4,0 1,1 0,4 -1,1 -4,0 -1,-1" fill="#FFD700" opacity="0.6"/>
+      </g>
+    </g>
+    
+    <!-- Speed lines suggesting energy -->
+    <line x1="305" y1="350" x2="320" y2="345" stroke="#F59E0B" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+    <line x1="308" y1="365" x2="325" y2="362" stroke="#F59E0B" stroke-width="1" opacity="0.25" stroke-linecap="round"/>
+    <line x1="303" y1="380" x2="318" y2="378" stroke="#F59E0B" stroke-width="1.2" opacity="0.2" stroke-linecap="round"/>
+
+  </g>
+</svg>

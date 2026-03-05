@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="wall" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8F0"/>
+      <stop offset="100%" stop-color="#F5EBD8"/>
+    </linearGradient>
+    <linearGradient id="desk-top" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4A574"/>
+      <stop offset="100%" stop-color="#C49464"/>
+    </linearGradient>
+    <linearGradient id="window-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#87CEEB"/>
+      <stop offset="100%" stop-color="#B0E0F0"/>
+    </linearGradient>
+  </defs>
+  <!-- 天花板 -->
+  <rect width="1200" height="800" fill="url(#wall)"/>
+  <!-- 地板 -->
+  <path d="M0,550 L1200,550 L1200,800 L0,800 Z" fill="#DEB887"/>
+  <g stroke="#C8A878" stroke-width="1" opacity="0.3">
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+    <line x1="0" y1="650" x2="1200" y2="650"/>
+    <line x1="0" y1="700" x2="1200" y2="700"/>
+    <line x1="0" y1="750" x2="1200" y2="750"/>
+  </g>
+  <!-- 黑板 -->
+  <rect x="300" y="80" width="600" height="280" rx="8" fill="#2d5a27"/>
+  <rect x="310" y="90" width="580" height="260" rx="4" fill="#3a7a34"/>
+  <rect x="295" y="360" width="610" height="12" rx="3" fill="#D4A574"/>
+  <!-- 黑板上的字 -->
+  <text x="440" y="200" font-size="28" fill="#e8e8d0" opacity="0.6" font-family="serif">Welcome!</text>
+  <text x="380" y="260" font-size="20" fill="#d8d8c0" opacity="0.4">数学 · 第三章</text>
+  <!-- 窗户（左侧） -->
+  <g>
+    <rect x="30" y="100" width="200" height="300" rx="5" fill="url(#window-sky)"/>
+    <rect x="30" y="100" width="200" height="300" rx="5" fill="none" stroke="#c8b898" stroke-width="8"/>
+    <line x1="130" y1="100" x2="130" y2="400" stroke="#c8b898" stroke-width="4"/>
+    <line x1="30" y1="250" x2="230" y2="250" stroke="#c8b898" stroke-width="4"/>
+    <!-- 窗外树影 -->
+    <ellipse cx="100" cy="180" rx="60" ry="50" fill="#90c890" opacity="0.4"/>
+    <ellipse cx="180" cy="200" rx="40" ry="35" fill="#80b880" opacity="0.3"/>
+    <!-- 阳光光束 -->
+    <path d="M30,100 L250,350 L350,550 L0,550 L0,300 Z" fill="#fff8e0" opacity="0.08"/>
+  </g>
+  <!-- 窗户（右侧） -->
+  <g>
+    <rect x="970" y="100" width="200" height="300" rx="5" fill="url(#window-sky)"/>
+    <rect x="970" y="100" width="200" height="300" rx="5" fill="none" stroke="#c8b898" stroke-width="8"/>
+    <line x1="1070" y1="100" x2="1070" y2="400" stroke="#c8b898" stroke-width="4"/>
+    <line x1="970" y1="250" x2="1170" y2="250" stroke="#c8b898" stroke-width="4"/>
+    <ellipse cx="1050" cy="190" rx="50" ry="45" fill="#90c890" opacity="0.4"/>
+  </g>
+  <!-- 讲台 -->
+  <rect x="420" y="420" width="360" height="100" rx="5" fill="#C49464"/>
+  <rect x="425" y="425" width="350" height="90" rx="3" fill="#D4A574"/>
+  <!-- 课桌（前排） -->
+  <g>
+    <rect x="150" y="560" width="120" height="50" rx="3" fill="url(#desk-top)"/>
+    <rect x="350" y="560" width="120" height="50" rx="3" fill="url(#desk-top)"/>
+    <rect x="550" y="560" width="120" height="50" rx="3" fill="url(#desk-top)"/>
+    <rect x="750" y="560" width="120" height="50" rx="3" fill="url(#desk-top)"/>
+    <rect x="950" y="560" width="120" height="50" rx="3" fill="url(#desk-top)"/>
+  </g>
+  <!-- 课桌（后排，稍小，透视感） -->
+  <g opacity="0.7">
+    <rect x="200" y="480" width="100" height="40" rx="3" fill="url(#desk-top)"/>
+    <rect x="380" y="480" width="100" height="40" rx="3" fill="url(#desk-top)"/>
+    <rect x="560" y="480" width="100" height="40" rx="3" fill="url(#desk-top)"/>
+    <rect x="740" y="480" width="100" height="40" rx="3" fill="url(#desk-top)"/>
+    <rect x="920" y="480" width="100" height="40" rx="3" fill="url(#desk-top)"/>
+  </g>
+  <!-- 椅子 -->
+  <g fill="#B8864E" opacity="0.5">
+    <rect x="180" y="595" width="25" height="35" rx="2"/>
+    <rect x="380" y="595" width="25" height="35" rx="2"/>
+    <rect x="580" y="595" width="25" height="35" rx="2"/>
+    <rect x="780" y="595" width="25" height="35" rx="2"/>
+  </g>
+  <!-- 时钟 -->
+  <circle cx="600" cy="55" r="25" fill="#fff" stroke="#888" stroke-width="2"/>
+  <line x1="600" y1="55" x2="600" y2="38" stroke="#333" stroke-width="2"/>
+  <line x1="600" y1="55" x2="612" y2="50" stroke="#333" stroke-width="1.5"/>
+  <!-- 日光灯 -->
+  <rect x="250" y="10" width="300" height="8" rx="4" fill="#f0f0e0"/>
+  <rect x="650" y="10" width="300" height="8" rx="4" fill="#f0f0e0"/>
+</svg>

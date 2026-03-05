@@ -1,0 +1,271 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 700" width="400" height="700">
+  <defs>
+    <!-- Hair gradients - deep purple -->
+    <linearGradient id="gy2-hair-main" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B3FA0"/>
+      <stop offset="30%" stop-color="#5B2D8E"/>
+      <stop offset="60%" stop-color="#4A1D7A"/>
+      <stop offset="100%" stop-color="#3D1566"/>
+    </linearGradient>
+    <linearGradient id="gy2-hair-shine" x1="20%" y1="0%" x2="80%" y2="50%">
+      <stop offset="0%" stop-color="rgba(200,170,255,0.5)"/>
+      <stop offset="40%" stop-color="rgba(200,170,255,0)"/>
+      <stop offset="60%" stop-color="rgba(200,170,255,0.3)"/>
+      <stop offset="100%" stop-color="rgba(200,170,255,0)"/>
+    </linearGradient>
+    <linearGradient id="gy2-hair-shadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(30,10,50,0)"/>
+      <stop offset="70%" stop-color="rgba(30,10,50,0.3)"/>
+      <stop offset="100%" stop-color="rgba(30,10,50,0.5)"/>
+    </linearGradient>
+    <!-- Skin -->
+    <linearGradient id="gy2-skin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5EE"/>
+      <stop offset="50%" stop-color="#FDEBD8"/>
+      <stop offset="100%" stop-color="#F5D6C0"/>
+    </linearGradient>
+    <linearGradient id="gy2-skin-shadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(180,130,110,0)"/>
+      <stop offset="100%" stop-color="rgba(180,130,110,0.25)"/>
+    </linearGradient>
+    <!-- Eye gradients - deep amethyst -->
+    <radialGradient id="gy2-iris" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#9B6FD4"/>
+      <stop offset="35%" stop-color="#7B4FBF"/>
+      <stop offset="70%" stop-color="#5C33A6"/>
+      <stop offset="100%" stop-color="#3D1D80"/>
+    </radialGradient>
+    <radialGradient id="gy2-iris-glow" cx="35%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="rgba(200,170,255,0.6)"/>
+      <stop offset="100%" stop-color="rgba(200,170,255,0)"/>
+    </radialGradient>
+    <!-- Clothing -->
+    <linearGradient id="gy2-blazer" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2A2040"/>
+      <stop offset="50%" stop-color="#1E1530"/>
+      <stop offset="100%" stop-color="#150E25"/>
+    </linearGradient>
+    <linearGradient id="gy2-shirt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F0EBF5"/>
+    </linearGradient>
+    <linearGradient id="gy2-tie" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="50%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
+    </linearGradient>
+    <linearGradient id="gy2-book-cover" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A2080"/>
+      <stop offset="100%" stop-color="#2D1050"/>
+    </linearGradient>
+    <linearGradient id="gy2-book-pages" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFF8E7"/>
+      <stop offset="100%" stop-color="#F5EDD8"/>
+    </linearGradient>
+    <!-- Face clip for shadows -->
+    <clipPath id="gy2-face-clip">
+      <ellipse cx="200" cy="248" rx="68" ry="82"/>
+    </clipPath>
+    <!-- Drop shadow -->
+    <filter id="gy2-shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="rgba(60,30,90,0.35)"/>
+    </filter>
+    <filter id="gy2-soft-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Main group with shadow -->
+  <g filter="url(#gy2-shadow)">
+
+    <!-- === BODY / CLOTHING === -->
+    <!-- Shoulders & blazer -->
+    <path d="M120,420 Q130,380 160,365 Q180,355 200,352 Q220,355 240,365 Q270,380 280,420 L285,520 Q285,530 275,530 L125,530 Q115,530 115,520 Z" fill="url(#gy2-blazer)"/>
+    <!-- Blazer lapels -->
+    <path d="M160,365 Q175,370 185,400 L175,420 Q165,390 155,375 Z" fill="#352850" opacity="0.6"/>
+    <path d="M240,365 Q225,370 215,400 L225,420 Q235,390 245,375 Z" fill="#352850" opacity="0.6"/>
+    <!-- Blazer details - seam lines -->
+    <line x1="200" y1="360" x2="200" y2="520" stroke="#1A0E2E" stroke-width="0.5" opacity="0.3"/>
+    <!-- Blazer pocket -->
+    <rect x="222" y="430" width="30" height="3" rx="1" fill="#352850" opacity="0.4"/>
+    
+    <!-- Shirt collar visible -->
+    <path d="M170,358 L185,385 L200,365 L215,385 L230,358 Q215,350 200,348 Q185,350 170,358 Z" fill="url(#gy2-shirt)"/>
+    <!-- Shirt collar shadow -->
+    <path d="M175,362 L188,382 L200,368 L212,382 L225,362" fill="none" stroke="#D8D0E8" stroke-width="0.8"/>
+    
+    <!-- Tie - loosely knotted / slightly askew -->
+    <path d="M195,370 L193,375 L197,430 L200,445 L203,430 L207,375 L205,370 Z" fill="url(#gy2-tie)"/>
+    <path d="M197,370 L200,377 L203,370" fill="#6D28D9" opacity="0.5"/>
+    <!-- Tie slightly loose -->
+    <ellipse cx="200" cy="370" rx="7" ry="4" fill="url(#gy2-tie)" stroke="#6D28D9" stroke-width="0.5"/>
+    
+    <!-- === NECK === -->
+    <path d="M185,345 Q185,360 190,368 L200,365 L210,368 Q215,360 215,345 Z" fill="url(#gy2-skin)"/>
+    <path d="M185,345 Q185,360 190,368 L200,365 L210,368 Q215,360 215,345 Z" fill="url(#gy2-skin-shadow)" opacity="0.5"/>
+
+    <!-- === FACE === -->
+    <!-- Face shape - elegant oval, slightly narrow chin -->
+    <path d="M132,230 Q132,175 165,155 Q185,145 200,143 Q215,145 235,155 Q268,175 268,230 Q268,275 250,300 Q235,320 220,332 Q210,340 200,345 Q190,340 180,332 Q165,320 150,300 Q132,275 132,230 Z" fill="url(#gy2-skin)"/>
+    
+    <!-- Face shadows via clip -->
+    <g clip-path="url(#gy2-face-clip)">
+      <!-- Jaw shadow -->
+      <ellipse cx="200" cy="320" rx="55" ry="30" fill="rgba(180,140,120,0.12)"/>
+      <!-- Left cheek shadow (under hair) -->
+      <ellipse cx="150" cy="260" rx="30" ry="40" fill="rgba(120,80,140,0.1)"/>
+      <!-- Right cheek subtle blush -->
+      <ellipse cx="240" cy="278" rx="18" ry="10" fill="rgba(255,150,150,0.12)"/>
+      <!-- Nose shadow -->
+      <ellipse cx="202" cy="272" rx="4" ry="12" fill="rgba(180,140,120,0.08)"/>
+    </g>
+    
+    <!-- === EYES === -->
+    <!-- Right eye (visible, half-lidded, elegant) -->
+    <g transform="translate(220, 240)">
+      <!-- Eye white -->
+      <ellipse cx="0" cy="0" rx="16" ry="11" fill="#FFFFFF" stroke="#DDD0E8" stroke-width="0.5"/>
+      <!-- Iris -->
+      <ellipse cx="0" cy="1" rx="10" ry="10" fill="url(#gy2-iris)"/>
+      <!-- Iris texture lines -->
+      <g opacity="0.2" stroke="#3D1D80" stroke-width="0.4">
+        <line x1="0" y1="-7" x2="-2" y2="7"/>
+        <line x1="0" y1="-7" x2="2" y2="7"/>
+        <line x1="-5" y1="-5" x2="3" y2="7"/>
+        <line x1="5" y1="-5" x2="-3" y2="7"/>
+      </g>
+      <!-- Iris glow -->
+      <ellipse cx="-2" cy="-2" rx="8" ry="8" fill="url(#gy2-iris-glow)"/>
+      <!-- Pupil -->
+      <ellipse cx="0" cy="1" rx="4.5" ry="5" fill="#1A0833"/>
+      <!-- Pupil inner glow -->
+      <ellipse cx="0" cy="2" rx="2" ry="2.5" fill="#2D1050" opacity="0.5"/>
+      <!-- Highlights -->
+      <ellipse cx="-4" cy="-4" rx="3.5" ry="2.5" fill="white" opacity="0.9" transform="rotate(-15)"/>
+      <ellipse cx="3" cy="-2" rx="1.5" ry="1" fill="white" opacity="0.6"/>
+      <ellipse cx="-1" cy="5" rx="2" ry="1" fill="rgba(200,170,255,0.3)"/>
+      <!-- Upper eyelid - heavy, giving sleepy/half-lidded look -->
+      <path d="M-17,0 Q-12,-10 0,-12 Q12,-10 17,0 Q10,-5 0,-5 Q-10,-5 -17,0 Z" fill="url(#gy2-skin)"/>
+      <path d="M-17,-1 Q-12,-12 0,-14 Q12,-12 17,-1" fill="none" stroke="#3D1566" stroke-width="1.8"/>
+      <!-- Lower eyelid -->
+      <path d="M-15,3 Q0,13 15,3" fill="none" stroke="#8B6AAA" stroke-width="0.6" opacity="0.5"/>
+      <!-- Eyelashes - elegant, long -->
+      <line x1="-16" y1="-2" x2="-20" y2="-8" stroke="#3D1566" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="-12" y1="-6" x2="-15" y2="-12" stroke="#3D1566" stroke-width="1" stroke-linecap="round"/>
+      <line x1="-6" y1="-9" x2="-8" y2="-16" stroke="#3D1566" stroke-width="0.8" stroke-linecap="round"/>
+      <line x1="14" y1="-2" x2="17" y2="-7" stroke="#3D1566" stroke-width="1" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Left eye (mostly hidden by hair, just a glimpse) -->
+    <g transform="translate(175, 242)" opacity="0.4">
+      <ellipse cx="0" cy="0" rx="13" ry="9" fill="#FFFFFF" stroke="#DDD0E8" stroke-width="0.3"/>
+      <ellipse cx="0" cy="1" rx="8" ry="8" fill="url(#gy2-iris)"/>
+      <ellipse cx="0" cy="1" rx="3.5" ry="4" fill="#1A0833"/>
+      <ellipse cx="-3" cy="-3" rx="2.5" ry="2" fill="white" opacity="0.8"/>
+      <path d="M-14,-1 Q-10,-10 0,-12 Q10,-10 14,-1" fill="none" stroke="#3D1566" stroke-width="1.5"/>
+    </g>
+    
+    <!-- Eyebrows -->
+    <path d="M208,222 Q220,216 238,220" fill="none" stroke="#3D1566" stroke-width="2" stroke-linecap="round"/>
+    <path d="M165,225 Q172,220 185,222" fill="none" stroke="#3D1566" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+    
+    <!-- Nose - delicate -->
+    <path d="M199,262 Q200,270 198,276 Q200,278 203,276" fill="none" stroke="rgba(160,120,100,0.3)" stroke-width="1" stroke-linecap="round"/>
+    
+    <!-- Mouth - slight closed-lip smile, mysterious -->
+    <path d="M190,296 Q195,293 200,294 Q205,293 210,296" fill="none" stroke="#C4868A" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M193,296 Q200,300 207,296" fill="rgba(200,130,135,0.15)"/>
+    <!-- Lower lip highlight -->
+    <ellipse cx="200" cy="300" rx="6" ry="2" fill="rgba(255,200,200,0.15)"/>
+
+    <!-- === EARS === -->
+    <path d="M265,230 Q275,225 278,240 Q280,255 270,260 Q268,250 265,240 Z" fill="url(#gy2-skin)"/>
+    <!-- Ear shadow -->
+    <path d="M267,235 Q273,235 274,245 Q275,252 270,255" fill="none" stroke="rgba(180,140,120,0.2)" stroke-width="1"/>
+
+    <!-- === HAIR === -->
+    <!-- Back hair - long, flowing past shoulders -->
+    <path d="M130,180 Q120,200 115,280 Q110,350 115,430 Q118,460 130,470 Q140,450 140,400 Q145,320 148,260 Q150,220 155,200 Z" fill="url(#gy2-hair-main)"/>
+    <path d="M270,180 Q280,200 285,280 Q290,350 285,430 Q282,460 270,470 Q260,450 260,400 Q255,320 252,260 Q250,220 245,200 Z" fill="url(#gy2-hair-main)"/>
+    
+    <!-- Hair back layer behind neck -->
+    <path d="M155,170 Q145,200 140,260 Q135,320 140,380 L155,400 Q155,340 158,280 Q160,230 165,190 Z" fill="#4A1D7A"/>
+    <path d="M245,170 Q255,200 260,260 Q265,320 260,380 L245,400 Q245,340 242,280 Q240,230 235,190 Z" fill="#4A1D7A"/>
+    
+    <!-- Main hair top -->
+    <path d="M132,200 Q130,170 140,145 Q155,120 175,112 Q190,107 200,105 Q210,107 225,112 Q245,120 260,145 Q270,170 268,200 Q265,185 255,165 Q240,145 220,138 Q200,132 180,138 Q160,145 145,165 Q135,185 132,200 Z" fill="url(#gy2-hair-main)"/>
+    
+    <!-- Hair fringe covering left eye - signature look -->
+    <path d="M130,180 Q135,150 155,130 Q165,122 175,118 L180,160 Q170,180 160,210 Q150,240 145,280 Q140,310 142,340 Q138,320 135,280 Q130,240 128,210 Z" fill="url(#gy2-hair-main)"/>
+    <!-- Long strand over left eye -->
+    <path d="M165,125 Q160,150 155,180 Q148,215 143,255 Q138,290 140,330 Q137,310 135,270 Q133,230 138,190 Q142,160 150,135 Z" fill="#5B2D8E"/>
+    <!-- Additional fringe strands -->
+    <path d="M175,115 Q170,140 165,170 Q158,210 155,250 Q152,280 155,310" fill="none" stroke="#4A1D7A" stroke-width="3" opacity="0.5"/>
+    <path d="M170,118 Q163,145 158,180 Q150,220 148,265" fill="none" stroke="#5B2D8E" stroke-width="2" opacity="0.4"/>
+    
+    <!-- Right side hair strands -->
+    <path d="M240,135 Q250,155 258,180 Q262,200 265,220 Q268,240 267,260" fill="none" stroke="#4A1D7A" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+    <path d="M245,140 Q253,160 260,185 Q265,210 266,235" fill="none" stroke="#5B2D8E" stroke-width="2.5" opacity="0.4"/>
+    
+    <!-- Hair top detail strands -->
+    <path d="M160,130 Q180,115 200,112 Q220,115 240,130" fill="none" stroke="#6B3FA0" stroke-width="2" opacity="0.4"/>
+    <path d="M170,125 Q185,113 200,110 Q215,113 230,125" fill="none" stroke="#7B4FBF" stroke-width="1.5" opacity="0.3"/>
+    
+    <!-- Hair shine streaks -->
+    <path d="M155,140 Q160,155 158,175 Q155,195 150,220" fill="none" stroke="url(#gy2-hair-shine)" stroke-width="6" opacity="0.5"/>
+    <path d="M230,135 Q235,150 238,170 Q240,190 242,210" fill="none" stroke="url(#gy2-hair-shine)" stroke-width="5" opacity="0.4"/>
+    <path d="M190,112 Q195,125 194,140" fill="none" stroke="rgba(200,170,255,0.4)" stroke-width="3" opacity="0.5"/>
+    
+    <!-- Hair shadow at face edge -->
+    <path d="M145,200 Q150,220 148,250 Q145,280 142,310" fill="none" stroke="url(#gy2-hair-shadow)" stroke-width="8" opacity="0.3"/>
+
+    <!-- === BOOK (held in left hand area) === -->
+    <g transform="translate(105, 440) rotate(-15)">
+      <!-- Book cover -->
+      <rect x="0" y="0" width="55" height="75" rx="3" fill="url(#gy2-book-cover)"/>
+      <!-- Book spine -->
+      <rect x="0" y="0" width="6" height="75" rx="2" fill="#2D1050"/>
+      <!-- Book pages -->
+      <rect x="6" y="3" width="46" height="69" rx="1" fill="url(#gy2-book-pages)"/>
+      <!-- Page lines -->
+      <g stroke="#E0D8C8" stroke-width="0.5" opacity="0.5">
+        <line x1="12" y1="15" x2="46" y2="15"/>
+        <line x1="12" y1="22" x2="46" y2="22"/>
+        <line x1="12" y1="29" x2="46" y2="29"/>
+        <line x1="12" y1="36" x2="46" y2="36"/>
+        <line x1="12" y1="43" x2="46" y2="43"/>
+        <line x1="12" y1="50" x2="42" y2="50"/>
+      </g>
+      <!-- Book title decoration -->
+      <rect x="15" y="5" width="30" height="4" rx="1" fill="#6B3FA0" opacity="0.3"/>
+    </g>
+    
+    <!-- Left hand holding book -->
+    <g>
+      <path d="M115,465 Q108,460 105,450 Q103,445 107,440 Q112,435 118,438 L125,445 Q120,450 118,458 Z" fill="url(#gy2-skin)"/>
+      <!-- Fingers -->
+      <path d="M107,440 Q105,435 108,432 Q112,430 114,434" fill="url(#gy2-skin)" stroke="rgba(180,140,120,0.2)" stroke-width="0.5"/>
+      <path d="M112,437 Q110,432 113,429 Q116,427 118,431" fill="url(#gy2-skin)" stroke="rgba(180,140,120,0.2)" stroke-width="0.5"/>
+    </g>
+
+    <!-- Right hand visible at side -->
+    <path d="M275,490 Q280,485 282,478 Q283,472 280,470 Q276,468 273,472 L270,480 Q272,485 275,490 Z" fill="url(#gy2-skin)"/>
+
+    <!-- === DECORATIVE ELEMENTS === -->
+    <!-- Small sparkle near visible eye -->
+    <g transform="translate(245, 225)" opacity="0.4">
+      <line x1="0" y1="-4" x2="0" y2="4" stroke="#C4A0FF" stroke-width="1"/>
+      <line x1="-4" y1="0" x2="4" y2="0" stroke="#C4A0FF" stroke-width="1"/>
+      <line x1="-2.5" y1="-2.5" x2="2.5" y2="2.5" stroke="#C4A0FF" stroke-width="0.6"/>
+      <line x1="2.5" y1="-2.5" x2="-2.5" y2="2.5" stroke="#C4A0FF" stroke-width="0.6"/>
+    </g>
+    
+    <!-- Floating particles -->
+    <circle cx="95" cy="200" r="2" fill="#C4A0FF" opacity="0.3"/>
+    <circle cx="305" cy="260" r="1.5" fill="#C4A0FF" opacity="0.25"/>
+    <circle cx="85" cy="350" r="1" fill="#9B6FD4" opacity="0.2"/>
+    <circle cx="310" cy="400" r="1.8" fill="#9B6FD4" opacity="0.2"/>
+
+  </g>
+</svg>

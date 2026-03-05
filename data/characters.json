@@ -1,0 +1,44 @@
+{
+  "luchen": {
+    "id": "luchen",
+    "name": "陆辰逸",
+    "title": "学生会长",
+    "color": "#4A90D9",
+    "accentColor": "#6BB3FF",
+    "emoji": "🔵",
+    "sprite": "img/characters/luchen.svg",
+    "personality": "温柔可靠",
+    "description": "星辰学院学生会会长，成绩优异、待人温和，是学校里公认的完美学长。然而在优雅的外表下，他承受着来自家族的巨大压力，内心深处渴望被人真正理解。",
+    "quote": "如果你愿意的话……可以叫我辰逸。",
+    "hobby": "钢琴、阅读",
+    "birthday": "3月14日"
+  },
+  "guyan": {
+    "id": "guyan",
+    "name": "顾晏时",
+    "title": "图书馆幽灵",
+    "color": "#8B5CF6",
+    "accentColor": "#A78BFA",
+    "emoji": "🟣",
+    "sprite": "img/characters/guyan.svg",
+    "personality": "安静神秘",
+    "description": "总是独自一人待在图书馆角落的神秘少年，极少与人交流。他拥有惊人的记忆力和学识，却似乎对周围的一切都漠不关心。但偶尔，他会用那双深邃的眼睛注视着远方，仿佛在思念着什么。",
+    "quote": "……你很吵。但是，不讨厌。",
+    "hobby": "阅读、星象观测",
+    "birthday": "12月21日"
+  },
+  "linxiao": {
+    "id": "linxiao",
+    "name": "林笑寒",
+    "title": "体育部王牌",
+    "color": "#F59E0B",
+    "accentColor": "#FBBF24",
+    "emoji": "🟠",
+    "sprite": "img/characters/linxiao.svg",
+    "personality": "阳光开朗",
+    "description": "体育部的绝对王牌，擅长篮球和田径，性格热情直率，走到哪里都是人群的焦点。虽然看起来大大咧咧，但其实非常重视朋友，会默默关心身边的每一个人。",
+    "quote": "哈哈，别担心！有我在呢！",
+    "hobby": "篮球、美食探店",
+    "birthday": "7月7日"
+  }
+}

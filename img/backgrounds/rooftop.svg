@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="sunset-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a4e"/>
+      <stop offset="25%" stop-color="#6b3a7a"/>
+      <stop offset="50%" stop-color="#ff6b6b"/>
+      <stop offset="75%" stop-color="#ff8e53"/>
+      <stop offset="100%" stop-color="#ffc75f"/>
+    </linearGradient>
+  </defs>
+  <!-- 天空 -->
+  <rect width="1200" height="800" fill="url(#sunset-sky)"/>
+  <!-- 太阳 -->
+  <circle cx="600" cy="450" r="80" fill="#ffd700" opacity="0.6"/>
+  <circle cx="600" cy="450" r="60" fill="#ffe44d" opacity="0.8"/>
+  <circle cx="600" cy="450" r="40" fill="#fff5b0"/>
+  <!-- 光芒 -->
+  <ellipse cx="600" cy="450" rx="400" ry="150" fill="#ffd700" opacity="0.08"/>
+  <!-- 云（日落色） -->
+  <g opacity="0.6">
+    <ellipse cx="200" cy="250" rx="120" ry="30" fill="#ff9a76"/>
+    <ellipse cx="280" cy="240" rx="80" ry="25" fill="#ffb396"/>
+    <ellipse cx="900" cy="300" rx="150" ry="35" fill="#ff8566"/>
+    <ellipse cx="1000" cy="290" rx="80" ry="25" fill="#ffa080"/>
+    <ellipse cx="450" cy="380" rx="100" ry="20" fill="#ffc090"/>
+    <ellipse cx="800" cy="360" rx="120" ry="25" fill="#ffb080"/>
+  </g>
+  <!-- 栏杆 -->
+  <rect x="0" y="550" width="1200" height="250" fill="#888"/>
+  <rect x="0" y="540" width="1200" height="20" rx="5" fill="#999"/>
+  <!-- 栏杆竖条 -->
+  <g fill="#777">
+    <rect x="50" y="540" width="8" height="120" rx="2"/>
+    <rect x="130" y="540" width="8" height="120" rx="2"/>
+    <rect x="210" y="540" width="8" height="120" rx="2"/>
+    <rect x="290" y="540" width="8" height="120" rx="2"/>
+    <rect x="370" y="540" width="8" height="120" rx="2"/>
+    <rect x="450" y="540" width="8" height="120" rx="2"/>
+    <rect x="530" y="540" width="8" height="120" rx="2"/>
+    <rect x="610" y="540" width="8" height="120" rx="2"/>
+    <rect x="690" y="540" width="8" height="120" rx="2"/>
+    <rect x="770" y="540" width="8" height="120" rx="2"/>
+    <rect x="850" y="540" width="8" height="120" rx="2"/>
+    <rect x="930" y="540" width="8" height="120" rx="2"/>
+    <rect x="1010" y="540" width="8" height="120" rx="2"/>
+    <rect x="1090" y="540" width="8" height="120" rx="2"/>
+    <rect x="1170" y="540" width="8" height="120" rx="2"/>
+  </g>
+  <rect x="0" y="655" width="1200" height="8" rx="3" fill="#999"/>
+  <!-- 地面 -->
+  <rect x="0" y="660" width="1200" height="140" fill="#a0a0a0"/>
+  <!-- 远景城市轮廓 -->
+  <g fill="#2a1a3e" opacity="0.6">
+    <rect x="50" y="420" width="40" height="130"/>
+    <rect x="100" y="380" width="60" height="170"/>
+    <rect x="170" y="430" width="35" height="120"/>
+    <rect x="250" y="400" width="50" height="150"/>
+    <rect x="310" y="440" width="30" height="110"/>
+    <rect x="850" y="410" width="45" height="140"/>
+    <rect x="910" y="380" width="55" height="170"/>
+    <rect x="980" y="420" width="40" height="130"/>
+    <rect x="1040" y="390" width="50" height="160"/>
+    <rect x="1100" y="430" width="60" height="120"/>
+  </g>
+  <!-- 建筑窗户光 -->
+  <g fill="#ffe4a0" opacity="0.3">
+    <rect x="110" y="395" width="10" height="10"/>
+    <rect x="130" y="395" width="10" height="10"/>
+    <rect x="110" y="415" width="10" height="10"/>
+    <rect x="260" y="420" width="8" height="8"/>
+    <rect x="278" y="420" width="8" height="8"/>
+    <rect x="920" y="400" width="10" height="10"/>
+    <rect x="940" y="400" width="10" height="10"/>
+    <rect x="1055" y="410" width="8" height="8"/>
+  </g>
+  <!-- 星星（天空上方） -->
+  <g fill="#fff" opacity="0.6">
+    <circle cx="100" cy="50" r="2"/>
+    <circle cx="300" cy="80" r="1.5"/>
+    <circle cx="500" cy="30" r="1"/>
+    <circle cx="700" cy="60" r="2"/>
+    <circle cx="900" cy="40" r="1.5"/>
+    <circle cx="1100" cy="70" r="1"/>
+    <circle cx="150" cy="130" r="1"/>
+    <circle cx="400" cy="150" r="1.5"/>
+    <circle cx="1050" cy="120" r="1"/>
+  </g>
+</svg>

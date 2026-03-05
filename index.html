@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 星辰学院 — 乙女游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 标题画面 -->
+    <div id="title-screen" class="screen active">
+        <div class="title-container">
+            <div class="sakura-falling"></div>
+            <h1 class="game-title">🌸 星辰学院 🌸</h1>
+            <p class="game-subtitle">— 与你相遇的那个春天 —</p>
+            <div class="title-menu">
+                <button class="menu-btn" id="btn-new-game">✨ 开始游戏</button>
+                <button class="menu-btn" id="btn-load-game">📖 读取存档</button>
+                <button class="menu-btn" id="btn-gallery">💕 角色图鉴</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 游戏主界面 -->
+    <div id="game-screen" class="screen">
+        <!-- 场景背景 -->
+        <div id="scene-bg" class="scene-background">
+            <!-- 角色立绘区域 -->
+            <div id="character-display" class="character-area">
+                <div id="char-left" class="character-sprite"></div>
+                <div id="char-center" class="character-sprite"></div>
+                <div id="char-right" class="character-sprite"></div>
+            </div>
+        </div>
+
+        <!-- 顶部信息栏 -->
+        <div id="top-bar" class="top-bar">
+            <div class="scene-name" id="scene-name">序章</div>
+            <div class="top-buttons">
+                <button class="icon-btn" id="btn-save" title="存档">💾</button>
+                <button class="icon-btn" id="btn-quick-save" title="快速存档">⚡</button>
+                <button class="icon-btn" id="btn-menu" title="菜单">☰</button>
+            </div>
+        </div>
+
+        <!-- 好感度浮窗（鼠标悬停显示） -->
+        <div id="affection-panel" class="affection-panel hidden">
+            <h3>💕 好感度</h3>
+            <div class="affection-item" id="aff-luchen">
+                <span class="aff-name">陆辰逸</span>
+                <div class="aff-bar"><div class="aff-fill" style="width:0%"></div></div>
+                <span class="aff-value">0</span>
+            </div>
+            <div class="affection-item" id="aff-guyan">
+                <span class="aff-name">顾晏时</span>
+                <div class="aff-bar"><div class="aff-fill" style="width:0%"></div></div>
+                <span class="aff-value">0</span>
+            </div>
+            <div class="affection-item" id="aff-linxiao">
+                <span class="aff-name">林笑寒</span>
+                <div class="aff-bar"><div class="aff-fill" style="width:0%"></div></div>
+                <span class="aff-value">0</span>
+            </div>
+        </div>
+
+        <!-- 对话框 -->
+        <div id="dialogue-box" class="dialogue-box">
+            <div class="speaker-name" id="speaker-name"></div>
+            <div class="dialogue-text" id="dialogue-text"></div>
+            <div class="click-indicator" id="click-indicator">▼</div>
+        </div>
+
+        <!-- 选项面板 -->
+        <div id="choices-panel" class="choices-panel hidden">
+        </div>
+
+        <!-- 旁白/内心独白 -->
+        <div id="narration-box" class="narration-box hidden">
+            <div class="narration-text" id="narration-text"></div>
+        </div>
+    </div>
+
+    <!-- 存档/读档界面 -->
+    <div id="save-screen" class="screen overlay">
+        <div class="save-container">
+            <h2 id="save-screen-title">💾 存档</h2>
+            <div class="save-slots" id="save-slots"></div>
+            <button class="menu-btn" id="btn-save-back">返回</button>
+        </div>
+    </div>
+
+    <!-- 角色图鉴界面 -->
+    <div id="gallery-screen" class="screen overlay">
+        <div class="gallery-container">
+            <h2>💕 角色图鉴</h2>
+            <div class="gallery-cards" id="gallery-cards"></div>
+            <button class="menu-btn" id="btn-gallery-back">返回</button>
+        </div>
+    </div>
+
+    <!-- 游戏内菜单 -->
+    <div id="pause-menu" class="screen overlay">
+        <div class="pause-container">
+            <h2>☰ 菜单</h2>
+            <button class="menu-btn" id="btn-resume">继续游戏</button>
+            <button class="menu-btn" id="btn-pause-save">💾 存档</button>
+            <button class="menu-btn" id="btn-pause-load">📖 读档</button>
+            <button class="menu-btn" id="btn-affection">💕 好感度</button>
+            <button class="menu-btn" id="btn-back-title">🏠 返回标题</button>
+        </div>
+    </div>
+
+    <!-- 结局画面 -->
+    <div id="ending-screen" class="screen">
+        <div class="ending-container">
+            <div class="ending-type" id="ending-type"></div>
+            <h2 class="ending-title" id="ending-title"></h2>
+            <p class="ending-text" id="ending-text"></p>
+            <button class="menu-btn" id="btn-ending-title">返回标题</button>
+        </div>
+    </div>
+
+    <!-- 好感度变化通知 -->
+    <div id="affection-notification" class="affection-notification hidden">
+        <span id="aff-notif-text"></span>
+    </div>
+
+    <script src="js/save.js"></script>
+    <script src="js/engine.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="sky1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#87CEEB"/>
+      <stop offset="60%" stop-color="#b8e4f8"/>
+      <stop offset="100%" stop-color="#e8f5fc"/>
+    </linearGradient>
+    <linearGradient id="gate-metal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8a8a8a"/>
+      <stop offset="50%" stop-color="#c0c0c0"/>
+      <stop offset="100%" stop-color="#8a8a8a"/>
+    </linearGradient>
+    <radialGradient id="sun1" cx="80%" cy="15%" r="20%">
+      <stop offset="0%" stop-color="#fff8e0" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#fff8e0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- 天空 -->
+  <rect width="1200" height="800" fill="url(#sky1)"/>
+  <rect width="1200" height="800" fill="url(#sun1)"/>
+  <!-- 云 -->
+  <g opacity="0.7">
+    <ellipse cx="200" cy="120" rx="100" ry="35" fill="#fff"/>
+    <ellipse cx="260" cy="110" rx="70" ry="30" fill="#fff"/>
+    <ellipse cx="150" cy="115" rx="60" ry="25" fill="#fff"/>
+    <ellipse cx="850" cy="80" rx="120" ry="40" fill="#fff"/>
+    <ellipse cx="920" cy="70" rx="80" ry="30" fill="#fff"/>
+  </g>
+  <!-- 远景树 -->
+  <rect x="0" y="400" width="1200" height="400" fill="#7cb87c"/>
+  <ellipse cx="100" cy="380" rx="80" ry="70" fill="#5a9e5a"/>
+  <ellipse cx="300" cy="360" rx="100" ry="80" fill="#4e8e4e"/>
+  <ellipse cx="900" cy="370" rx="90" ry="75" fill="#5a9e5a"/>
+  <ellipse cx="1100" cy="380" rx="80" ry="70" fill="#4e8e4e"/>
+  <!-- 道路 -->
+  <path d="M400,800 L500,500 L700,500 L800,800 Z" fill="#d4c4a8"/>
+  <path d="M440,800 L510,520 L520,520 L460,800 Z" fill="#c4b498" opacity="0.5"/>
+  <!-- 校门柱子 左 -->
+  <rect x="460" y="280" width="40" height="220" fill="#e8d8c0"/>
+  <rect x="455" y="270" width="50" height="20" fill="#d4c0a0"/>
+  <rect x="458" y="260" width="44" height="15" fill="#c8b090"/>
+  <!-- 校门柱子 右 -->
+  <rect x="700" y="280" width="40" height="220" fill="#e8d8c0"/>
+  <rect x="695" y="270" width="50" height="20" fill="#d4c0a0"/>
+  <rect x="698" y="260" width="44" height="15" fill="#c8b090"/>
+  <!-- 铁门栏杆 -->
+  <g stroke="#a0a0a0" stroke-width="3" fill="none">
+    <line x1="500" y1="290" x2="500" y2="500"/>
+    <line x1="530" y1="290" x2="530" y2="500"/>
+    <line x1="560" y1="290" x2="560" y2="500"/>
+    <line x1="590" y1="290" x2="590" y2="500"/>
+    <line x1="620" y1="290" x2="620" y2="500"/>
+    <line x1="650" y1="290" x2="650" y2="500"/>
+    <line x1="680" y1="290" x2="680" y2="500"/>
+    <line x1="700" y1="290" x2="700" y2="500"/>
+    <!-- 横杆 -->
+    <line x1="500" y1="320" x2="700" y2="320"/>
+    <line x1="500" y1="460" x2="700" y2="460"/>
+  </g>
+  <!-- 门拱装饰 -->
+  <path d="M460,275 Q600,210 740,275" fill="none" stroke="#b0a080" stroke-width="5"/>
+  <!-- 校名牌匾 -->
+  <rect x="530" y="225" width="140" height="40" rx="5" fill="#8b0000"/>
+  <text x="600" y="252" text-anchor="middle" font-size="22" fill="#ffd700" font-family="serif" font-weight="bold">星辰学院</text>
+  <!-- 校园建筑（远景） -->
+  <rect x="350" y="320" width="120" height="180" fill="#f5e6d0"/>
+  <rect x="730" y="330" width="110" height="170" fill="#f0ddc0"/>
+  <rect x="520" y="250" width="160" height="50" fill="#e8d4b8" opacity="0.5"/>
+  <!-- 窗户 -->
+  <g fill="#a8d4f0">
+    <rect x="370" y="340" width="20" height="25" rx="2"/>
+    <rect x="400" y="340" width="20" height="25" rx="2"/>
+    <rect x="430" y="340" width="20" height="25" rx="2"/>
+    <rect x="370" y="380" width="20" height="25" rx="2"/>
+    <rect x="400" y="380" width="20" height="25" rx="2"/>
+    <rect x="430" y="380" width="20" height="25" rx="2"/>
+    <rect x="750" y="350" width="20" height="25" rx="2"/>
+    <rect x="780" y="350" width="20" height="25" rx="2"/>
+    <rect x="810" y="350" width="20" height="25" rx="2"/>
+  </g>
+  <!-- 樱花树 -->
+  <rect x="300" y="380" width="15" height="120" fill="#8B6946"/>
+  <ellipse cx="308" cy="360" rx="55" ry="50" fill="#FFB7C5"/>
+  <ellipse cx="288" cy="370" rx="35" ry="30" fill="#ffc0cb"/>
+  <ellipse cx="330" cy="365" rx="30" ry="28" fill="#ffafc0"/>
+  <!-- 花瓣飘落 -->
+  <g fill="#FFB7C5" opacity="0.7">
+    <ellipse cx="340" cy="420" rx="4" ry="3" transform="rotate(30,340,420)"/>
+    <ellipse cx="280" cy="450" rx="3" ry="2" transform="rotate(-20,280,450)"/>
+    <ellipse cx="360" cy="480" rx="4" ry="2" transform="rotate(45,360,480)"/>
+    <ellipse cx="250" cy="500" rx="3" ry="2" transform="rotate(60,250,500)"/>
+    <ellipse cx="320" cy="520" rx="3" ry="3" transform="rotate(-10,320,520)"/>
+  </g>
+  <!-- 草地质感 -->
+  <rect x="0" y="500" width="1200" height="300" fill="#6aaa6a"/>
+  <rect x="0" y="500" width="1200" height="10" fill="#5a9a5a"/>
+</svg>

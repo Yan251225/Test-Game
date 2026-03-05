@@ -1,0 +1,34 @@
+[
+    { "type": "scene", "bg": "classroom", "name": "第一章 · 心之所向", "clearCharacters": true },
+
+    { "type": "narration", "text": "转学后的第一周很快就过去了。我渐渐习惯了星辰学院的生活。" },
+    { "type": "narration", "text": "不知不觉中，我和三位同学的交集越来越多……" },
+
+    { "type": "scene", "bg": "hallway", "name": "走廊 · 午休时间" },
+
+    { "type": "narration", "text": "午休铃响，同学们纷纷走出教室。我正犹豫去哪里时——" },
+
+    { "type": "character", "charId": "luchen", "position": "left" },
+    { "type": "dialogue", "speaker": "luchen", "text": "苏同学，转学后还适应吗？如果有什么困难，可以随时来找我。" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（陆学长又来关心我了……他真的好温柔。）" },
+
+    { "type": "character", "charId": "linxiao", "position": "right" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "念念！走走走，一起去食堂！今天有新菜！" },
+    { "type": "dialogue", "speaker": "luchen", "text": "林笑寒，你能不能不要总是这么冒冒失失的。" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "嘿嘿，辰逸学长你也太严肃了啦。" },
+    { "type": "hide_character", "position": "left" },
+    { "type": "hide_character", "position": "right" },
+
+    { "type": "narration", "text": "这时，教室门口一个安静的身影引起了我的注意——" },
+    { "type": "character", "charId": "guyan", "position": "center" },
+    { "type": "narration", "text": "顾晏时抱着一本书，默默地从我们身边走过，朝着图书馆的方向去了。" },
+    { "type": "hide_character", "position": "center" },
+
+    { "type": "narration", "text": "三个人，三个不同的方向。而我——" },
+
+    { "type": "choice", "choices": [
+        { "text": "跟陆辰逸一起去学生会办公室", "affection": { "luchen": 10 }, "jumpTo": "route_luchen" },
+        { "text": "跟着顾晏时去图书馆", "affection": { "guyan": 10 }, "jumpTo": "route_guyan" },
+        { "text": "和林笑寒一起去食堂", "affection": { "linxiao": 10 }, "jumpTo": "route_linxiao" }
+    ]}
+]

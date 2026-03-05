@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="night-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a2e"/>
+      <stop offset="40%" stop-color="#1a1a4e"/>
+      <stop offset="100%" stop-color="#2a2a5e"/>
+    </linearGradient>
+    <radialGradient id="moon-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- 夜空 -->
+  <rect width="1200" height="800" fill="url(#night-sky)"/>
+  <!-- 银河 -->
+  <path d="M0,200 Q300,250 600,180 Q900,120 1200,200" fill="none" stroke="#6a5acd" stroke-width="80" opacity="0.06"/>
+  <!-- 月亮 -->
+  <circle cx="900" cy="150" r="60" fill="#FFF8DC"/>
+  <circle cx="920" cy="140" r="55" fill="url(#night-sky)"/>
+  <circle cx="900" cy="150" r="100" fill="url(#moon-glow)"/>
+  <!-- 星星 -->
+  <g fill="#fff">
+    <circle cx="100" cy="80" r="2.5" opacity="0.9"/>
+    <circle cx="200" cy="150" r="1.5" opacity="0.7"/>
+    <circle cx="350" cy="60" r="2" opacity="0.8"/>
+    <circle cx="450" cy="200" r="1" opacity="0.6"/>
+    <circle cx="550" cy="100" r="2.5" opacity="0.9"/>
+    <circle cx="650" cy="50" r="1.5" opacity="0.7"/>
+    <circle cx="750" cy="180" r="2" opacity="0.8"/>
+    <circle cx="1000" cy="80" r="2" opacity="0.85"/>
+    <circle cx="1100" cy="200" r="1.5" opacity="0.7"/>
+    <circle cx="150" cy="250" r="1" opacity="0.5"/>
+    <circle cx="500" cy="280" r="1.5" opacity="0.6"/>
+    <circle cx="700" cy="260" r="1" opacity="0.5"/>
+    <circle cx="1050" cy="300" r="1.5" opacity="0.5"/>
+    <circle cx="300" cy="320" r="1" opacity="0.4"/>
+    <circle cx="850" cy="270" r="2" opacity="0.7"/>
+    <circle cx="50" cy="180" r="1" opacity="0.5"/>
+    <circle cx="400" cy="130" r="1.8" opacity="0.75"/>
+    <circle cx="1150" cy="120" r="1" opacity="0.6"/>
+  </g>
+  <!-- 闪烁星（大） -->
+  <g fill="#fff" opacity="0.9">
+    <path d="M550,100 L553,93 L556,100 L563,103 L556,106 L553,113 L550,106 L543,103 Z"/>
+    <path d="M200,150 L202,145 L204,150 L209,152 L204,154 L202,159 L200,154 L195,152 Z" opacity="0.7"/>
+  </g>
+  <!-- 地面/树木轮廓 -->
+  <path d="M0,550 Q100,520 200,540 Q350,500 500,530 Q650,510 800,540 Q950,520 1100,540 Q1150,530 1200,550 L1200,800 L0,800 Z" fill="#0a0a1e"/>
+  <!-- 树木剪影 -->
+  <g fill="#0a0a1e">
+    <ellipse cx="150" cy="500" rx="60" ry="65"/>
+    <rect x="145" y="530" width="12" height="50"/>
+    <ellipse cx="400" cy="510" rx="50" ry="50"/>
+    <rect x="396" y="540" width="10" height="40"/>
+    <ellipse cx="850" cy="505" rx="55" ry="55"/>
+    <rect x="846" y="535" width="10" height="45"/>
+    <ellipse cx="1050" cy="510" rx="45" ry="50"/>
+    <rect x="1046" y="540" width="10" height="40"/>
+  </g>
+  <!-- 草地 -->
+  <rect x="0" y="600" width="1200" height="200" fill="#0a0a1e"/>
+  <!-- 萤火虫 -->
+  <g>
+    <circle cx="250" cy="480" r="3" fill="#FFD700" opacity="0.6"/>
+    <circle cx="250" cy="480" r="8" fill="#FFD700" opacity="0.1"/>
+    <circle cx="700" cy="500" r="3" fill="#FFD700" opacity="0.5"/>
+    <circle cx="700" cy="500" r="8" fill="#FFD700" opacity="0.08"/>
+    <circle cx="500" cy="520" r="2" fill="#FFD700" opacity="0.4"/>
+    <circle cx="500" cy="520" r="6" fill="#FFD700" opacity="0.08"/>
+    <circle cx="950" cy="490" r="3" fill="#FFD700" opacity="0.5"/>
+    <circle cx="950" cy="490" r="8" fill="#FFD700" opacity="0.08"/>
+  </g>
+</svg>

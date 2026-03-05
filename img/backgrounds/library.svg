@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="lib-wall" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4a3a2a"/>
+      <stop offset="100%" stop-color="#3a2a1a"/>
+    </linearGradient>
+    <linearGradient id="shelf" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8B6946"/>
+      <stop offset="100%" stop-color="#6B4926"/>
+    </linearGradient>
+    <linearGradient id="lib-window" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE4B5"/>
+      <stop offset="50%" stop-color="#FFF8DC"/>
+      <stop offset="100%" stop-color="#FFE4B5"/>
+    </linearGradient>
+    <radialGradient id="lamp-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF8DC" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#FFF8DC" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- 墙壁 -->
+  <rect width="1200" height="800" fill="url(#lib-wall)"/>
+  <!-- 地板 -->
+  <rect x="0" y="580" width="1200" height="220" fill="#5a4a3a"/>
+  <g stroke="#4a3a2a" stroke-width="1" opacity="0.3">
+    <line x1="0" y1="620" x2="1200" y2="620"/>
+    <line x1="0" y1="660" x2="1200" y2="660"/>
+    <line x1="0" y1="700" x2="1200" y2="700"/>
+  </g>
+  <!-- 大窗户（中间，光源） -->
+  <rect x="450" y="50" width="300" height="400" rx="10" fill="url(#lib-window)"/>
+  <rect x="450" y="50" width="300" height="400" rx="10" fill="none" stroke="#6B4926" stroke-width="12"/>
+  <line x1="600" y1="50" x2="600" y2="450" stroke="#6B4926" stroke-width="6"/>
+  <line x1="450" y1="180" x2="750" y2="180" stroke="#6B4926" stroke-width="4"/>
+  <line x1="450" y1="320" x2="750" y2="320" stroke="#6B4926" stroke-width="4"/>
+  <!-- 窗外光晕 -->
+  <ellipse cx="600" cy="250" rx="300" ry="350" fill="url(#lamp-glow)"/>
+  <!-- 光束效果 -->
+  <path d="M500,50 L350,580 L850,580 L700,50 Z" fill="#FFF8DC" opacity="0.06"/>
+  <!-- 书架 左侧 -->
+  <g>
+    <rect x="20" y="60" width="350" height="520" fill="url(#shelf)"/>
+    <!-- 隔板 -->
+    <rect x="20" y="60" width="350" height="8" fill="#7a5936"/>
+    <rect x="20" y="180" width="350" height="8" fill="#7a5936"/>
+    <rect x="20" y="300" width="350" height="8" fill="#7a5936"/>
+    <rect x="20" y="420" width="350" height="8" fill="#7a5936"/>
+    <rect x="20" y="540" width="350" height="8" fill="#7a5936"/>
+    <!-- 书本 第一层 -->
+    <g>
+      <rect x="35" y="75" width="15" height="100" fill="#c0392b" rx="1"/>
+      <rect x="52" y="80" width="12" height="95" fill="#2980b9" rx="1"/>
+      <rect x="66" y="72" width="18" height="103" fill="#27ae60" rx="1"/>
+      <rect x="86" y="78" width="10" height="97" fill="#f39c12" rx="1"/>
+      <rect x="98" y="70" width="16" height="105" fill="#8e44ad" rx="1"/>
+      <rect x="116" y="76" width="14" height="99" fill="#e74c3c" rx="1"/>
+      <rect x="132" y="73" width="12" height="102" fill="#3498db" rx="1"/>
+      <rect x="146" y="80" width="20" height="95" fill="#1abc9c" rx="1"/>
+      <rect x="168" y="68" width="15" height="107" fill="#e67e22" rx="1"/>
+      <rect x="185" y="75" width="18" height="100" fill="#9b59b6" rx="1"/>
+      <rect x="205" y="78" width="13" height="97" fill="#2ecc71" rx="1"/>
+      <rect x="220" y="72" width="16" height="103" fill="#e74c3c" rx="1"/>
+      <rect x="240" y="76" width="11" height="99" fill="#34495e" rx="1"/>
+      <rect x="255" y="70" width="20" height="105" fill="#f1c40f" rx="1"/>
+      <rect x="278" y="80" width="14" height="95" fill="#16a085" rx="1"/>
+      <rect x="295" y="74" width="17" height="101" fill="#c0392b" rx="1"/>
+      <rect x="315" y="78" width="12" height="97" fill="#2c3e50" rx="1"/>
+      <rect x="330" y="70" width="15" height="105" fill="#d35400" rx="1"/>
+    </g>
+    <!-- 书本 第二层 -->
+    <g transform="translate(0,120)">
+      <rect x="30" y="78" width="14" height="97" fill="#2c3e50" rx="1"/>
+      <rect x="46" y="72" width="18" height="103" fill="#e74c3c" rx="1"/>
+      <rect x="66" y="80" width="11" height="95" fill="#3498db" rx="1"/>
+      <rect x="80" y="70" width="20" height="105" fill="#f39c12" rx="1"/>
+      <rect x="102" y="76" width="13" height="99" fill="#27ae60" rx="1"/>
+      <rect x="118" y="73" width="16" height="102" fill="#8e44ad" rx="1"/>
+      <rect x="138" y="78" width="15" height="97" fill="#c0392b" rx="1"/>
+      <rect x="156" y="70" width="20" height="105" fill="#1abc9c" rx="1"/>
+      <rect x="180" y="75" width="12" height="100" fill="#e67e22" rx="1"/>
+      <rect x="195" y="80" width="18" height="95" fill="#2980b9" rx="1"/>
+    </g>
+    <!-- 书本 第三层 -->
+    <g transform="translate(0,240)">
+      <rect x="35" y="72" width="16" height="103" fill="#d35400" rx="1"/>
+      <rect x="55" y="78" width="20" height="97" fill="#2ecc71" rx="1"/>
+      <rect x="78" y="75" width="12" height="100" fill="#9b59b6" rx="1"/>
+      <rect x="95" y="70" width="15" height="105" fill="#e74c3c" rx="1"/>
+      <rect x="115" y="80" width="18" height="95" fill="#34495e" rx="1"/>
+      <rect x="138" y="72" width="14" height="103" fill="#f1c40f" rx="1"/>
+      <rect x="156" y="76" width="11" height="99" fill="#16a085" rx="1"/>
+    </g>
+  </g>
+  <!-- 书架 右侧 -->
+  <g>
+    <rect x="830" y="60" width="350" height="520" fill="url(#shelf)"/>
+    <rect x="830" y="60" width="350" height="8" fill="#7a5936"/>
+    <rect x="830" y="180" width="350" height="8" fill="#7a5936"/>
+    <rect x="830" y="300" width="350" height="8" fill="#7a5936"/>
+    <rect x="830" y="420" width="350" height="8" fill="#7a5936"/>
+    <rect x="830" y="540" width="350" height="8" fill="#7a5936"/>
+    <g>
+      <rect x="845" y="75" width="16" height="100" fill="#8e44ad" rx="1"/>
+      <rect x="863" y="80" width="12" height="95" fill="#2ecc71" rx="1"/>
+      <rect x="877" y="70" width="18" height="105" fill="#e67e22" rx="1"/>
+      <rect x="897" y="76" width="14" height="99" fill="#3498db" rx="1"/>
+      <rect x="913" y="73" width="16" height="102" fill="#c0392b" rx="1"/>
+      <rect x="931" y="78" width="20" height="97" fill="#f39c12" rx="1"/>
+      <rect x="953" y="72" width="13" height="103" fill="#27ae60" rx="1"/>
+      <rect x="968" y="80" width="18" height="95" fill="#e74c3c" rx="1"/>
+      <rect x="988" y="70" width="15" height="105" fill="#2c3e50" rx="1"/>
+      <rect x="1005" y="75" width="20" height="100" fill="#1abc9c" rx="1"/>
+      <rect x="1028" y="78" width="12" height="97" fill="#d35400" rx="1"/>
+      <rect x="1045" y="72" width="16" height="103" fill="#9b59b6" rx="1"/>
+      <rect x="1065" y="80" width="14" height="95" fill="#f1c40f" rx="1"/>
+      <rect x="1085" y="70" width="18" height="105" fill="#16a085" rx="1"/>
+      <rect x="1108" y="76" width="12" height="99" fill="#e74c3c" rx="1"/>
+      <rect x="1125" y="73" width="20" height="102" fill="#2980b9" rx="1"/>
+      <rect x="1148" y="78" width="15" height="97" fill="#34495e" rx="1"/>
+    </g>
+    <g transform="translate(810,120)">
+      <rect x="35" y="78" width="18" height="97" fill="#27ae60" rx="1"/>
+      <rect x="56" y="72" width="14" height="103" fill="#e74c3c" rx="1"/>
+      <rect x="74" y="80" width="16" height="95" fill="#2980b9" rx="1"/>
+      <rect x="94" y="70" width="12" height="105" fill="#f39c12" rx="1"/>
+      <rect x="110" y="76" width="20" height="99" fill="#8e44ad" rx="1"/>
+      <rect x="134" y="73" width="15" height="102" fill="#2ecc71" rx="1"/>
+    </g>
+  </g>
+  <!-- 阅读桌 -->
+  <rect x="380" y="560" width="440" height="20" rx="5" fill="#8B6946"/>
+  <rect x="400" y="580" width="8" height="100" fill="#6B4926"/>
+  <rect x="792" y="580" width="8" height="100" fill="#6B4926"/>
+  <!-- 桌上的书 -->
+  <rect x="540" y="540" width="50" height="20" rx="2" fill="#c0392b" transform="rotate(-5,565,550)"/>
+  <rect x="590" y="542" width="40" height="18" rx="2" fill="#2980b9" transform="rotate(3,610,550)"/>
+  <!-- 台灯 -->
+  <rect x="470" y="520" width="6" height="40" fill="#8a8a8a"/>
+  <ellipse cx="473" cy="515" rx="25" ry="10" fill="#2c3e50"/>
+  <ellipse cx="473" cy="520" rx="8" ry="3" fill="#FFF8DC" opacity="0.5"/>
+  <!-- 地球仪（右侧装饰） -->
+  <circle cx="730" cy="540" r="18" fill="#5dade2" stroke="#7f8c8d" stroke-width="2"/>
+  <ellipse cx="730" cy="540" rx="18" ry="6" fill="none" stroke="#7f8c8d" stroke-width="1" transform="rotate(23,730,540)"/>
+  <path d="M725,524 Q735,535 725,556" fill="none" stroke="#27ae60" stroke-width="2" opacity="0.5"/>
+  <!-- 光影粒子 -->
+  <g fill="#FFF8DC" opacity="0.15">
+    <circle cx="550" cy="300" r="2"/>
+    <circle cx="580" cy="250" r="1.5"/>
+    <circle cx="520" cy="350" r="1"/>
+    <circle cx="650" cy="280" r="2"/>
+    <circle cx="490" cy="400" r="1.5"/>
+    <circle cx="620" cy="200" r="1"/>
+    <circle cx="560" cy="450" r="2"/>
+  </g>
+</svg>

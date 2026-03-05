@@ -1,0 +1,70 @@
+[
+    { "type": "scene", "bg": "playground", "name": "林笑寒线 · 阳光下的守护", "clearCharacters": true },
+    { "type": "character", "charId": "linxiao", "position": "center" },
+
+    { "type": "dialogue", "speaker": "linxiao", "text": "走走走，今天食堂出了新菜——照烧鸡腿饭！我给你占座！" },
+    { "type": "narration", "text": "林笑寒拉着我的手就往食堂冲。他的手很大，很温暖，充满力量。" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（这个人也太热情了吧……不过，和他在一起真的很开心。）" },
+
+    { "type": "scene", "bg": "classroom", "name": "食堂", "clearCharacters": true },
+    { "type": "character", "charId": "linxiao", "position": "center" },
+
+    { "type": "narration", "text": "食堂里人山人海，林笑寒灵活地穿过人群，成功抢到了最后两份照烧鸡腿饭。" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "搞定！嘿嘿，怎么样，厉不厉害？" },
+
+    { "type": "choice", "choices": [
+        { "text": "「太厉害了！你简直是抢饭天才！」", "affection": { "linxiao": 10 } },
+        { "text": "「谢谢你，不用这么拼的啦。」", "affection": { "linxiao": 8 } },
+        { "text": "「你每天都这样抢饭吗……」", "affection": { "linxiao": 3 } }
+    ]},
+
+    { "type": "dialogue", "speaker": "linxiao", "text": "嘿嘿，这算什么。看好了——" },
+    { "type": "narration", "text": "他从口袋里掏出两个布丁。" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "铛铛！我早上就提前买好的甜点！因为你昨天说喜欢吃布丁嘛。" },
+
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（他居然记得我昨天随口说的话……！）" },
+
+    { "type": "choice", "choices": [
+        { "text": "「你居然记得！好感动……谢谢你！」", "affection": { "linxiao": 15 } },
+        { "text": "「你……怎么对我这么好啊。」", "affection": { "linxiao": 12 } },
+        { "text": "「还行吧，谢谢。」", "affection": { "linxiao": 3 } }
+    ]},
+
+    { "type": "dialogue", "speaker": "linxiao", "text": "嘿嘿嘿……你笑起来好好看。" },
+    { "type": "narration", "text": "他突然说出这句话后，自己先红了脸，赶紧低头扒饭。" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "呃、我是说！笑容是很重要的！对身体健康好！科学证明的！" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（什么科学证明啦……不过，好可爱。）" },
+
+    { "type": "scene", "bg": "rain", "name": "校门口 · 雨天", "clearCharacters": true },
+
+    { "type": "narration", "text": "一周后的下午，突然下起了大雨。放学时分，我站在校门口的屋檐下发愁——今天没带伞。" },
+    { "type": "narration", "text": "「念念——！」" },
+
+    { "type": "character", "charId": "linxiao", "position": "center" },
+    { "type": "narration", "text": "林笑寒从雨里跑来，浑身已经淋湿了，但手里高高举着一把伞。" },
+
+    { "type": "dialogue", "speaker": "linxiao", "text": "呼……终于赶上了！我、我看你没带伞，就回教室拿了伞来……" },
+    { "type": "narration", "text": "他气喘吁吁，雨水从他的发梢滴落。可他却笑得像个太阳。" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "给！这把伞给你用，我反正已经淋湿了，哈哈！" },
+
+    { "type": "choice", "choices": [
+        { "text": "「笨蛋！一起撑伞不就好了吗？过来！」", "affection": { "linxiao": 20 } },
+        { "text": "「你自己都淋湿了……会感冒的。」", "affection": { "linxiao": 12 } },
+        { "text": "「谢谢你的伞。」", "affection": { "linxiao": 5 } }
+    ]},
+
+    { "type": "narration", "text": "他愣了一下，然后露出一个灿烂无比的笑容。" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "嘿嘿……那我就不客气了！" },
+    { "type": "narration", "text": "雨中，我们靠得很近，一起撑着一把伞。他的体温很暖，雨声变成了温柔的背景音乐。" },
+
+    { "type": "dialogue", "speaker": "linxiao", "text": "念念，你知道吗……" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "其实我看起来大大咧咧的，但我也有害怕的事。" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "我怕……我喜欢的人有一天会不见。所以我总是想让身边的人都开心。" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "尤其是你。我特别希望你每天都能笑。" },
+
+    { "type": "narration", "text": "雨还在下，但我的心里涌起了暖流。" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "虽然我不像辰逸学长那么优秀，也不像晏时那么有才华……" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "但我会一直陪在你身边的。这个，我可以保证！" },
+
+    { "type": "ending", "charId": "linxiao" }
+]

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="pg-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4da6ff"/>
+      <stop offset="100%" stop-color="#87CEEB"/>
+    </linearGradient>
+  </defs>
+  <!-- 天空 -->
+  <rect width="1200" height="800" fill="url(#pg-sky)"/>
+  <!-- 云 -->
+  <g opacity="0.8" fill="#fff">
+    <ellipse cx="250" cy="100" rx="110" ry="40"/>
+    <ellipse cx="320" cy="90" rx="70" ry="30"/>
+    <ellipse cx="180" cy="95" rx="60" ry="28"/>
+    <ellipse cx="900" cy="130" rx="90" ry="35"/>
+    <ellipse cx="960" cy="120" rx="60" ry="25"/>
+  </g>
+  <!-- 远景山/树 -->
+  <path d="M0,350 Q200,280 400,340 Q600,300 800,340 Q1000,290 1200,350 L1200,400 L0,400 Z" fill="#5a9a5a"/>
+  <!-- 草地 -->
+  <rect x="0" y="400" width="1200" height="400" fill="#6ab06a"/>
+  <rect x="0" y="400" width="1200" height="15" fill="#5a9a5a"/>
+  <!-- 跑道 -->
+  <ellipse cx="600" cy="580" rx="400" ry="140" fill="#D2691E"/>
+  <ellipse cx="600" cy="580" rx="370" ry="120" fill="#6ab06a"/>
+  <!-- 跑道线 -->
+  <ellipse cx="600" cy="580" rx="400" ry="140" fill="none" stroke="#fff" stroke-width="3"/>
+  <ellipse cx="600" cy="580" rx="385" ry="130" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="15,10"/>
+  <!-- 篮球场（中央） -->
+  <rect x="450" y="480" width="300" height="200" fill="#CD853F" rx="5"/>
+  <rect x="450" y="480" width="300" height="200" fill="none" stroke="#fff" stroke-width="3" rx="5"/>
+  <line x1="600" y1="480" x2="600" y2="680" stroke="#fff" stroke-width="2"/>
+  <circle cx="600" cy="580" r="40" fill="none" stroke="#fff" stroke-width="2"/>
+  <!-- 篮球架 左 -->
+  <rect x="460" y="530" width="5" height="80" fill="#888"/>
+  <rect x="455" y="530" width="30" height="5" fill="#888"/>
+  <rect x="458" y="535" width="24" height="18" fill="none" stroke="#fff" stroke-width="1.5" rx="2"/>
+  <!-- 篮球架 右 -->
+  <rect x="735" y="530" width="5" height="80" fill="#888"/>
+  <rect x="715" y="530" width="30" height="5" fill="#888"/>
+  <rect x="718" y="535" width="24" height="18" fill="none" stroke="#fff" stroke-width="1.5" rx="2"/>
+  <!-- 足球门 左 -->
+  <rect x="80" y="520" width="10" height="80" fill="#fff"/>
+  <rect x="80" y="520" width="80" height="10" fill="#fff"/>
+  <rect x="150" y="520" width="10" height="80" fill="#fff"/>
+  <path d="M85,525 L85,595 L155,595 L155,525" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <!-- 校舍远景 -->
+  <rect x="50" y="280" width="200" height="120" fill="#f0ddc0" rx="3"/>
+  <rect x="950" y="300" width="180" height="100" fill="#f0ddc0" rx="3"/>
+  <g fill="#a8d4f0">
+    <rect x="70" y="300" width="25" height="30" rx="2"/>
+    <rect x="110" y="300" width="25" height="30" rx="2"/>
+    <rect x="150" y="300" width="25" height="30" rx="2"/>
+    <rect x="190" y="300" width="25" height="30" rx="2"/>
+    <rect x="70" y="345" width="25" height="30" rx="2"/>
+    <rect x="110" y="345" width="25" height="30" rx="2"/>
+    <rect x="150" y="345" width="25" height="30" rx="2"/>
+    <rect x="190" y="345" width="25" height="30" rx="2"/>
+    <rect x="970" y="320" width="25" height="30" rx="2"/>
+    <rect x="1010" y="320" width="25" height="30" rx="2"/>
+    <rect x="1050" y="320" width="25" height="30" rx="2"/>
+    <rect x="1090" y="320" width="25" height="30" rx="2"/>
+  </g>
+  <!-- 篮球 -->
+  <circle cx="650" cy="555" r="12" fill="#ff8c00" stroke="#cc6600" stroke-width="1.5"/>
+  <path d="M638,555 L662,555" fill="none" stroke="#cc6600" stroke-width="1"/>
+  <path d="M650,543 L650,567" fill="none" stroke="#cc6600" stroke-width="1"/>
+  <!-- 树 -->
+  <rect x="350" y="350" width="12" height="60" fill="#8B6946"/>
+  <ellipse cx="356" cy="335" rx="35" ry="35" fill="#4CAF50"/>
+  <ellipse cx="340" cy="345" rx="22" ry="20" fill="#45a049"/>
+  <rect x="840" y="360" width="12" height="50" fill="#8B6946"/>
+  <ellipse cx="846" cy="345" rx="30" ry="30" fill="#4CAF50"/>
+</svg>

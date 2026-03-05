@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="cb-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#87CEEB"/>
+      <stop offset="50%" stop-color="#b0d8f0"/>
+      <stop offset="100%" stop-color="#e0f0ff"/>
+    </linearGradient>
+  </defs>
+  <!-- 天空 -->
+  <rect width="1200" height="800" fill="url(#cb-sky)"/>
+  <!-- 云 -->
+  <g opacity="0.6" fill="#fff">
+    <ellipse cx="300" cy="100" rx="120" ry="40"/>
+    <ellipse cx="370" cy="90" rx="80" ry="30"/>
+    <ellipse cx="900" cy="120" rx="100" ry="35"/>
+  </g>
+  <!-- 草地 -->
+  <rect x="0" y="480" width="1200" height="320" fill="#7ab87a"/>
+  <rect x="0" y="480" width="1200" height="15" fill="#6aa86a"/>
+  <!-- 道路 -->
+  <path d="M0,550 Q300,530 600,550 Q900,530 1200,550 L1200,600 Q900,580 600,600 Q300,580 0,600 Z" fill="#d4c4a8"/>
+  <!-- 樱花树 1（大·左） -->
+  <g>
+    <rect x="180" y="320" width="20" height="180" fill="#8B6946"/>
+    <path d="M190,320 Q120,300 100,280" fill="none" stroke="#7a5836" stroke-width="6"/>
+    <path d="M190,340 Q250,310 280,290" fill="none" stroke="#7a5836" stroke-width="5"/>
+    <ellipse cx="190" cy="260" rx="100" ry="90" fill="#FFB7C5"/>
+    <ellipse cx="130" cy="280" rx="60" ry="50" fill="#ffc0cb"/>
+    <ellipse cx="260" cy="270" rx="55" ry="45" fill="#ffafc0"/>
+    <ellipse cx="190" cy="210" rx="50" ry="40" fill="#ffd0d8"/>
+    <ellipse cx="100" cy="260" rx="40" ry="35" fill="#ffa8b8"/>
+    <ellipse cx="280" cy="250" rx="35" ry="30" fill="#ffa8b8"/>
+  </g>
+  <!-- 樱花树 2（大·右） -->
+  <g>
+    <rect x="900" y="300" width="22" height="200" fill="#8B6946"/>
+    <path d="M910,300 Q840,280 820,260" fill="none" stroke="#7a5836" stroke-width="6"/>
+    <path d="M910,320 Q970,290 1000,270" fill="none" stroke="#7a5836" stroke-width="5"/>
+    <ellipse cx="910" cy="240" rx="110" ry="95" fill="#FFB7C5"/>
+    <ellipse cx="840" cy="260" rx="60" ry="50" fill="#ffc0cb"/>
+    <ellipse cx="990" cy="250" rx="55" ry="45" fill="#ffafc0"/>
+    <ellipse cx="910" cy="190" rx="55" ry="45" fill="#ffd0d8"/>
+  </g>
+  <!-- 樱花树 3（中·远景） -->
+  <g opacity="0.6">
+    <rect x="550" y="360" width="15" height="130" fill="#9a7956"/>
+    <ellipse cx="557" cy="330" rx="65" ry="55" fill="#FFB7C5"/>
+    <ellipse cx="530" cy="340" rx="35" ry="30" fill="#ffc0cb"/>
+    <ellipse cx="585" cy="335" rx="30" ry="28" fill="#ffafc0"/>
+  </g>
+  <!-- 大量花瓣飘落 -->
+  <g fill="#FFB7C5">
+    <ellipse cx="150" cy="380" rx="5" ry="3" transform="rotate(30,150,380)" opacity="0.8"/>
+    <ellipse cx="250" cy="420" rx="4" ry="2.5" transform="rotate(-20,250,420)" opacity="0.7"/>
+    <ellipse cx="350" cy="350" rx="5" ry="3" transform="rotate(45,350,350)" opacity="0.6"/>
+    <ellipse cx="450" cy="400" rx="4" ry="2" transform="rotate(60,450,400)" opacity="0.8"/>
+    <ellipse cx="550" cy="300" rx="5" ry="3" transform="rotate(-10,550,300)" opacity="0.7"/>
+    <ellipse cx="650" cy="450" rx="4" ry="2.5" transform="rotate(35,650,450)" opacity="0.6"/>
+    <ellipse cx="750" cy="350" rx="5" ry="3" transform="rotate(-40,750,350)" opacity="0.8"/>
+    <ellipse cx="850" cy="420" rx="4" ry="2" transform="rotate(20,850,420)" opacity="0.7"/>
+    <ellipse cx="950" cy="370" rx="5" ry="3" transform="rotate(50,950,370)" opacity="0.6"/>
+    <ellipse cx="1050" cy="400" rx="4" ry="2.5" transform="rotate(-25,1050,400)" opacity="0.8"/>
+    <ellipse cx="100" cy="450" rx="4" ry="2" transform="rotate(15,100,450)" opacity="0.5"/>
+    <ellipse cx="300" cy="480" rx="5" ry="3" transform="rotate(-35,300,480)" opacity="0.5"/>
+    <ellipse cx="500" cy="460" rx="4" ry="2.5" transform="rotate(40,500,460)" opacity="0.5"/>
+    <ellipse cx="700" cy="490" rx="5" ry="3" transform="rotate(-15,700,490)" opacity="0.4"/>
+    <ellipse cx="1100" cy="470" rx="4" ry="2" transform="rotate(25,1100,470)" opacity="0.5"/>
+    <ellipse cx="200" cy="250" rx="4" ry="2" transform="rotate(55,200,250)" opacity="0.6"/>
+    <ellipse cx="400" cy="280" rx="3" ry="2" transform="rotate(-30,400,280)" opacity="0.5"/>
+    <ellipse cx="800" cy="300" rx="4" ry="2.5" transform="rotate(10,800,300)" opacity="0.6"/>
+    <ellipse cx="1000" cy="280" rx="3" ry="2" transform="rotate(-45,1000,280)" opacity="0.5"/>
+    <ellipse cx="600" cy="200" rx="4" ry="2" transform="rotate(30,600,200)" opacity="0.4"/>
+  </g>
+  <!-- 长椅 -->
+  <rect x="420" y="510" width="120" height="12" rx="3" fill="#8B6946"/>
+  <rect x="430" y="522" width="8" height="25" fill="#7a5836"/>
+  <rect x="522" y="522" width="8" height="25" fill="#7a5836"/>
+  <rect x="420" y="505" width="120" height="8" rx="3" fill="#9a7956"/>
+</svg>

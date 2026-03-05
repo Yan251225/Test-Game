@@ -1,0 +1,75 @@
+[
+    { "type": "scene", "bg": "library", "name": "顾晏时线 · 星空下的秘密", "clearCharacters": true },
+
+    { "type": "narration", "text": "我跟着顾晏时的背影走进了图书馆。" },
+    { "type": "narration", "text": "图书馆很安静，空气中弥漫着旧纸张的味道。他走到最里面的角落，坐下，翻开书。" },
+    { "type": "narration", "text": "仿佛我不存在。" },
+
+    { "type": "character", "charId": "guyan", "position": "center" },
+
+    { "type": "choice", "choices": [
+        { "text": "（默默在他对面坐下，也看自己的书）", "affection": { "guyan": 12 } },
+        { "text": "「那个……你在看什么书啊？」", "affection": { "guyan": 5 } },
+        { "text": "「介意我坐这里吗？」", "affection": { "guyan": 8 } }
+    ]},
+
+    { "type": "narration", "text": "时间在安静中慢慢流逝。阳光透过高大的窗户，在书架间投下长长的光带。" },
+    { "type": "narration", "text": "大约过了半个小时，他突然开口了——" },
+
+    { "type": "dialogue", "speaker": "guyan", "text": "…………你倒是安静。" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（他终于跟我说话了！！）" },
+    { "type": "dialogue", "speaker": "guyan", "text": "其他人来这里，总是叽叽喳喳的。你……不一样。" },
+
+    { "type": "choice", "choices": [
+        { "text": "「我觉得和你一起安静地看书，很舒服。」", "affection": { "guyan": 12 } },
+        { "text": "「因为图书馆本来就该安静嘛。」", "affection": { "guyan": 8 } },
+        { "text": "「其实我是想和你做朋友才来的。」", "affection": { "guyan": 3 } }
+    ]},
+
+    { "type": "narration", "text": "他微微一怔，然后低下头，嘴角似乎弯了一下——不过很快又恢复了冷淡的表情。" },
+    { "type": "dialogue", "speaker": "guyan", "text": "随你便。" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（虽然嘴上这么说，但感觉他好像……不讨厌我？）" },
+
+    { "type": "scene", "bg": "night", "name": "图书馆 · 闭馆后", "clearCharacters": true },
+
+    { "type": "narration", "text": "就这样，我每天午休都去图书馆。一周后的一个傍晚，我们都看书看得忘了时间……" },
+    { "type": "narration", "text": "广播响起：「图书馆即将闭馆，请同学们尽快离开。」" },
+    { "type": "narration", "text": "等我们走出图书馆时，天已经完全黑了。满天繁星在头顶闪烁。" },
+
+    { "type": "character", "charId": "guyan", "position": "center" },
+    { "type": "narration", "text": "顾晏时停下脚步，仰头看向天空。" },
+
+    { "type": "dialogue", "speaker": "guyan", "text": "……你知道吗，北边那颗最亮的星。" },
+    { "type": "dialogue", "speaker": "guyan", "text": "小时候，有一个人告诉我——'只要看着那颗星星，我们就不算分开'。" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（他在说……谁呢？看起来好伤感。）" },
+
+    { "type": "choice", "choices": [
+        { "text": "（安静地陪他看星空，不追问）", "affection": { "guyan": 15 } },
+        { "text": "「那个人……是你很重要的人吧。」", "affection": { "guyan": 10 } },
+        { "text": "「星星真漂亮呢！」", "affection": { "guyan": 5 } }
+    ]},
+
+    { "type": "narration", "text": "他沉默了很久，然后转头看了我一眼。" },
+    { "type": "dialogue", "speaker": "guyan", "text": "……我有一个双胞胎姐姐。她两年前因为生病去世了。" },
+    { "type": "dialogue", "speaker": "guyan", "text": "她很爱笑，和我完全相反。她总说，希望我能多交朋友。" },
+    { "type": "dialogue", "speaker": "guyan", "text": "但是从她走后……我不想再和任何人亲近了。" },
+
+    { "type": "narration", "text": "他的声音很平静，但我能感受到那份深藏的悲伤。" },
+
+    { "type": "choice", "choices": [
+        { "text": "「你姐姐一定不希望你一直这样孤独下去。」", "affection": { "guyan": 18 } },
+        { "text": "「谢谢你愿意告诉我这些。」", "affection": { "guyan": 15 } },
+        { "text": "「……对不起，我不该让你提起伤心事。」", "affection": { "guyan": 5 } }
+    ]},
+
+    { "type": "dialogue", "speaker": "guyan", "text": "…………" },
+    { "type": "dialogue", "speaker": "guyan", "text": "你说得对。她一定会骂我的。" },
+    { "type": "narration", "text": "他轻轻笑了一声，那是我第一次听到他笑。" },
+    { "type": "dialogue", "speaker": "guyan", "text": "苏念念。" },
+    { "type": "dialogue", "speaker": "guyan", "text": "……你很吵。但是，不讨厌。" },
+
+    { "type": "narration", "text": "星光洒在他的脸上，那双紫色的眼睛里，似乎多了一丝温度。" },
+    { "type": "dialogue", "speaker": "guyan", "text": "如果是你的话……也许再打开心门一次，也不坏。" },
+
+    { "type": "ending", "charId": "guyan" }
+]

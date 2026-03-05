@@ -1,0 +1,64 @@
+[
+    { "type": "scene", "bg": "hallway", "name": "陆辰逸线 · 完美面具下的真心", "clearCharacters": true },
+    { "type": "character", "charId": "luchen", "position": "center" },
+
+    { "type": "dialogue", "speaker": "luchen", "text": "苏同学，你要来学生会办公室坐坐吗？正好我泡了红茶。" },
+    { "type": "narration", "text": "学生会办公室很整洁，阳光透过窗帘洒在木桌上。陆辰逸优雅地泡着红茶，一切都井井有条。" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（学生会长果然和传说中一样完美……）" },
+
+    { "type": "dialogue", "speaker": "luchen", "text": "说起来……你是第一个到学生会办公室来坐坐的人呢。其他人总是有事才来。" },
+
+    { "type": "choice", "choices": [
+        { "text": "「那你平时一个人在这里不会寂寞吗？」", "affection": { "luchen": 12 } },
+        { "text": "「这里好舒服，以后我可以常来吗？」", "affection": { "luchen": 8 } },
+        { "text": "「嗯，红茶很好喝。」", "affection": { "luchen": 3 } }
+    ]},
+
+    { "type": "narration", "text": "他端着茶杯的手微微一顿，温和的眼神里闪过一丝意外。" },
+    { "type": "dialogue", "speaker": "luchen", "text": "寂寞……吗。也许吧。大家都觉得我无所不能，但其实……" },
+    { "type": "dialogue", "speaker": "luchen", "text": "算了，说这些做什么。" },
+    { "type": "narration", "text": "他微笑着岔开话题，但我注意到他的笑容似乎有些勉强。" },
+
+    { "type": "scene", "bg": "rooftop", "name": "天台 · 放学后", "clearCharacters": true },
+
+    { "type": "narration", "text": "几天后的一个傍晚，我在天台发现了独自一人的陆辰逸。" },
+    { "type": "narration", "text": "夕阳将他的侧脸染成金色。他脱下了学生会的外套，看起来不再像那个完美的学生会长，只是一个疲惫的少年。" },
+    { "type": "character", "charId": "luchen", "position": "center" },
+
+    { "type": "dialogue", "speaker": "luchen", "text": "……苏同学？你怎么在这里。" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（他的表情……看起来很累的样子。）" },
+
+    { "type": "choice", "choices": [
+        { "text": "（走过去坐在他身边）「你看起来不太开心。愿意和我说说吗？」", "affection": { "luchen": 15 } },
+        { "text": "「如果你想一个人待着，我可以先走。」", "affection": { "luchen": 8 } },
+        { "text": "「学生会长也会有烦恼吗？」", "affection": { "luchen": 5 } }
+    ]},
+
+    { "type": "narration", "text": "沉默了很久，他终于开口了。" },
+    { "type": "dialogue", "speaker": "luchen", "text": "我爸是这所学校的理事。从小，所有人都对我说——「你一定要做到最好」。" },
+    { "type": "dialogue", "speaker": "luchen", "text": "成绩第一、学生会长、钢琴比赛冠军……我一直在扮演所有人期望中的样子。" },
+    { "type": "dialogue", "speaker": "luchen", "text": "可是有时候我会想，如果我不是「陆辰逸」，还会有人关心我吗？" },
+
+    { "type": "narration", "text": "夕阳下，他第一次露出了脆弱的表情。" },
+
+    { "type": "choice", "choices": [
+        { "text": "「我关心的是你这个人，不是你的头衔。」", "affection": { "luchen": 20 } },
+        { "text": "「你不需要一直是完美的，做自己就好。」", "affection": { "luchen": 15 } },
+        { "text": "「大家喜欢你不只是因为你优秀吧。」", "affection": { "luchen": 5 } }
+    ]},
+
+    { "type": "dialogue", "speaker": "luchen", "text": "…………谢谢你。" },
+    { "type": "narration", "text": "他轻轻地笑了，这一次，是真心的笑容。" },
+    { "type": "dialogue", "speaker": "luchen", "text": "苏念念……不，念念。谢谢你愿意看到真正的我。" },
+
+    { "type": "scene", "bg": "sunset", "name": "天台 · 夕阳", "clearCharacters": true },
+    { "type": "character", "charId": "luchen", "position": "center" },
+
+    { "type": "narration", "text": "夕阳渐渐沉入地平线，余晖将整个天台染成温暖的橘红色。" },
+    { "type": "narration", "text": "他转过头看着我，眼神前所未有的认真。" },
+
+    { "type": "dialogue", "speaker": "luchen", "text": "念念，从遇见你那天起，我就觉得你很特别。" },
+    { "type": "dialogue", "speaker": "luchen", "text": "你是第一个不带任何期望看着我的人。在你面前，我不需要做那个完美的学生会长。" },
+
+    { "type": "ending", "charId": "luchen" }
+]

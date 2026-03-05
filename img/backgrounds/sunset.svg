@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="sunset2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="30%" stop-color="#ff8e53"/>
+      <stop offset="60%" stop-color="#ffc75f"/>
+      <stop offset="100%" stop-color="#ffe4a0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sunset2)"/>
+  <!-- 太阳 -->
+  <circle cx="600" cy="500" r="100" fill="#FFD700" opacity="0.5"/>
+  <circle cx="600" cy="500" r="70" fill="#FFE44D" opacity="0.7"/>
+  <circle cx="600" cy="500" r="45" fill="#FFF5B0" opacity="0.9"/>
+  <!-- 云 -->
+  <g opacity="0.5">
+    <ellipse cx="200" cy="200" rx="130" ry="35" fill="#ff9a76"/>
+    <ellipse cx="280" cy="190" rx="80" ry="28" fill="#ffb396"/>
+    <ellipse cx="800" cy="250" rx="150" ry="40" fill="#ff8566"/>
+    <ellipse cx="920" cy="240" rx="90" ry="30" fill="#ffa080"/>
+    <ellipse cx="400" cy="350" rx="120" ry="25" fill="#ffc090"/>
+    <ellipse cx="950" cy="380" rx="100" ry="25" fill="#ffd0a0"/>
+  </g>
+  <!-- 远景 -->
+  <path d="M0,500 Q200,470 400,490 Q600,460 800,490 Q1000,470 1200,500 L1200,800 L0,800 Z" fill="#c85020" opacity="0.3"/>
+  <rect x="0" y="520" width="1200" height="280" fill="#8a4020" opacity="0.3"/>
+</svg>

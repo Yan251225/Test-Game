@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <linearGradient id="hw-wall" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5E8"/>
+      <stop offset="100%" stop-color="#F0E0C8"/>
+    </linearGradient>
+  </defs>
+  <!-- 墙壁 -->
+  <rect width="1200" height="800" fill="url(#hw-wall)"/>
+  <!-- 地板（透视） -->
+  <path d="M0,500 L1200,500 L1200,800 L0,800 Z" fill="#D4B896"/>
+  <g stroke="#C4A886" stroke-width="1" opacity="0.3">
+    <line x1="0" y1="550" x2="1200" y2="550"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+    <line x1="0" y1="650" x2="1200" y2="650"/>
+    <line x1="0" y1="700" x2="1200" y2="700"/>
+    <line x1="0" y1="750" x2="1200" y2="750"/>
+  </g>
+  <!-- 墙壁腰线 -->
+  <rect x="0" y="490" width="1200" height="15" fill="#E0C8A8"/>
+  <!-- 窗户（左侧一排） -->
+  <g>
+    <rect x="50" y="120" width="180" height="300" rx="5" fill="#B0D4F0"/>
+    <rect x="50" y="120" width="180" height="300" rx="5" fill="none" stroke="#C8B898" stroke-width="8"/>
+    <line x1="140" y1="120" x2="140" y2="420" stroke="#C8B898" stroke-width="4"/>
+    <line x1="50" y1="270" x2="230" y2="270" stroke="#C8B898" stroke-width="4"/>
+    <ellipse cx="120" cy="200" rx="50" ry="40" fill="#90C890" opacity="0.3"/>
+
+    <rect x="300" y="120" width="180" height="300" rx="5" fill="#B0D4F0"/>
+    <rect x="300" y="120" width="180" height="300" rx="5" fill="none" stroke="#C8B898" stroke-width="8"/>
+    <line x1="390" y1="120" x2="390" y2="420" stroke="#C8B898" stroke-width="4"/>
+    <line x1="300" y1="270" x2="480" y2="270" stroke="#C8B898" stroke-width="4"/>
+    <ellipse cx="370" cy="200" rx="50" ry="40" fill="#90C890" opacity="0.3"/>
+  </g>
+  <!-- 教室门 -->
+  <g>
+    <rect x="600" y="140" width="130" height="360" rx="3" fill="#B8864E"/>
+    <rect x="605" y="145" width="120" height="350" rx="2" fill="#C89858"/>
+    <rect x="620" y="160" width="90" height="140" rx="2" fill="#B0D4F0" opacity="0.5"/>
+    <circle cx="710" cy="330" r="8" fill="#c0a050"/>
+    <!-- 门上标牌 -->
+    <rect x="635" y="175" width="60" height="20" rx="3" fill="#fff"/>
+    <text x="665" y="190" text-anchor="middle" font-size="11" fill="#555">高二三班</text>
+  </g>
+  <!-- 另一扇门 -->
+  <rect x="800" y="140" width="130" height="360" rx="3" fill="#B8864E"/>
+  <rect x="805" y="145" width="120" height="350" rx="2" fill="#C89858"/>
+  <rect x="820" y="160" width="90" height="140" rx="2" fill="#B0D4F0" opacity="0.5"/>
+  <circle cx="910" cy="330" r="8" fill="#c0a050"/>
+  <rect x="835" y="175" width="60" height="20" rx="3" fill="#fff"/>
+  <text x="865" y="190" text-anchor="middle" font-size="11" fill="#555">高二四班</text>
+  <!-- 公告栏 -->
+  <rect x="1000" y="180" width="160" height="220" rx="5" fill="#8B6946"/>
+  <rect x="1008" y="188" width="144" height="204" rx="3" fill="#D2B48C"/>
+  <rect x="1020" y="200" width="50" height="35" rx="2" fill="#FFE4E1"/>
+  <rect x="1080" y="200" width="50" height="35" rx="2" fill="#E0F0FF"/>
+  <rect x="1020" y="245" width="50" height="35" rx="2" fill="#F0FFE0"/>
+  <rect x="1080" y="245" width="50" height="35" rx="2" fill="#FFF0E0"/>
+  <rect x="1020" y="300" width="110" height="40" rx="2" fill="#FFFACD"/>
+  <rect x="1020" y="350" width="60" height="30" rx="2" fill="#E8D5FF"/>
+  <!-- 日光灯 -->
+  <rect x="100" y="30" width="250" height="8" rx="4" fill="#f0f0e0"/>
+  <rect x="500" y="30" width="250" height="8" rx="4" fill="#f0f0e0"/>
+  <rect x="850" y="30" width="250" height="8" rx="4" fill="#f0f0e0"/>
+  <!-- 阳光光束 -->
+  <path d="M50,120 L200,500 L400,500 L230,120 Z" fill="#FFF8DC" opacity="0.06"/>
+  <path d="M300,120 L450,500 L650,500 L480,120 Z" fill="#FFF8DC" opacity="0.05"/>
+  <!-- 消防器材 -->
+  <rect x="550" y="350" width="30" height="45" rx="5" fill="#cc0000"/>
+  <text x="565" y="378" text-anchor="middle" font-size="8" fill="#fff">消火</text>
+</svg>
