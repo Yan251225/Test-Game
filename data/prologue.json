@@ -23,7 +23,7 @@
     { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（学生会长……年级第一的学霸，好温柔的人。）" },
     { "type": "hide_character", "position": "center" },
 
-    { "type": "scene", "bg": "hallway", "name": "教学楼 · 走廊", "clearCharacters": true },
+    { "type": "scene", "bg": "library", "name": "教学楼 · 走廊", "clearCharacters": true },
     { "type": "narration", "text": "陆辰逸领着我穿过走廊。经过一间空教室时，我无意间瞥了一眼——" },
 
     { "type": "character", "charId": "guyan", "position": "center" },
@@ -49,7 +49,7 @@
     { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（好有活力的男生……和他说话心情都变好了。）" },
     { "type": "hide_character", "position": "center" },
 
-    { "type": "scene", "bg": "hallway", "name": "教学楼 · 音乐教室旁", "clearCharacters": true },
+    { "type": "scene", "bg": "music-room", "name": "教学楼 · 音乐教室旁", "clearCharacters": true },
     { "type": "narration", "text": "走过走廊时，一阵吉他声从音乐教室传来。旋律慵懒而好听。" },
 
     { "type": "character", "charId": "xinghe", "position": "center" },

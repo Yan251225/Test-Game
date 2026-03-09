@@ -22,11 +22,12 @@
     { "type": "hide_character", "position": "left" },
     { "type": "hide_character", "position": "right" },
 
-    { "type": "scene", "bg": "hallway", "name": "走廊 · 放学后" },
+    { "type": "scene", "bg": "music-room", "name": "音乐教室 · 放学后" },
     { "type": "character", "charId": "xinghe", "position": "center" },
     { "type": "dialogue", "speaker": "xinghe", "text": "今天也很努力呢，苏念念同学。放学后要不要来听我弹吉他？保证让你心情变好~" },
     { "type": "hide_character", "position": "center" },
 
+    { "type": "scene", "bg": "school-gate", "name": "正门 · 放学后" },
     { "type": "character", "charId": "xuanmo", "position": "center" },
     { "type": "narration", "text": "慕容轩和管家正要上车离开，看到我后停了一下。" },
     { "type": "dialogue", "speaker": "xuanmo", "text": "哼，又是你。……明天的英文课别忘了带课本，上次你就忘了。" },

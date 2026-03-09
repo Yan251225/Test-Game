@@ -218,10 +218,11 @@ class VNEngine {
 
     /** 切换场景 */
     changeScene(node) {
-        // 移除所有背景类
+        // 移除所有背景类和合成模式
         this.sceneBg.className = 'scene-background';
 
         if (node.bg) {
+            this._lastSceneBg = node.bg;
             // 检测自定义背景图
             const exts = ['png', 'jpg', 'webp'];
             let found = false;
@@ -262,11 +263,35 @@ class VNEngine {
         }
     }
 
-    /** 显示角色 */
+    // 角色-场景合成背景映射
+    static CHAR_SCENE_MAP = {
+        luchen:  'luchen_library',
+        guyan:   'guyan_artroom',
+        linxiao: 'linxiao_playground',
+        xinghe:  'xinghe_cherry',
+        xuanmo:  'xuanmo_luxury',
+        edwin:   'edwin_garden'
+    };
+
+    /** 显示角色 — 优先使用合成场景背景，角色融入画面 */
     showCharacter(node) {
         const char = this.characters[node.charId];
         if (!char) return;
 
+        // 尝试使用合成场景背景（角色已绘入场景中）
+        const compositeKey = node.compositeBg || VNEngine.CHAR_SCENE_MAP[node.charId];
+        if (compositeKey && node.position !== 'left' && node.position !== 'right') {
+            // 切换到合成背景（角色已在画面中），不显示浮动立绘
+            this._setCompositeBackground(compositeKey);
+            this.sceneBg.classList.add('composite-active');
+            // 隐藏所有浮动立绘
+            [this.charLeft, this.charCenter, this.charRight].forEach(el => {
+                el.classList.remove('visible');
+            });
+            return;
+        }
+
+        // 回退：多角色同时出现时仍用立绘叠加（极少情况）
         let slot;
         switch (node.position) {
             case 'left': slot = this.charLeft; break;
@@ -288,8 +313,31 @@ class VNEngine {
         slot.classList.add('visible');
     }
 
+    /** 设置合成背景 */
+    _setCompositeBackground(bgKey) {
+        const exts = ['png', 'jpg', 'webp'];
+        for (const ext of exts) {
+            const url = `img/custom/backgrounds/${bgKey}.${ext}`;
+            const img = new Image();
+            img.src = url;
+            img.onload = () => {
+                this.sceneBg.style.backgroundImage = `url('${url}')`;
+                this.sceneBg.style.backgroundSize = 'cover';
+                this.sceneBg.style.backgroundPosition = 'center';
+            };
+        }
+    }
+
     /** 隐藏角色 */
     hideCharacter(node) {
+        // 如果是合成场景模式，恢复原始背景
+        if (this.sceneBg.classList.contains('composite-active')) {
+            this.sceneBg.classList.remove('composite-active');
+            // 恢复之前的场景背景
+            if (this._lastSceneBg) {
+                this._setCompositeBackground(this._lastSceneBg);
+            }
+        }
         let slot;
         switch (node.position) {
             case 'left': slot = this.charLeft; break;

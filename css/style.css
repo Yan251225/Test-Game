@@ -185,6 +185,32 @@ body {
     background: url('../img/backgrounds/cherry-blossom.svg') center/cover no-repeat,
                 linear-gradient(180deg, #fce4ec 0%, #f8bbd0 40%, #f48fb1 70%, #81c784 100%);
 }
+.scene-background.bg-artroom {
+    background: linear-gradient(180deg, #4a4a6a 0%, #3d3d5c 40%, #8B7355 70%, #D2B48C 100%);
+}
+.scene-background.bg-music-room {
+    background: linear-gradient(180deg, #F5E6CC 0%, #E8D5B7 40%, #D4C4A8 70%, #B8A88A 100%);
+}
+.scene-background.bg-gym {
+    background: linear-gradient(180deg, #F5F5DC 0%, #E8D8B4 50%, #C4A882 100%);
+}
+.scene-background.bg-garden {
+    background: linear-gradient(180deg, #87CEEB 0%, #98FB98 30%, #90EE90 60%, #81c784 100%);
+}
+.scene-background.bg-cafe {
+    background: linear-gradient(180deg, #D2B48C 0%, #C4A882 40%, #A0826D 70%, #8B6914 100%);
+}
+.scene-background.bg-park {
+    background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #90EE90 60%, #F7DC6F 100%);
+}
+
+/* 合成场景模式：角色已绘入背景，平滑过渡 */
+.scene-background.composite-active {
+    transition: background-image 0.6s ease;
+}
+.composite-active .character-area {
+    display: none;
+}
 
 /* 角色显示区域 */
 .character-area {
@@ -218,12 +244,17 @@ body {
     height: auto;
     max-height: 480px;
     object-fit: contain;
-    /* 底部渐变消融，让角色自然融入背景 */
-    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
-    /* 柔和阴影模拟环境光 */
-    filter: drop-shadow(0 2px 20px rgba(0,0,0,0.2))
-            drop-shadow(0 0 40px rgba(0,0,0,0.1));
+    /* 四周渐变消融，让角色自然融入背景 */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 45%, transparent 100%),
+                        linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 45%, transparent 100%),
+                linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    mask-composite: intersect;
+    /* 色彩融合 */
+    filter: drop-shadow(0 0 30px rgba(0,0,0,0.15));
+    mix-blend-mode: normal;
+    opacity: 0.92;
 }
 .character-sprite .char-emoji {
     display: none;
