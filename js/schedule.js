@@ -103,7 +103,7 @@ class ScheduleSystem {
 
         // 随机好感
         if (action.affectionRandom) {
-            const chars = ['luchen', 'guyan', 'linxiao'];
+            const chars = ['luchen', 'guyan', 'linxiao', 'xinghe', 'xuanmo', 'edwin'];
             const randChar = chars[Math.floor(Math.random() * chars.length)];
             const randVal = Math.floor(Math.random() * action.affectionRandom) + 1;
             this.game.changeAffection(randChar, randVal);
@@ -167,6 +167,7 @@ class ScheduleSystem {
         if (event.type === 'exam') {
             if (passed) {
                 this.game.changeAffection('luchen', 8);
+                this.game.changeAffection('edwin', 5);
                 if (stat >= event.threshold + 30) this.game.changeAffection('guyan', 5);
             } else {
                 this.game.changeAffection('luchen', -5);
@@ -174,13 +175,16 @@ class ScheduleSystem {
         } else if (event.type === 'sports') {
             if (passed) {
                 this.game.changeAffection('linxiao', 10);
+                this.game.changeAffection('xinghe', 3);
             } else {
                 this.game.changeAffection('linxiao', -3);
             }
         } else if (event.type === 'culture') {
             if (passed) {
                 this.game.changeAffection('guyan', 8);
-                this.game.changeAffection('luchen', 5);
+                this.game.changeAffection('xinghe', 5);
+                this.game.changeAffection('xuanmo', 3);
+                this.game.changeAffection('edwin', 5);
             }
         }
 
@@ -201,18 +205,20 @@ class ScheduleSystem {
         }
 
         const reqs = {
-            luchen: { primary: ['intelligence', 120], secondary: ['art', 80], bonus: ['social', 60] },
+            luchen: { primary: ['intelligence', 120], secondary: ['art', 80] },
             guyan: { primary: ['art', 120], secondary: ['intelligence', 80] },
-            linxiao: { primary: ['fitness', 120], secondary: ['social', 80], bonus: ['charm', 60] }
+            linxiao: { primary: ['fitness', 120], secondary: ['social', 80] },
+            xinghe: { primary: ['charm', 120], secondary: ['social', 80] },
+            xuanmo: { primary: ['intelligence', 100], secondary: ['charm', 100] },
+            edwin: { primary: ['intelligence', 100], secondary: ['art', 100] }
         };
 
         const req = reqs[topChar];
         const primaryMet = this.stats[req.primary[0]] >= req.primary[1];
         const secondaryMet = this.stats[req.secondary[0]] >= req.secondary[1];
-        const bonusMet = req.bonus ? this.stats[req.bonus[0]] >= req.bonus[1] : true;
 
         if (topAff >= 80 && primaryMet && secondaryMet) {
-            return { type: bonusMet ? 'perfect' : 'good', charId: topChar };
+            return { type: 'perfect', charId: topChar };
         } else if (topAff >= 60) {
             return { type: 'normal', charId: topChar };
         } else if (topAff >= 40) {

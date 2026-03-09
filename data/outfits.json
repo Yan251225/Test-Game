@@ -1,111 +1,61 @@
 {
   "outfits": [
     {
-      "id": "school-uniform",
-      "name": "校服",
-      "desc": "星辰学院标准校服，整洁大方",
-      "icon": "👔",
-      "charmBonus": 0,
-      "unlocked": true,
-      "cost": 0,
-      "charPrefs": { "luchen": 0, "guyan": 0, "linxiao": 0 }
+      "id": "school-uniform", "name": "校服", "desc": "星辰学院标准校服，整洁大方",
+      "icon": "👔", "charmBonus": 0, "unlocked": true, "cost": 0,
+      "charPrefs": { "luchen": 0, "guyan": 0, "linxiao": 0, "xinghe": 0, "xuanmo": 0, "edwin": 0 }
     },
     {
-      "id": "literary-dress",
-      "name": "文艺白裙",
-      "desc": "清新飘逸的白色连衣裙，搭配淡蓝丝带",
-      "icon": "👗",
-      "charmBonus": 5,
-      "unlocked": false,
-      "cost": 1,
-      "charPrefs": { "luchen": 3, "guyan": 5, "linxiao": 0 }
+      "id": "literary-dress", "name": "文艺白裙", "desc": "清新飘逸的白色连衣裙，搭配淡蓝丝带",
+      "icon": "👗", "charmBonus": 5, "unlocked": false, "cost": 1,
+      "charPrefs": { "luchen": 3, "guyan": 5, "linxiao": 0, "xinghe": 2, "xuanmo": 0, "edwin": 4 }
     },
     {
-      "id": "sporty-set",
-      "name": "运动套装",
-      "desc": "活力满满的运动服，方便又好看",
-      "icon": "🏃",
-      "charmBonus": 3,
-      "unlocked": false,
-      "cost": 1,
-      "charPrefs": { "luchen": 0, "guyan": 0, "linxiao": 5 }
+      "id": "sporty-set", "name": "运动套装", "desc": "活力满满的运动服，方便又好看",
+      "icon": "🏃", "charmBonus": 3, "unlocked": false, "cost": 1,
+      "charPrefs": { "luchen": 0, "guyan": 0, "linxiao": 5, "xinghe": 0, "xuanmo": -2, "edwin": 0 }
     },
     {
-      "id": "fashion-casual",
-      "name": "时尚便装",
-      "desc": "潮流街拍风，时髦又有个性",
-      "icon": "👚",
-      "charmBonus": 8,
-      "unlocked": false,
-      "cost": 2,
-      "charPrefs": { "luchen": 3, "guyan": 0, "linxiao": 3 }
+      "id": "fashion-casual", "name": "时尚便装", "desc": "潮流街拍风，时髦又有个性",
+      "icon": "👚", "charmBonus": 8, "unlocked": false, "cost": 2,
+      "charPrefs": { "luchen": 3, "guyan": 0, "linxiao": 3, "xinghe": 5, "xuanmo": 2, "edwin": 0 }
     },
     {
-      "id": "elegant-gown",
-      "name": "华丽礼裙",
-      "desc": "优雅华贵的晚礼服，适合正式场合",
-      "icon": "👘",
-      "charmBonus": 12,
-      "unlocked": false,
-      "cost": 3,
-      "charPrefs": { "luchen": 5, "guyan": -2, "linxiao": 0 }
+      "id": "elegant-gown", "name": "华丽礼裙", "desc": "优雅华贵的晚礼服，适合正式场合",
+      "icon": "👘", "charmBonus": 12, "unlocked": false, "cost": 3,
+      "charPrefs": { "luchen": 3, "guyan": -2, "linxiao": 0, "xinghe": 3, "xuanmo": 5, "edwin": 5 }
     },
     {
-      "id": "cozy-sweater",
-      "name": "图书馆风毛衣",
-      "desc": "温暖柔软的大毛衣，配上圆眼镜超可爱",
-      "icon": "🧶",
-      "charmBonus": 4,
-      "unlocked": false,
-      "cost": 1,
-      "charPrefs": { "luchen": 0, "guyan": 3, "linxiao": -2 }
+      "id": "cozy-sweater", "name": "图书馆风毛衣", "desc": "温暖柔软的大毛衣，配上圆眼镜超可爱",
+      "icon": "🧶", "charmBonus": 4, "unlocked": false, "cost": 1,
+      "charPrefs": { "luchen": 2, "guyan": 5, "linxiao": -2, "xinghe": 0, "xuanmo": 0, "edwin": 3 }
     }
   ],
   "hairstyles": [
     {
-      "id": "ponytail",
-      "name": "高马尾",
-      "desc": "活泼利落的高马尾",
-      "icon": "🎀",
-      "charmBonus": 2,
-      "unlocked": true,
-      "charPrefs": { "luchen": 0, "guyan": 0, "linxiao": 3 }
+      "id": "ponytail", "name": "高马尾", "desc": "活泼利落的高马尾",
+      "icon": "🎀", "charmBonus": 2, "unlocked": true,
+      "charPrefs": { "luchen": 0, "guyan": 0, "linxiao": 3, "xinghe": 2, "xuanmo": 0, "edwin": 0 }
     },
     {
-      "id": "twintails",
-      "name": "双马尾",
-      "desc": "可爱甜美的双马尾",
-      "icon": "🎀",
-      "charmBonus": 3,
-      "unlocked": true,
-      "charPrefs": { "luchen": 2, "guyan": -1, "linxiao": 2 }
+      "id": "twintails", "name": "双马尾", "desc": "可爱甜美的双马尾",
+      "icon": "🎀", "charmBonus": 3, "unlocked": true,
+      "charPrefs": { "luchen": 2, "guyan": -1, "linxiao": 2, "xinghe": 3, "xuanmo": -1, "edwin": 0 }
     },
     {
-      "id": "long-straight",
-      "name": "披肩长发",
-      "desc": "温柔优雅的黑色长直发",
-      "icon": "💇",
-      "charmBonus": 4,
-      "unlocked": true,
-      "charPrefs": { "luchen": 3, "guyan": 3, "linxiao": 0 }
+      "id": "long-straight", "name": "披肩长发", "desc": "温柔优雅的黑色长直发",
+      "icon": "💇", "charmBonus": 4, "unlocked": true,
+      "charPrefs": { "luchen": 3, "guyan": 3, "linxiao": 0, "xinghe": 2, "xuanmo": 3, "edwin": 5 }
     },
     {
-      "id": "short-bob",
-      "name": "清爽短发",
-      "desc": "干练清爽的齐耳短发",
-      "icon": "💇",
-      "charmBonus": 2,
-      "unlocked": false,
-      "charPrefs": { "luchen": 0, "guyan": 2, "linxiao": 2 }
+      "id": "short-bob", "name": "清爽短发", "desc": "干练清爽的齐耳短发",
+      "icon": "💇", "charmBonus": 2, "unlocked": false,
+      "charPrefs": { "luchen": 0, "guyan": 2, "linxiao": 2, "xinghe": 0, "xuanmo": 0, "edwin": 0 }
     },
     {
-      "id": "braid",
-      "name": "编发",
-      "desc": "精致浪漫的侧编发",
-      "icon": "🌸",
-      "charmBonus": 5,
-      "unlocked": false,
-      "charPrefs": { "luchen": 3, "guyan": 2, "linxiao": 0 }
+      "id": "braid", "name": "编发", "desc": "精致浪漫的侧编发",
+      "icon": "🌸", "charmBonus": 5, "unlocked": false,
+      "charPrefs": { "luchen": 3, "guyan": 2, "linxiao": 0, "xinghe": 3, "xuanmo": 2, "edwin": 4 }
     }
   ]
 }

@@ -12,9 +12,12 @@
     { "id": "club", "name": "社团活动", "icon": "🗣️", "location": "various", "stats": { "social": 10 }, "stress": 3, "encounter": true, "description": "参加社团，认识新朋友" },
     { "id": "help", "name": "帮助同学", "icon": "🤝", "location": "various", "stats": { "social": 8 }, "stress": 2, "affectionRandom": 5, "description": "帮忙补课、搬东西" },
     { "id": "rest", "name": "休息", "icon": "😴", "location": "dorm", "stats": { "fitness": 5 }, "stress": -30, "description": "好好睡一觉，恢复精力" },
-    { "id": "date-luchen", "name": "约陆辰逸", "icon": "🔵", "location": "various", "stats": {}, "stress": -8, "weekendOnly": true, "charId": "luchen", "description": "和辰逸一起度过" },
-    { "id": "date-guyan", "name": "约顾晏时", "icon": "🟣", "location": "library", "stats": {}, "stress": -8, "weekendOnly": true, "charId": "guyan", "description": "和晏时一起度过" },
-    { "id": "date-linxiao", "name": "约林笑寒", "icon": "🟠", "location": "playground", "stats": {}, "stress": -8, "weekendOnly": true, "charId": "linxiao", "description": "和笑寒一起度过" }
+    { "id": "date-luchen", "name": "约陆辰逸", "icon": "🔵", "location": "various", "stats": {}, "stress": -8, "weekendOnly": true, "charId": "luchen", "description": "和学霸学长一起自习" },
+    { "id": "date-guyan", "name": "约顾晏时", "icon": "🟣", "location": "library", "stats": {}, "stress": -8, "weekendOnly": true, "charId": "guyan", "description": "在图书馆静静地陪伴他" },
+    { "id": "date-linxiao", "name": "约林笑寒", "icon": "🟠", "location": "playground", "stats": {}, "stress": -8, "weekendOnly": true, "charId": "linxiao", "description": "一起去打球或跑步" },
+    { "id": "date-xinghe", "name": "约沈星河", "icon": "🌹", "location": "music-room", "stats": {}, "stress": -10, "weekendOnly": true, "charId": "xinghe", "description": "听校草弹吉他唱歌" },
+    { "id": "date-xuanmo", "name": "约慕容轩", "icon": "💎", "location": "outside", "stats": {}, "stress": -5, "weekendOnly": true, "charId": "xuanmo", "description": "去少爷推荐的高级餐厅" },
+    { "id": "date-edwin", "name": "约艾德温", "icon": "🏰", "location": "garden", "stats": {}, "stress": -8, "weekendOnly": true, "charId": "edwin", "description": "一起品下午茶、聊文化" }
   ],
   "specialEvents": [
     { "week": 4, "id": "midterm-exam", "name": "📝 期中考试", "type": "exam", "statCheck": "intelligence", "threshold": 60, "description": "期中考试来了！考验学习成果的时候。" },
@@ -24,8 +27,11 @@
     { "week": 12, "id": "confession", "name": "💕 告白之日", "type": "ending", "description": "学期最后一天……是告白的最好时机。" }
   ],
   "encounters": [
-    { "charId": "luchen", "locations": ["classroom", "library", "hallway"], "dialogue": "陆辰逸正好经过，对你微微一笑。" },
-    { "charId": "guyan", "locations": ["library"], "dialogue": "你在图书馆看到了顾晏时，他似乎注意到了你。" },
-    { "charId": "linxiao", "locations": ["playground", "hallway"], "dialogue": "林笑寒笑着向你跑来：「嘿！又见面了！」" }
+    { "charId": "luchen", "locations": ["classroom", "library", "hallway"], "dialogue": "陆辰逸正好经过，对你微微一笑：「在认真学习呢？加油。」" },
+    { "charId": "guyan", "locations": ["library"], "dialogue": "顾晏时注意到了你，微微点头，继续翻书。——但他偷偷在你旁边放了一块糖。" },
+    { "charId": "linxiao", "locations": ["playground", "hallway"], "dialogue": "林笑寒笑着跑来：「嘿！又见面了！」然后硬塞给你一瓶水。" },
+    { "charId": "xinghe", "locations": ["music-room", "hallway", "various"], "dialogue": "沈星河倚在走廊栏杆上，看到你就眨眨眼：「是在找我吗？」" },
+    { "charId": "xuanmo", "locations": ["classroom", "outside"], "dialogue": "慕容轩从你身边经过，忽然停下脚步：「……你领子歪了。」说完帮你整理好，面无表情地走了。" },
+    { "charId": "edwin", "locations": ["library", "garden", "various"], "dialogue": "艾德温微笑着走来：「Good afternoon! 今天也很努力呢。要一起喝杯茶吗？」" }
   ]
 }

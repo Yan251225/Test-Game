@@ -15,7 +15,7 @@ class OtomeGame {
         // 游戏状态
         this.state = {
             currentScript: 'prologue',
-            affection: { luchen: 0, guyan: 0, linxiao: 0 },
+            affection: { luchen: 0, guyan: 0, linxiao: 0, xinghe: 0, xuanmo: 0, edwin: 0 },
             completedEndings: [],
             playerName: '苏念念'
         };
@@ -118,7 +118,7 @@ class OtomeGame {
     newGame() {
         this.state = {
             currentScript: 'prologue',
-            affection: { luchen: 0, guyan: 0, linxiao: 0 },
+            affection: { luchen: 0, guyan: 0, linxiao: 0, xinghe: 0, xuanmo: 0, edwin: 0 },
             completedEndings: [],
             playerName: '苏念念'
         };
@@ -481,48 +481,66 @@ class OtomeGame {
         const titles = {
             luchen: { perfect: '命运之约', good: '心之归处', normal: '温柔以待', friend: '并肩前行', passby: '擦肩而过' },
             guyan: { perfect: '星光永恒', good: '星辰相伴', normal: '默默守望', friend: '图书馆之友', passby: '沉默如初' },
-            linxiao: { perfect: '阳光告白', good: '阳光永恒', normal: '朋友以上', friend: '运动搭档', passby: '渐行渐远' }
+            linxiao: { perfect: '阳光告白', good: '阳光永恒', normal: '朋友以上', friend: '运动搭档', passby: '渐行渐远' },
+            xinghe: { perfect: '只为你歌唱', good: '心动旋律', normal: '玫瑰之约', friend: '音乐知己', passby: '花落无声' },
+            xuanmo: { perfect: '王子与公主', good: '冰心融化', normal: '不经意的温柔', friend: '平等之友', passby: '云端之上' },
+            edwin: { perfect: '跨越星海', good: '绅士之约', normal: '茶与诗', friend: '异国知己', passby: '礼貌的距离' }
         };
         return titles[charId]?.[type] || type;
     }
 
     getPerfectEndingText(charId) {
         const texts = {
-            luchen: '陆辰逸在夕阳下向你伸出手："我不再是完美的学生会长了……在你面前，我只想做真正的自己。"你们十指相扣，樱花纷飞，整个星辰学院都在为你们祝福。这是属于你们的完美结局。',
-            guyan: '顾晏时罕见地露出了温暖的笑容。他带你去了天台，满天繁星在头顶闪耀。"谢谢你来到我的世界……从今以后，我不会再一个人了。"他轻轻牵起你的手，星光见证了这份永恒的约定。',
-            linxiao: '林笑寒在全校面前，握着你的手大喊："我喜欢你！比任何比赛的冠军都重要！"操场上响起了热烈的掌声和欢呼声。他红着脸挠头："其实我紧张得要命……"你笑着扑进他的怀里。'
+            luchen: '陆辰逸在夕阳下向你伸出手："我不再是完美的学生会长了……在你面前，我只想做真正的自己。"你们十指相扣，樱花纷飞，整个星辰学院都在为你们祝福。',
+            guyan: '顾晏时罕见地露出了温暖的笑容，带你去了天台看满天繁星。"谢谢你来到我的世界……从今以后，我不会再一个人了。"星光见证了这份永恒的约定。',
+            linxiao: '林笑寒在全校面前握着你的手大喊："我喜欢你！比任何冠军都重要！"操场上响起热烈的掌声。他红着脸挠头："其实我紧张得要命……"你笑着扑进他的怀里。',
+            xinghe: '沈星河站在舞台聚光灯下，不再对着所有人微笑——他只看着你。他弹起吉他唱了一首歌，歌词是你们相遇以来每一个瞬间。"从今以后，这首歌只唱给你。"',
+            xuanmo: '慕容轩第一次在你面前红了脸。"我不需要你仰望我……我需要你站在我身边。"他摘下那枚家族戒指，郑重地放在你掌心。"这是我的心。请收好。"',
+            edwin: '艾德温单膝跪下，以最标准的骑士礼仪，将一束英国玫瑰献给你。"My lady, would you be my partner for life? ——不，让我用中文说。苏念念，请和我一起，看遍世界的风景。"'
         };
         return texts[charId] || '';
     }
     getGoodEndingText(charId) {
         const texts = {
-            luchen: '陆辰逸终于摘下了"完美学生会长"的面具，在你面前展露了真正的自己。毕业那天，他在樱花树下对你说："谢谢你让我知道，不完美也可以被爱。"从此，你们手牵着手，走向属于两个人的未来。',
-            guyan: '顾晏时封闭已久的心门，终于为你缓缓打开。他带你去了姐姐最喜欢的星空观测点，说："她一定很高兴，因为我终于找到了想要守护的人。"夜空繁星闪烁，你们并肩而坐，从此不再孤独。',
-            linxiao: '林笑寒用最灿烂的笑容，最真挚的心意，温暖了你的每一天。毕业典礼上，他在全校面前大喊："苏念念，我喜欢你！"虽然粗心大意的他忘了准备花束——但谁在乎呢？你笑着跑向他的怀抱。'
+            luchen: '陆辰逸终于摘下了"完美学生会长"的面具，在你面前展露了真正的自己。毕业那天，他在樱花树下对你说："谢谢你让我知道，不完美也可以被爱。"',
+            guyan: '顾晏时封闭已久的心门，终于为你缓缓打开。他带你去了姐姐最喜欢的星空观测点："她一定很高兴，因为我终于找到了想要守护的人。"',
+            linxiao: '林笑寒用最灿烂的笑容，最真挚的心意，温暖了你的每一天。毕业典礼上，他大喊："苏念念，我喜欢你！"虽然忘了准备花束——但谁在乎呢？',
+            xinghe: '沈星河不再是那个对所有人微笑的校草了。他轻轻握住你的手："以前我以为喜欢是表演，遇到你才知道，是心跳。"他为你写了一首歌，名字叫《星河》。',
+            xuanmo: '慕容轩难得露出柔软的表情："我有很多东西，但都不重要……重要的是你还在这里。"他笨拙地递出一个小盒子："不许嘲笑我。这是我第一次自己挑礼物。"',
+            edwin: '艾德温望着星辰学院的校门，微笑着说："母亲说来中国会找到珍贵的东西。她说得对。"他转向你，蓝色的眼睛里映着光："Thank you, for being my home."'
         };
         return texts[charId] || '';
     }
     getNormalEndingText(charId) {
         const texts = {
-            luchen: '你和陆辰逸成为了很好的朋友。他偶尔会摘下面具和你聊天，但那份特别的感情，始终停留在了友谊的边界。也许在某个未来的春天，故事会有不同的走向。',
-            guyan: '顾晏时愿意在图书馆为你留一个座位了。虽然他依旧安静，但你知道，他的世界里已经有了你的一角。这份静谧的情感，像星光一样微弱却恒久。',
-            linxiao: '林笑寒始终是你最好的朋友，他的笑容依旧灿烂如阳光。但每次看到你的时候，他的眼神里总有一丝说不清道不明的温柔。也许有一天，他会鼓起勇气……'
+            luchen: '你和陆辰逸成为了很好的朋友。他偶尔会摘下面具和你聊天，但那份特别的感情，始终停留在了友谊的边界。',
+            guyan: '顾晏时愿意在图书馆为你留一个座位了。虽然他依旧安静，但你知道，他的世界里已经有了你的一角。',
+            linxiao: '林笑寒始终是你最好的朋友，他的笑容依旧灿烂。但每次看到你时，他的眼神里总有一丝说不清道不明的温柔。',
+            xinghe: '沈星河还是那个万人迷校草，但他偶尔会只对你弹一首安静的曲子。那些不为人知的温柔，只有你看得到。',
+            xuanmo: '慕容轩依旧高冷，但会在你生日时送来一整车的花。附带一张纸条："不要误会，只是花太多了。"',
+            edwin: '艾德温回到了英国，但每个周末都会寄来一封手写信和一小盒英国红茶。信的结尾总是："Miss you. See you soon."'
         };
         return texts[charId] || '';
     }
     getFriendEndingText(charId) {
         const texts = {
-            luchen: '你和陆辰逸成为了相互信赖的好友。虽然没有心跳加速的告白，但你知道，在彼此的生命里，你们都占据了特别的位置。友情，有时候也是一种珍贵的缘分。',
-            guyan: '顾晏时开始愿意和你分享他在读的书了。你们经常在图书馆里安静地坐在一起，这份默契的友情，比任何语言都温暖。',
-            linxiao: '你和林笑寒成为了最好的运动搭档！虽然他有时候傻乎乎的，但在你需要的时候，他总是第一个出现。这份阳光般的友谊，会一直延续下去。'
+            luchen: '你和陆辰逸成为了相互信赖的好友。友情，有时候也是一种珍贵的缘分。',
+            guyan: '顾晏时开始愿意和你分享他在读的书了。这份默契的友情，比任何语言都温暖。',
+            linxiao: '你和林笑寒成为了最好的运动搭档！这份阳光般的友谊，会一直延续下去。',
+            xinghe: '你和沈星河成了互相吐槽的好朋友。他不再在你面前耍帅："在你面前可以做最真实的自己，真好。"',
+            xuanmo: '慕容轩学会了说"谢谢"。虽然嘴上依旧毒舌，但你知道，在他冰冷的外表下，你是第一个被他当作朋友的人。',
+            edwin: '艾德温回国前送你一个精致的怀表："这是霍华德家的传统。送给最重要的朋友。"'
         };
         return texts[charId] || '';
     }
     getPassbyEndingText(charId) {
         const texts = {
-            luchen: '陆辰逸依旧是那个完美的学生会长，而你只是他礼貌微笑的对象之一。也许，你从未真正走进过他的世界。',
-            guyan: '顾晏时依旧一个人坐在图书馆的角落。你们之间的距离，和第一天一样遥远。那扇紧闭的心门，终究没有为你打开。',
-            linxiao: '林笑寒还是那个对谁都热情的阳光少年，但你们的关系始终没有更进一步。渐渐地，你们各自有了新的朋友，那段短暂的交集成为了记忆中的一抹亮色。'
+            luchen: '陆辰逸依旧是那个完美的学生会长，而你只是他礼貌微笑的对象之一。',
+            guyan: '顾晏时依旧一个人坐在图书馆的角落。那扇心门，终究没有为你打开。',
+            linxiao: '林笑寒还是那个对谁都热情的阳光少年，但你们的关系始终没有更进一步。',
+            xinghe: '沈星河依旧在走廊上对每个女生微笑送花。你只是他的"观众"之一。',
+            xuanmo: '慕容轩的豪车依旧每天准时出现又消失，你们之间隔着的距离从未缩短。',
+            edwin: '艾德温礼貌地和你道别，回到了英国。也许在某个平行世界，故事会不一样。'
         };
         return texts[charId] || '';
     }
@@ -591,7 +609,7 @@ class OtomeGame {
 
         // 预览
         document.getElementById('preview-charm-val').textContent = `+${this.dresser.getTotalCharmBonus()}`;
-        const prefsHtml = ['luchen','guyan','linxiao'].map(id => {
+        const prefsHtml = ['luchen','guyan','linxiao','xinghe','xuanmo','edwin'].map(id => {
             const char = this.characters[id];
             const bonus = this.dresser.getCharPreferenceBonus(id);
             const emoji = bonus > 3 ? '❤️❤️' : bonus > 0 ? '❤️' : bonus < 0 ? '💔' : '—';
@@ -646,9 +664,12 @@ class OtomeGame {
         const reqList = document.getElementById('stats-requirements-list');
         reqList.innerHTML = '';
         const reqs = {
-            luchen: [['intelligence', 120, '学力'], ['art', 80, '艺术'], ['social', 60, '社交(加分)']],
+            luchen: [['intelligence', 120, '学力'], ['art', 80, '艺术']],
             guyan: [['art', 120, '艺术'], ['intelligence', 80, '学力']],
-            linxiao: [['fitness', 120, '体力'], ['social', 80, '社交'], ['charm', 60, '魅力(加分)']]
+            linxiao: [['fitness', 120, '体力'], ['social', 80, '社交']],
+            xinghe: [['charm', 120, '魅力'], ['social', 80, '社交']],
+            xuanmo: [['intelligence', 100, '学力'], ['charm', 100, '魅力']],
+            edwin: [['intelligence', 100, '学力'], ['art', 100, '艺术']]
         };
         for (const [charId, charReqs] of Object.entries(reqs)) {
             const char = this.characters[charId];

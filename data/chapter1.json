@@ -1,34 +1,46 @@
 [
-    { "type": "scene", "bg": "classroom", "name": "第一章 · 心之所向", "clearCharacters": true },
+    { "type": "scene", "bg": "classroom", "name": "第一章 · 星辰学院的日常", "clearCharacters": true },
 
     { "type": "narration", "text": "转学后的第一周很快就过去了。我渐渐习惯了星辰学院的生活。" },
-    { "type": "narration", "text": "不知不觉中，我和三位同学的交集越来越多……" },
+    { "type": "narration", "text": "每天上课、吃饭、回宿舍……日子平静而充实。" },
+    { "type": "narration", "text": "但我隐隐觉得，这个学期不会只是这么简单。" },
 
     { "type": "scene", "bg": "hallway", "name": "走廊 · 午休时间" },
-
-    { "type": "narration", "text": "午休铃响，同学们纷纷走出教室。我正犹豫去哪里时——" },
-
     { "type": "character", "charId": "luchen", "position": "left" },
-    { "type": "dialogue", "speaker": "luchen", "text": "苏同学，转学后还适应吗？如果有什么困难，可以随时来找我。" },
-    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（陆学长又来关心我了……他真的好温柔。）" },
-
+    { "type": "dialogue", "speaker": "luchen", "text": "苏同学，期中考试下个月就要到了。有什么不懂的可以来找我哦。" },
     { "type": "character", "charId": "linxiao", "position": "right" },
-    { "type": "dialogue", "speaker": "linxiao", "text": "念念！走走走，一起去食堂！今天有新菜！" },
-    { "type": "dialogue", "speaker": "luchen", "text": "林笑寒，你能不能不要总是这么冒冒失失的。" },
-    { "type": "dialogue", "speaker": "linxiao", "text": "嘿嘿，辰逸学长你也太严肃了啦。" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "念念！体育节也快到了！到时候一起加油吧！" },
     { "type": "hide_character", "position": "left" },
     { "type": "hide_character", "position": "right" },
 
-    { "type": "narration", "text": "这时，教室门口一个安静的身影引起了我的注意——" },
-    { "type": "character", "charId": "guyan", "position": "center" },
-    { "type": "narration", "text": "顾晏时抱着一本书，默默地从我们身边走过，朝着图书馆的方向去了。" },
+    { "type": "scene", "bg": "library", "name": "图书馆" },
+    { "type": "character", "charId": "guyan", "position": "left" },
+    { "type": "narration", "text": "路过图书馆时，顾晏时难得地开口了。" },
+    { "type": "dialogue", "speaker": "guyan", "text": "……你每天都来这里。是在准备考试？" },
+    { "type": "character", "charId": "edwin", "position": "right" },
+    { "type": "dialogue", "speaker": "edwin", "text": "Ah，苏同学！你也在这里。这个图书馆的藏书量令人惊叹，和牛津的图书馆不相上下呢。" },
+    { "type": "hide_character", "position": "left" },
+    { "type": "hide_character", "position": "right" },
+
+    { "type": "scene", "bg": "hallway", "name": "走廊 · 放学后" },
+    { "type": "character", "charId": "xinghe", "position": "center" },
+    { "type": "dialogue", "speaker": "xinghe", "text": "今天也很努力呢，苏念念同学。放学后要不要来听我弹吉他？保证让你心情变好~" },
     { "type": "hide_character", "position": "center" },
 
-    { "type": "narration", "text": "三个人，三个不同的方向。而我——" },
+    { "type": "character", "charId": "xuanmo", "position": "center" },
+    { "type": "narration", "text": "慕容轩和管家正要上车离开，看到我后停了一下。" },
+    { "type": "dialogue", "speaker": "xuanmo", "text": "哼，又是你。……明天的英文课别忘了带课本，上次你就忘了。" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（他居然注意到了我忘带课本……嘴上毒舌，其实在关心我？）" },
+    { "type": "hide_character", "position": "center" },
 
-    { "type": "choice", "choices": [
-        { "text": "跟陆辰逸一起去学生会办公室", "affection": { "luchen": 10 }, "jumpTo": "route_luchen" },
-        { "text": "跟着顾晏时去图书馆", "affection": { "guyan": 10 }, "jumpTo": "route_guyan" },
-        { "text": "和林笑寒一起去食堂", "affection": { "linxiao": 10 }, "jumpTo": "route_linxiao" }
-    ]}
+    { "type": "scene", "bg": "classroom", "name": "教室 · 黄昏", "clearCharacters": true },
+    { "type": "narration", "text": "回到教室收拾东西时，我看着窗外的夕阳，心里默默想着——" },
+    { "type": "narration", "text": "这个学期有好多事情要做：学习提高成绩、锻炼身体、培养兴趣……" },
+    { "type": "narration", "text": "还有那六个特别的男生。他们每个人都那么不同，那么有魅力。" },
+    { "type": "narration", "text": "我该怎样安排自己的时间呢？" },
+
+    { "type": "narration", "text": "从明天开始，属于我的星辰学院生活——" },
+    { "type": "narration", "text": "真正拉开了序幕。✨" },
+    { "type": "narration", "text": "—— 第一章 · 完 ——" },
+    { "type": "narration", "text": "【提示：现在进入日程安排模式！安排学习、运动、打扮等活动来提升属性，和心仪的男生约会提升好感吧！】" }
 ]

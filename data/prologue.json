@@ -6,104 +6,112 @@
     { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（好紧张啊……新学校，新环境，不知道能不能交到朋友呢。）" },
 
     { "type": "scene", "bg": "school-gate", "name": "星辰学院 · 正门" },
-
-    { "type": "narration", "text": "星辰学院比我想象中更加宏伟。古朴的校门上方，金色的校名在阳光下闪闪发光。校园里绿树成荫，远处传来隐约的欢声笑语。" },
-    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（好大的校园……我得先去教务处办手续才行。嗯，地图上说教务处在……）" },
-
+    { "type": "narration", "text": "星辰学院比我想象中更加宏伟。古朴的校门上方，金色的校名在阳光下闪闪发光。" },
     { "type": "narration", "text": "我正低头看着手机里的校园地图，完全没注意到前方——" },
     { "type": "narration", "text": "「砰！」" },
-    { "type": "narration", "text": "我一头撞上了一个人，手机差点飞出去。" },
 
     { "type": "character", "charId": "luchen", "position": "center" },
     { "type": "dialogue", "speaker": "luchen", "text": "小心——！" },
-    { "type": "narration", "text": "一只手稳稳地扶住了我的手臂，另一只手接住了我即将落地的手机。" },
-    { "type": "narration", "text": "我抬起头，看到一张温和的面孔。他穿着整齐的学生会制服，胸前别着「学生会长」的徽章。" },
-
-    { "type": "dialogue", "speaker": "luchen", "text": "你没事吧？走路要小心看路哦。" },
-    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（好……好帅……不对不对，先道歉！）" },
+    { "type": "narration", "text": "一只手稳稳地扶住了我的手臂，另一只手接住了我即将落地的手机。他穿着学生会制服，胸前别着「学生会长」的徽章。" },
+    { "type": "dialogue", "speaker": "luchen", "text": "你没事吧？你是新来的转学生吧？我叫陆辰逸，是学生会长。我带你去教务处吧。" },
 
     { "type": "choice", "choices": [
-        { "text": "「对不起！我、我在看地图，没注意到……」", "affection": { "luchen": 5 } },
-        { "text": "「啊谢谢你！你反应好快啊！」", "affection": { "luchen": 8 } },
-        { "text": "「……（太紧张了说不出话）」", "affection": { "luchen": 3 } }
+        { "text": "「对不起！谢谢你！」（认真鞠躬）", "affection": { "luchen": 5 } },
+        { "text": "「你反应好快啊！好厉害！」（真诚赞叹）", "affection": { "luchen": 8 } },
+        { "text": "「……（太紧张了）」", "affection": { "luchen": 3 } }
     ]},
-
-    { "type": "dialogue", "speaker": "luchen", "text": "没关系。你是新来的转学生吧？我叫陆辰逸，是学生会长。" },
-    { "type": "dialogue", "speaker": "luchen", "text": "你是要去教务处吗？那正好，我带你过去吧。" },
-
-    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（学生会长……好温柔的人。第一天就遇到这么好的学长，感觉这个学校还不错嘛！）" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（学生会长……年级第一的学霸，好温柔的人。）" },
+    { "type": "hide_character", "position": "center" },
 
     { "type": "scene", "bg": "hallway", "name": "教学楼 · 走廊", "clearCharacters": true },
-
-    { "type": "narration", "text": "陆辰逸领着我穿过教学楼的走廊。路过的学生们都会停下来和他打招呼，他总是微笑着一一回应。" },
-    { "type": "narration", "text": "经过一间教室时，我无意间瞥了一眼窗户——" },
+    { "type": "narration", "text": "陆辰逸领着我穿过走廊。经过一间空教室时，我无意间瞥了一眼——" },
 
     { "type": "character", "charId": "guyan", "position": "center" },
-    { "type": "narration", "text": "空荡荡的教室里，靠窗的最后一排座位上，坐着一个少年。" },
-    { "type": "narration", "text": "他安静地看着书，阳光透过窗户在他身上洒下斑驳的光影。仿佛整个世界都与他无关。" },
-
-    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（那个人……好安静的感觉。像是画里走出来的一样。）" },
-
-    { "type": "narration", "text": "仿佛感受到了我的目光，他缓缓抬起头。" },
-    { "type": "narration", "text": "那双深邃的紫色眼睛与我对视了一瞬——然后，他又低下头，继续看书。" },
-
-    { "type": "dialogue", "speaker": "luchen", "text": "那是顾晏时，和你同班的。他平时不太和人说话，不过……是个好人。" },
+    { "type": "narration", "text": "靠窗最后一排，一个少年安静地看着书。阳光在他身上洒下斑驳光影，仿佛整个世界都与他无关。" },
+    { "type": "narration", "text": "他缓缓抬头，那双深邃的紫色眼睛与我对视了一瞬——然后又低下头。" },
+    { "type": "dialogue", "speaker": "luchen", "text": "那是顾晏时，和你同班。是个天才，不过不太爱说话。" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（好安静的感觉……像是画里走出来的一样。）" },
     { "type": "hide_character", "position": "center" },
 
     { "type": "scene", "bg": "playground", "name": "操场", "clearCharacters": true },
-
-    { "type": "narration", "text": "办完手续从教务处出来，路过操场时——" },
-    { "type": "narration", "text": "「接住——！！」" },
-    { "type": "narration", "text": "一颗篮球突然朝我飞来！" },
+    { "type": "narration", "text": "路过操场时——「接住——！！」一颗篮球朝我飞来！" },
 
     { "type": "character", "charId": "linxiao", "position": "center" },
-    { "type": "narration", "text": "紧接着，一道橘色的身影飞速冲过来，稳稳接住了球。" },
-
-    { "type": "dialogue", "speaker": "linxiao", "text": "哇，好险！同学你没事吧？对不起对不起，是我们打球不小心！" },
-    { "type": "narration", "text": "阳光下，一个高大的男生单手抱着篮球，露出灿烂的笑容。他的额头还冒着汗珠，校服袖子卷到手肘。" },
+    { "type": "narration", "text": "一道橘色的身影飞速冲来，稳稳接住了球。" },
+    { "type": "dialogue", "speaker": "linxiao", "text": "好险！同学你没事吧？对不起！我叫林笑寒，体育部的！" },
 
     { "type": "choice", "choices": [
-        { "text": "「没事！好厉害，你跑得好快！」", "affection": { "linxiao": 8 } },
-        { "text": "「吓死我了……不过还好你接住了。」", "affection": { "linxiao": 5 } },
-        { "text": "「你们打球要注意安全啊。」", "affection": { "linxiao": 2 } }
+        { "text": "「没事！你跑得好快！」", "affection": { "linxiao": 8 } },
+        { "text": "「还好你接住了，谢谢。」", "affection": { "linxiao": 5 } },
+        { "text": "「打球小心点……」", "affection": { "linxiao": 2 } }
     ]},
+    { "type": "dialogue", "speaker": "linxiao", "text": "转学生！有什么不懂的尽管问我！对了，食堂糖醋排骨超好吃！" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（好有活力的男生……和他说话心情都变好了。）" },
+    { "type": "hide_character", "position": "center" },
 
-    { "type": "dialogue", "speaker": "linxiao", "text": "哈哈！对了，我叫林笑寒，体育部的。你是？" },
-    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "苏念念。我是今天刚转学过来的。" },
-    { "type": "dialogue", "speaker": "linxiao", "text": "转学生！那你一定还不熟悉这里吧。有什么不懂的尽管问我！这个学校我哪里都熟，嘿嘿。" },
-    { "type": "dialogue", "speaker": "linxiao", "text": "对了对了，中午食堂的糖醋排骨超级好吃，一定要试试！" },
+    { "type": "scene", "bg": "hallway", "name": "教学楼 · 音乐教室旁", "clearCharacters": true },
+    { "type": "narration", "text": "走过走廊时，一阵吉他声从音乐教室传来。旋律慵懒而好听。" },
 
-    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（好有活力的男生啊……和他说话感觉心情都变好了。）" },
+    { "type": "character", "charId": "xinghe", "position": "center" },
+    { "type": "narration", "text": "门半开着，一个少年靠在窗边弹吉他。他注意到我的目光，嘴角微扬。" },
+    { "type": "dialogue", "speaker": "xinghe", "text": "偷看别人弹琴可不礼貌哦——不过，能被你这样的美女偷看，是我的荣幸。" },
+    { "type": "narration", "text": "他从口袋里变出一朵小花，递到我面前。" },
+    { "type": "dialogue", "speaker": "xinghe", "text": "沈星河，星辰学院的星河。记住我的名字哦。" },
+
+    { "type": "choice", "choices": [
+        { "text": "「你、你好……」（接过花，脸红了）", "affection": { "xinghe": 8 } },
+        { "text": "「你这么对每个女生吗？」（假装淡定）", "affection": { "xinghe": 5 } },
+        { "text": "「……我先走了。」（逃走）", "affection": { "xinghe": 3 } }
+    ]},
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（这个人……好会撩人！全校公认的校草吗？）" },
+    { "type": "hide_character", "position": "center" },
+
+    { "type": "scene", "bg": "school-gate", "name": "星辰学院 · 正门广场", "clearCharacters": true },
+    { "type": "narration", "text": "这时，校门口突然一阵骚动。一辆黑色的劳斯莱斯缓缓停下，一个少年从车上走出。" },
+
+    { "type": "character", "charId": "xuanmo", "position": "center" },
+    { "type": "narration", "text": "他穿着定制的暗红色西装校服，金色袖扣在阳光下闪烁。每一步都带着与生俱来的贵气。" },
+    { "type": "narration", "text": "周围的同学纷纷让开一条路，低声议论着。" },
+    { "type": "narration", "text": "「那是慕容集团的少爷！」「听说他一个人就包下了学校新图书馆的建设……」" },
+    { "type": "narration", "text": "我不小心挡在了他前进的路上——" },
+    { "type": "dialogue", "speaker": "xuanmo", "text": "让开。" },
+    { "type": "narration", "text": "他冷冷地扫了我一眼，然后——微微停顿了一下。" },
+    { "type": "dialogue", "speaker": "xuanmo", "text": "……你是新转来的？走路不要发呆。" },
+
+    { "type": "choice", "choices": [
+        { "text": "「对不起！」（赶紧让路）", "affection": { "xuanmo": 3 } },
+        { "text": "「啊，你也是这里的学生吗？」（没被吓到）", "affection": { "xuanmo": 8 } },
+        { "text": "「你说话好冷淡啊……」（小声嘟囔）", "affection": { "xuanmo": 5 } }
+    ]},
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（好有气势的人……那双红色的眼睛好凌厉。不过他刚才……是不是多看了我一眼？）" },
     { "type": "hide_character", "position": "center" },
 
     { "type": "scene", "bg": "classroom", "name": "高二三班 · 教室", "clearCharacters": true },
+    { "type": "narration", "text": "来到教室，我做完自我介绍坐到座位上。座位旁是安静看书的顾晏时。" },
+    { "type": "narration", "text": "这时，教室门突然被推开——" },
 
-    { "type": "narration", "text": "来到教室门口，我深吸一口气推开了门。" },
-    { "type": "narration", "text": "全班同学的目光齐刷刷地看向我。" },
-    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（淡定淡定……）" },
-    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "大家好，我叫苏念念，从今天开始转入这个班级，请多多关照！" },
-
-    { "type": "narration", "text": "掌声响起，同学们投来友善的目光。" },
-    { "type": "narration", "text": "老师指了指教室后方——" },
-
-    { "type": "character", "charId": "guyan", "position": "center" },
-    { "type": "narration", "text": "我的座位，就在顾晏时的旁边。" },
-    { "type": "narration", "text": "他依旧在看书，似乎对我的到来毫不关心。" },
+    { "type": "character", "charId": "edwin", "position": "center" },
+    { "type": "narration", "text": "一个金发碧眼的少年走了进来。他穿着深蓝色的校服，却像穿着礼服一样优雅。" },
+    { "type": "narration", "text": "全班再次安静下来。老师笑着说：「这位也是今天的转校生。来，自我介绍一下。」" },
+    { "type": "dialogue", "speaker": "edwin", "text": "大家好，我是艾德温·霍华德，从英国伦敦来的。很高兴认识大家。" },
+    { "type": "narration", "text": "他的中文带着微微的口音，却格外好听。说完后，他微微鞠了一躬——" },
+    { "type": "dialogue", "speaker": "edwin", "text": "Please take care of me. ——啊，抱歉，习惯了。请多关照。" },
+    { "type": "narration", "text": "女生们发出一阵惊呼。他环顾教室，目光落在我旁边的空位上。" },
+    { "type": "dialogue", "speaker": "edwin", "text": "请问，这个座位有人吗？" },
+    { "type": "narration", "text": "他对我温和地笑了笑，然后优雅地坐了下来。" },
 
     { "type": "choice", "choices": [
-        { "text": "（主动打招呼）「你好，我是苏念念，以后请多关照！」", "affection": { "guyan": 5 } },
-        { "text": "（安静地坐下，先不打扰他）", "affection": { "guyan": 8 } },
-        { "text": "（好奇地偷看他在读什么书）", "affection": { "guyan": 6 } }
+        { "text": "「欢迎你！我也是今天刚来的转学生！」", "affection": { "edwin": 8 } },
+        { "text": "「你好……你的中文说得好好。」", "affection": { "edwin": 5 } },
+        { "text": "（偷偷观察他……好像真的贵族一样。）", "affection": { "edwin": 3 } }
     ]},
-
-    { "type": "narration", "text": "不管怎样，他只是微微点了下头，就又沉浸在自己的世界里了。" },
+    { "type": "dialogue", "speaker": "edwin", "text": "Oh? 你也是转校生？那我们是同伴了。一起加油吧。" },
+    { "type": "narration", "asThought": true, "speakerName": "苏念念", "text": "（英国来的贵族……好温柔，眼睛像宝石一样蓝。）" },
     { "type": "hide_character", "position": "center" },
 
     { "type": "narration", "text": "窗外，花瓣随风飘入教室。" },
-    { "type": "narration", "text": "我望着这个新教室，心中涌起一种奇妙的预感——" },
-    { "type": "narration", "text": "在星辰学院的日子，一定不会平凡。" },
-
-    { "type": "narration", "text": "—— 序章 · 完 ——" },
-
-    { "type": "jump", "scriptId": "chapter1" }
+    { "type": "narration", "text": "学霸学生会长、阴郁天才少年、阳光运动明星、浪漫校草、傲娇富豪之子、英国贵族转校生……" },
+    { "type": "narration", "text": "六段缘分，在这个春天悄然展开。" },
+    { "type": "narration", "text": "我的星辰学院生活……一定不会平凡。" },
+    { "type": "narration", "text": "—— 序章 · 完 ——" }
 ]
