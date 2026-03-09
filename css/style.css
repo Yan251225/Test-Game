@@ -142,6 +142,8 @@ body {
     transition: background 0.8s ease;
     background-size: cover;
     background-position: center;
+    image-rendering: high-quality;
+    -webkit-image-rendering: high-quality;
 }
 
 /* 场景背景预设（SVG图片 + 渐变兜底） */
