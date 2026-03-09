@@ -114,6 +114,11 @@ class VNEngine {
             this.speakerName.classList.add(`color-${charId}`);
         }
 
+        // 自动播放配音
+        if (charId && window.game?.audio) {
+            window.game.audio.playVoiceForDialogue(charId, node.text);
+        }
+
         // 逐字显示文字
         this.typeText(node.text);
     }
@@ -244,6 +249,16 @@ class VNEngine {
         // 切换场景时隐藏所有角色
         if (node.clearCharacters) {
             this.hideAllCharacters();
+        }
+
+        // 根据场景自动切换BGM
+        if (window.game?.audio && node.bg) {
+            const bgmMap = {
+                rooftop: 'romantic', playground: 'happy', park: 'happy',
+                exam: 'tension', night: 'romantic', sunset: 'romantic'
+            };
+            const bgm = bgmMap[node.bg];
+            if (bgm) window.game.audio.playBgm(bgm);
         }
     }
 

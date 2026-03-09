@@ -6,6 +6,7 @@ class OtomeGame {
         this.engine = new VNEngine();
         this.schedule = new ScheduleSystem(this);
         this.dresser = new DresserSystem(this);
+        this.audio = new AudioSystem();
         this.characters = {};
         this.scripts = {};
 
@@ -81,6 +82,15 @@ class OtomeGame {
         document.getElementById('btn-save').addEventListener('click', () => this.openSaveScreen());
         document.getElementById('btn-quick-save').addEventListener('click', () => this.quickSave());
         document.getElementById('btn-menu').addEventListener('click', () => this.openPauseMenu());
+        document.getElementById('btn-bgm').addEventListener('click', () => {
+            const on = this.audio.toggleBgm();
+            document.getElementById('btn-bgm').textContent = on ? '🎵' : '🔇';
+            if (on && this.mode === 'schedule') this.audio.playBgm('normal');
+        });
+        document.getElementById('btn-voice').addEventListener('click', () => {
+            const on = this.audio.toggleVoice();
+            document.getElementById('btn-voice').textContent = on ? '🎙️' : '🔕';
+        });
 
         // 暂停菜单
         document.getElementById('btn-resume').addEventListener('click', () => this.closePauseMenu());
@@ -136,6 +146,7 @@ class OtomeGame {
         this.mode = 'vn';
         this.switchScreen('game-screen');
         this.updateAffectionUI();
+        this.audio.playBgm('title');
         this.engine.startScript(this.scripts['prologue']);
     }
 
@@ -155,6 +166,7 @@ class OtomeGame {
     /** 进入日程安排模式 */
     enterScheduleMode() {
         this.mode = 'schedule';
+        this.audio.playBgm('normal');
         // 先检查特殊事件
         const event = this.schedule.checkSpecialEvent();
         if (event) {
@@ -316,6 +328,7 @@ class OtomeGame {
     /** 进入下一个时间段 */
     nextPeriod() {
         const adv = this.schedule.advanceTime();
+        this.audio.playBgm('normal');
 
         if (this.schedule.isGameOver()) {
             this.triggerFinalEnding();
@@ -337,6 +350,7 @@ class OtomeGame {
 
     showSpecialEvent(event) {
         this._currentEvent = event;
+        this.audio.playBgm(event.type === 'ending' ? 'romantic' : 'tension');
         const icons = { exam: '📝', sports: '🏅', culture: '🎭', ending: '💕' };
         document.getElementById('event-icon').textContent = icons[event.type] || '🌟';
         document.getElementById('event-title').textContent = event.name;
@@ -437,7 +451,8 @@ class OtomeGame {
         document.getElementById('ending-title').textContent = endingTitle;
         document.getElementById('ending-text').textContent = endingText;
         this.switchScreen('ending-screen');
-
+        this.audio.playBgm('ending');
+        if (charId) this.audio.playVoice(charId, 'confession');
         const endingKey = `${charId || 'none'}_${result.type}`;
         if (!this.state.completedEndings.includes(endingKey)) {
             this.state.completedEndings.push(endingKey);

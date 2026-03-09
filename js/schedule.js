@@ -93,12 +93,16 @@ class ScheduleSystem {
         // 约会 → 好感度大幅提升
         if (action.charId) {
             let affGain = 12;
-            // 穿搭加成
             if (this.game.dresser) {
                 affGain += this.game.dresser.getCharPreferenceBonus(action.charId);
             }
             this.game.changeAffection(action.charId, affGain);
             results.affGain = { charId: action.charId, value: affGain };
+            // 约会配音+BGM
+            if (this.game.audio) {
+                this.game.audio.playBgm('romantic');
+                this.game.audio.playVoice(action.charId, 'date');
+            }
         }
 
         // 随机好感
