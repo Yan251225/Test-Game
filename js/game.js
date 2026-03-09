@@ -1,11 +1,16 @@
 /**
- * game.js — 游戏初始化与全局状态管理
+ * game.js — 游戏初始化与全局状态管理（含日程/属性/打扮系统）
  */
 class OtomeGame {
     constructor() {
         this.engine = new VNEngine();
+        this.schedule = new ScheduleSystem(this);
+        this.dresser = new DresserSystem(this);
         this.characters = {};
         this.scripts = {};
+
+        // 游戏模式: 'vn' = 视觉小说, 'schedule' = 日程安排
+        this.mode = 'vn';
 
         // 游戏状态
         this.state = {
@@ -19,65 +24,49 @@ class OtomeGame {
     }
 
     async init() {
-        // 加载数据
         await this.loadCharacters();
         await this.loadAllScripts();
+        await this.schedule.loadData();
+        await this.dresser.loadData();
+
         this.engine.setCharacters(this.characters);
 
-        // 设置引擎回调
+        // 引擎回调
         this.engine.onAffectionChange = (charId, value) => this.changeAffection(charId, value);
         this.engine.onJump = (scriptId) => this.jumpToScript(scriptId);
         this.engine.onEnding = (node) => this.showEnding(node);
-        this.engine.onScriptEnd = () => {};
+        // 序章结束后进入日程模式
+        this.engine.onScriptEnd = () => this.onScriptEnd();
 
-        // 绑定 UI 事件
         this.bindEvents();
-
-        // 生成樱花
         this.createSakura();
     }
 
-    /** 检测自定义图片是否存在 */
     async checkCustomImage(charId) {
         const exts = ['png', 'jpg', 'webp'];
         for (const ext of exts) {
             const url = `img/custom/characters/${charId}.${ext}`;
-            try {
-                const resp = await fetch(url, { method: 'HEAD' });
-                if (resp.ok) return url;
-            } catch {}
+            try { const r = await fetch(url, { method: 'HEAD' }); if (r.ok) return url; } catch {}
         }
         return null;
     }
 
-    /** 加载角色数据（自动检测自定义图片） */
     async loadCharacters() {
         try {
             const resp = await fetch('data/characters.json');
             this.characters = await resp.json();
-            // 检测自定义图片，优先使用
             for (const char of Object.values(this.characters)) {
                 const custom = await this.checkCustomImage(char.id);
-                if (custom) {
-                    char.sprite = custom;
-                    console.log(`✨ 使用自定义图片: ${custom}`);
-                }
+                if (custom) { char.sprite = custom; }
             }
-        } catch {
-            console.error('加载角色数据失败');
-        }
+        } catch { console.error('加载角色数据失败'); }
     }
 
-    /** 加载所有剧情脚本 */
     async loadAllScripts() {
         const scriptNames = ['prologue', 'chapter1', 'route_luchen', 'route_guyan', 'route_linxiao'];
         for (const name of scriptNames) {
-            try {
-                const resp = await fetch(`data/${name}.json`);
-                this.scripts[name] = await resp.json();
-            } catch {
-                console.error(`加载脚本 ${name} 失败`);
-            }
+            try { const r = await fetch(`data/${name}.json`); this.scripts[name] = await r.json(); }
+            catch { console.error(`加载脚本 ${name} 失败`); }
         }
     }
 
@@ -95,32 +84,35 @@ class OtomeGame {
 
         // 暂停菜单
         document.getElementById('btn-resume').addEventListener('click', () => this.closePauseMenu());
-        document.getElementById('btn-pause-save').addEventListener('click', () => {
-            this.closePauseMenu();
-            this.openSaveScreen();
-        });
-        document.getElementById('btn-pause-load').addEventListener('click', () => {
-            this.closePauseMenu();
-            this.openLoadScreen();
-        });
-        document.getElementById('btn-affection').addEventListener('click', () => {
-            this.closePauseMenu();
-            this.toggleAffectionPanel();
-        });
-        document.getElementById('btn-back-title').addEventListener('click', () => {
-            this.closePauseMenu();
-            this.backToTitle();
-        });
+        document.getElementById('btn-pause-save').addEventListener('click', () => { this.closePauseMenu(); this.openSaveScreen(); });
+        document.getElementById('btn-pause-load').addEventListener('click', () => { this.closePauseMenu(); this.openLoadScreen(); });
+        document.getElementById('btn-affection').addEventListener('click', () => { this.closePauseMenu(); this.toggleAffectionPanel(); });
+        document.getElementById('btn-stats').addEventListener('click', () => { this.closePauseMenu(); this.openStatsScreen(); });
+        document.getElementById('btn-open-dresser').addEventListener('click', () => { this.closePauseMenu(); this.openDresserScreen(); });
+        document.getElementById('btn-back-title').addEventListener('click', () => { this.closePauseMenu(); this.backToTitle(); });
 
-        // 存档/读档界面返回
+        // 存档/图鉴
         document.getElementById('btn-save-back').addEventListener('click', () => this.closeSaveScreen());
-
-        // 角色图鉴返回
         document.getElementById('btn-gallery-back').addEventListener('click', () => this.closeGallery());
-
-        // 结局返回标题
         document.getElementById('btn-ending-title').addEventListener('click', () => this.backToTitle());
+
+        // 日程界面
+        document.getElementById('btn-next-period').addEventListener('click', () => this.nextPeriod());
+        document.getElementById('btn-schedule-dresser').addEventListener('click', () => this.openDresserScreen());
+
+        // 打扮界面
+        document.getElementById('btn-dresser-back').addEventListener('click', () => this.closeDresserScreen());
+
+        // 属性详情
+        document.getElementById('btn-stats-back').addEventListener('click', () => this.closeStatsScreen());
+
+        // 特殊事件
+        document.getElementById('btn-event-continue').addEventListener('click', () => this.resolveEvent());
     }
+
+    // ============================
+    // 游戏流程
+    // ============================
 
     /** 开始新游戏 */
     newGame() {
@@ -130,12 +122,556 @@ class OtomeGame {
             completedEndings: [],
             playerName: '苏念念'
         };
+        this.schedule.week = 1;
+        this.schedule.timeSlot = 'morning';
+        this.schedule.stats = { intelligence: 30, fitness: 30, charm: 30, art: 30, social: 30 };
+        this.schedule.stress = 0;
+        this.dresser.currentOutfit = 'school-uniform';
+        this.dresser.currentHairstyle = 'ponytail';
+        this.dresser.shoppingCount = 0;
+        // re-lock outfits
+        this.dresser.outfits.forEach(o => { o.unlocked = o.id === 'school-uniform'; });
+        this.dresser.hairstyles.forEach(h => { h.unlocked = ['ponytail','twintails','long-straight'].includes(h.id); });
+
+        this.mode = 'vn';
         this.switchScreen('game-screen');
         this.updateAffectionUI();
         this.engine.startScript(this.scripts['prologue']);
     }
 
-    /** 跳转到指定脚本 */
+    /** 脚本结束回调 — 序章/chapter1 结束后进入日程 */
+    onScriptEnd() {
+        if (this.state.currentScript === 'prologue') {
+            // 自动跳到 chapter1
+            this.jumpToScript('chapter1');
+        } else if (this.state.currentScript === 'chapter1') {
+            // chapter1 结束后进入日程模式
+            this.enterScheduleMode();
+        } else {
+            // 角色路线等其他脚本结束
+        }
+    }
+
+    /** 进入日程安排模式 */
+    enterScheduleMode() {
+        this.mode = 'schedule';
+        // 先检查特殊事件
+        const event = this.schedule.checkSpecialEvent();
+        if (event) {
+            this.showSpecialEvent(event);
+        } else {
+            this.showScheduleScreen();
+        }
+    }
+
+    /** 显示日程界面 */
+    showScheduleScreen() {
+        if (this.schedule.isGameOver()) {
+            this.triggerFinalEnding();
+            return;
+        }
+        this.switchScreen('schedule-screen');
+        this.updateScheduleUI();
+    }
+
+    /** 更新日程界面 */
+    updateScheduleUI() {
+        // 时间
+        document.getElementById('schedule-time').textContent = this.schedule.getTimeSlotName();
+        const progress = this.schedule.getProgress();
+        document.getElementById('schedule-progress-fill').style.width = `${progress}%`;
+        document.getElementById('schedule-progress-text').textContent = `${progress}%`;
+
+        // 属性面板
+        const stats = this.schedule.stats;
+        const maxStat = 200;
+        for (const [key, val] of Object.entries(stats)) {
+            const fill = document.getElementById(`stat-${key}`);
+            const valEl = document.getElementById(`stat-val-${key}`);
+            if (fill) fill.style.width = `${Math.min(100, val / maxStat * 100)}%`;
+            if (valEl) valEl.textContent = val;
+        }
+        document.getElementById('stat-stress').style.width = `${this.schedule.stress}%`;
+        document.getElementById('stat-val-stress').textContent = this.schedule.stress;
+
+        // 穿搭
+        const outfit = this.dresser.getCurrentOutfit();
+        const hair = this.dresser.getCurrentHairstyle();
+        document.getElementById('current-outfit-display').textContent =
+            `${outfit?.icon || '👔'} ${outfit?.name || '校服'} · ${hair?.icon || '🎀'} ${hair?.name || '马尾'}`;
+
+        // 行动卡片
+        this.renderActionCards();
+
+        // 隐藏结果
+        document.getElementById('action-result').classList.add('hidden');
+        document.getElementById('action-grid').classList.remove('hidden');
+        document.querySelector('.section-title').classList.remove('hidden');
+    }
+
+    /** 渲染行动卡片 */
+    renderActionCards() {
+        const grid = document.getElementById('action-grid');
+        grid.innerHTML = '';
+        const actions = this.schedule.getAvailableActions();
+        const isForced = this.schedule.stress >= 90;
+
+        for (const action of actions) {
+            const card = document.createElement('div');
+            card.className = 'action-card';
+            if (isForced && action.id !== 'rest') card.classList.add('disabled');
+
+            // 属性变化预览
+            let statsHtml = '';
+            for (const [stat, val] of Object.entries(action.stats || {})) {
+                const icon = this.schedule.statIcons[stat] || '';
+                const cls = val >= 0 ? 'stat-up' : 'stat-down';
+                const sign = val >= 0 ? '+' : '';
+                statsHtml += `<span class="${cls}">${icon}${sign}${val}</span> `;
+            }
+            if (action.stress) {
+                const cls = action.stress > 0 ? 'stat-down' : 'stat-up';
+                const sign = action.stress > 0 ? '+' : '';
+                statsHtml += `<span class="${cls}">😰${sign}${action.stress}</span>`;
+            }
+
+            card.innerHTML = `
+                <div class="action-icon">${action.icon}</div>
+                <div class="action-name">${action.name}</div>
+                <div class="action-desc">${action.description || ''}</div>
+                <div class="action-stats">${statsHtml}</div>
+            `;
+            card.addEventListener('click', () => this.executeAction(action.id));
+            grid.appendChild(card);
+        }
+
+        if (isForced) {
+            const banner = document.createElement('div');
+            banner.style.cssText = 'grid-column:1/-1;color:#ef5350;text-align:center;padding:10px;font-size:0.9rem;';
+            banner.textContent = '⚠️ 压力过大！只能选择休息';
+            grid.prepend(banner);
+        }
+    }
+
+    /** 执行行动 */
+    executeAction(actionId) {
+        const results = this.schedule.executeAction(actionId);
+        if (!results) return;
+
+        if (results.forced) {
+            this.showNotification(results.message);
+            return;
+        }
+
+        // 显示结果
+        document.getElementById('action-grid').classList.add('hidden');
+        document.querySelector('.section-title').classList.add('hidden');
+
+        let html = `<div style="font-size:1.4rem;margin-bottom:10px;">${results.action.icon} ${results.action.name}</div>`;
+
+        for (const [stat, val] of Object.entries(results.statChanges)) {
+            const name = this.schedule.statNames[stat] || stat;
+            const icon = this.schedule.statIcons[stat] || '';
+            const cls = val >= 0 ? 'result-stat' : 'result-stat negative';
+            const sign = val >= 0 ? '+' : '';
+            html += `<div class="${cls}">${icon} ${name} ${sign}${val}</div>`;
+        }
+        if (results.stressChange !== 0) {
+            const cls = results.stressChange > 0 ? 'result-stat negative' : 'result-stat';
+            const sign = results.stressChange > 0 ? '+' : '';
+            html += `<div class="${cls}">😰 压力 ${sign}${results.stressChange}</div>`;
+        }
+        if (results.affGain) {
+            const char = this.characters[results.affGain.charId];
+            html += `<div class="result-encounter">${char?.emoji || '💕'} ${char?.name || ''} 好感度 +${results.affGain.value}</div>`;
+        }
+        if (results.encounter) {
+            const char = this.characters[results.encounter.charId];
+            html += `<div class="result-encounter">${char?.emoji || ''} ${results.encounter.dialogue}</div>`;
+        }
+        if (results.outfitUnlock) {
+            html += `<div class="result-unlock">🎉 解锁了新${results.outfitUnlock.icon ? '服装' : '发型'}：${results.outfitUnlock.name}！</div>`;
+        }
+
+        document.getElementById('result-content').innerHTML = html;
+        document.getElementById('action-result').classList.remove('hidden');
+
+        // 更新属性面板
+        this.updateScheduleUI_statsOnly();
+    }
+
+    /** 仅更新属性面板（不重渲染卡片） */
+    updateScheduleUI_statsOnly() {
+        const stats = this.schedule.stats;
+        for (const [key, val] of Object.entries(stats)) {
+            const fill = document.getElementById(`stat-${key}`);
+            const valEl = document.getElementById(`stat-val-${key}`);
+            if (fill) fill.style.width = `${Math.min(100, val / 200 * 100)}%`;
+            if (valEl) valEl.textContent = val;
+        }
+        document.getElementById('stat-stress').style.width = `${this.schedule.stress}%`;
+        document.getElementById('stat-val-stress').textContent = this.schedule.stress;
+    }
+
+    /** 进入下一个时间段 */
+    nextPeriod() {
+        const adv = this.schedule.advanceTime();
+
+        if (this.schedule.isGameOver()) {
+            this.triggerFinalEnding();
+            return;
+        }
+
+        // 检查特殊事件
+        const event = this.schedule.checkSpecialEvent();
+        if (event) {
+            this.showSpecialEvent(event);
+        } else {
+            this.showScheduleScreen();
+        }
+    }
+
+    // ============================
+    // 特殊事件
+    // ============================
+
+    showSpecialEvent(event) {
+        this._currentEvent = event;
+        const icons = { exam: '📝', sports: '🏅', culture: '🎭', ending: '💕' };
+        document.getElementById('event-icon').textContent = icons[event.type] || '🌟';
+        document.getElementById('event-title').textContent = event.name;
+        document.getElementById('event-desc').textContent = event.description;
+        document.getElementById('event-result').classList.add('hidden');
+        document.getElementById('event-result').innerHTML = '';
+        document.getElementById('btn-event-continue').textContent = event.type === 'ending' ? '迎接命运…' : '开始!';
+        this.switchScreen('event-screen');
+    }
+
+    resolveEvent() {
+        const event = this._currentEvent;
+        if (!event) return;
+
+        if (event.type === 'ending') {
+            this.triggerFinalEnding();
+            return;
+        }
+
+        const result = this.schedule.resolveSpecialEvent(event);
+        const resultEl = document.getElementById('event-result');
+        const statName = this.schedule.statNames[result.stat] || result.stat;
+
+        let html = `<div>你的${statName}：<strong>${result.statValue}</strong> / 需要：${result.threshold}</div>`;
+        if (result.passed) {
+            html += `<div class="pass">🎉 通过了！表现优异！</div>`;
+            html += `<div style="color:rgba(255,255,255,0.6);font-size:0.85rem;margin-top:8px;">好感度有所提升~</div>`;
+        } else {
+            html += `<div class="fail">😰 没能通过…下次继续加油！</div>`;
+        }
+
+        resultEl.innerHTML = html;
+        resultEl.classList.remove('hidden');
+        document.getElementById('btn-event-continue').textContent = '继续 →';
+        document.getElementById('btn-event-continue').onclick = () => {
+            document.getElementById('btn-event-continue').onclick = null;
+            document.getElementById('btn-event-continue').addEventListener('click', () => this.resolveEvent());
+            this._currentEvent = null;
+            this.showScheduleScreen();
+        };
+    }
+
+    // ============================
+    // 结局系统
+    // ============================
+
+    triggerFinalEnding() {
+        const result = this.schedule.getEndingResult();
+        const charId = result.charId;
+        const char = charId ? this.characters[charId] : null;
+
+        let endingEmoji, endingTitle, endingText, endingClass;
+
+        switch (result.type) {
+            case 'perfect':
+                endingEmoji = '💖';
+                endingClass = 'ending-good';
+                endingTitle = this.getEndingTitle(charId, 'perfect');
+                endingText = this.getPerfectEndingText(charId, char);
+                break;
+            case 'good':
+                endingEmoji = '💕';
+                endingClass = 'ending-good';
+                endingTitle = this.getEndingTitle(charId, 'good');
+                endingText = this.getGoodEndingText(charId, char);
+                break;
+            case 'normal':
+                endingEmoji = '🌸';
+                endingClass = 'ending-normal';
+                endingTitle = this.getEndingTitle(charId, 'normal');
+                endingText = this.getNormalEndingText(charId, char);
+                break;
+            case 'friend':
+                endingEmoji = '🤝';
+                endingClass = 'ending-normal';
+                endingTitle = this.getEndingTitle(charId, 'friend');
+                endingText = this.getFriendEndingText(charId, char);
+                break;
+            case 'academic':
+                endingEmoji = '📖';
+                endingClass = 'ending-normal';
+                endingTitle = '独立之路';
+                endingText = '你没有特别亲近任何人，但在学业上取得了优异的成绩。' +
+                    '毕业典礼上，你作为成绩优秀的代表上台发言。' +
+                    '也许爱情还在远方等待，但此刻的你，闪闪发光。';
+                break;
+            default: // passby
+                endingEmoji = '💔';
+                endingClass = 'ending-bad';
+                endingTitle = this.getEndingTitle(charId, 'passby');
+                endingText = this.getPassbyEndingText(charId, char);
+                break;
+        }
+
+        const endingScreen = document.getElementById('ending-screen');
+        endingScreen.className = `screen ${endingClass}`;
+        document.getElementById('ending-type').textContent = endingEmoji;
+        document.getElementById('ending-title').textContent = endingTitle;
+        document.getElementById('ending-text').textContent = endingText;
+        this.switchScreen('ending-screen');
+
+        const endingKey = `${charId || 'none'}_${result.type}`;
+        if (!this.state.completedEndings.includes(endingKey)) {
+            this.state.completedEndings.push(endingKey);
+        }
+    }
+
+    /** 旧版 showEnding 保留兼容（VN模式的路线结局） */
+    showEnding(node) {
+        // 如果在日程模式，使用新结局系统
+        if (this.mode === 'schedule') {
+            this.triggerFinalEnding();
+            return;
+        }
+        // VN模式旧结局
+        const charId = node.charId;
+        const aff = this.state.affection[charId] || 0;
+        const char = this.characters[charId];
+        let endingClass, endingTitle, endingText, endingEmoji;
+        if (aff >= 80) {
+            endingEmoji = '💕'; endingClass = 'ending-good';
+            endingTitle = this.getEndingTitle(charId, 'good');
+            endingText = this.getGoodEndingText(charId, char);
+        } else if (aff >= 40) {
+            endingEmoji = '🌸'; endingClass = 'ending-normal';
+            endingTitle = this.getEndingTitle(charId, 'normal');
+            endingText = this.getNormalEndingText(charId, char);
+        } else {
+            endingEmoji = '💔'; endingClass = 'ending-bad';
+            endingTitle = this.getEndingTitle(charId, 'passby');
+            endingText = this.getPassbyEndingText(charId, char);
+        }
+        const endingScreen = document.getElementById('ending-screen');
+        endingScreen.className = `screen ${endingClass}`;
+        document.getElementById('ending-type').textContent = endingEmoji;
+        document.getElementById('ending-title').textContent = endingTitle;
+        document.getElementById('ending-text').textContent = endingText;
+        this.switchScreen('ending-screen');
+    }
+
+    getEndingTitle(charId, type) {
+        const titles = {
+            luchen: { perfect: '命运之约', good: '心之归处', normal: '温柔以待', friend: '并肩前行', passby: '擦肩而过' },
+            guyan: { perfect: '星光永恒', good: '星辰相伴', normal: '默默守望', friend: '图书馆之友', passby: '沉默如初' },
+            linxiao: { perfect: '阳光告白', good: '阳光永恒', normal: '朋友以上', friend: '运动搭档', passby: '渐行渐远' }
+        };
+        return titles[charId]?.[type] || type;
+    }
+
+    getPerfectEndingText(charId) {
+        const texts = {
+            luchen: '陆辰逸在夕阳下向你伸出手："我不再是完美的学生会长了……在你面前，我只想做真正的自己。"你们十指相扣，樱花纷飞，整个星辰学院都在为你们祝福。这是属于你们的完美结局。',
+            guyan: '顾晏时罕见地露出了温暖的笑容。他带你去了天台，满天繁星在头顶闪耀。"谢谢你来到我的世界……从今以后，我不会再一个人了。"他轻轻牵起你的手，星光见证了这份永恒的约定。',
+            linxiao: '林笑寒在全校面前，握着你的手大喊："我喜欢你！比任何比赛的冠军都重要！"操场上响起了热烈的掌声和欢呼声。他红着脸挠头："其实我紧张得要命……"你笑着扑进他的怀里。'
+        };
+        return texts[charId] || '';
+    }
+    getGoodEndingText(charId) {
+        const texts = {
+            luchen: '陆辰逸终于摘下了"完美学生会长"的面具，在你面前展露了真正的自己。毕业那天，他在樱花树下对你说："谢谢你让我知道，不完美也可以被爱。"从此，你们手牵着手，走向属于两个人的未来。',
+            guyan: '顾晏时封闭已久的心门，终于为你缓缓打开。他带你去了姐姐最喜欢的星空观测点，说："她一定很高兴，因为我终于找到了想要守护的人。"夜空繁星闪烁，你们并肩而坐，从此不再孤独。',
+            linxiao: '林笑寒用最灿烂的笑容，最真挚的心意，温暖了你的每一天。毕业典礼上，他在全校面前大喊："苏念念，我喜欢你！"虽然粗心大意的他忘了准备花束——但谁在乎呢？你笑着跑向他的怀抱。'
+        };
+        return texts[charId] || '';
+    }
+    getNormalEndingText(charId) {
+        const texts = {
+            luchen: '你和陆辰逸成为了很好的朋友。他偶尔会摘下面具和你聊天，但那份特别的感情，始终停留在了友谊的边界。也许在某个未来的春天，故事会有不同的走向。',
+            guyan: '顾晏时愿意在图书馆为你留一个座位了。虽然他依旧安静，但你知道，他的世界里已经有了你的一角。这份静谧的情感，像星光一样微弱却恒久。',
+            linxiao: '林笑寒始终是你最好的朋友，他的笑容依旧灿烂如阳光。但每次看到你的时候，他的眼神里总有一丝说不清道不明的温柔。也许有一天，他会鼓起勇气……'
+        };
+        return texts[charId] || '';
+    }
+    getFriendEndingText(charId) {
+        const texts = {
+            luchen: '你和陆辰逸成为了相互信赖的好友。虽然没有心跳加速的告白，但你知道，在彼此的生命里，你们都占据了特别的位置。友情，有时候也是一种珍贵的缘分。',
+            guyan: '顾晏时开始愿意和你分享他在读的书了。你们经常在图书馆里安静地坐在一起，这份默契的友情，比任何语言都温暖。',
+            linxiao: '你和林笑寒成为了最好的运动搭档！虽然他有时候傻乎乎的，但在你需要的时候，他总是第一个出现。这份阳光般的友谊，会一直延续下去。'
+        };
+        return texts[charId] || '';
+    }
+    getPassbyEndingText(charId) {
+        const texts = {
+            luchen: '陆辰逸依旧是那个完美的学生会长，而你只是他礼貌微笑的对象之一。也许，你从未真正走进过他的世界。',
+            guyan: '顾晏时依旧一个人坐在图书馆的角落。你们之间的距离，和第一天一样遥远。那扇紧闭的心门，终究没有为你打开。',
+            linxiao: '林笑寒还是那个对谁都热情的阳光少年，但你们的关系始终没有更进一步。渐渐地，你们各自有了新的朋友，那段短暂的交集成为了记忆中的一抹亮色。'
+        };
+        return texts[charId] || '';
+    }
+
+    // ============================
+    // 打扮界面
+    // ============================
+
+    openDresserScreen() {
+        this.renderDresserUI();
+        document.getElementById('dresser-screen').classList.add('active');
+    }
+    closeDresserScreen() {
+        document.getElementById('dresser-screen').classList.remove('active');
+        if (this.mode === 'schedule') {
+            this.updateScheduleUI();
+        }
+    }
+
+    renderDresserUI() {
+        // 服装
+        const outfitGrid = document.getElementById('outfit-grid');
+        outfitGrid.innerHTML = '';
+        for (const o of this.dresser.getAllOutfits()) {
+            const div = document.createElement('div');
+            div.className = 'dresser-item';
+            if (o.id === this.dresser.currentOutfit) div.classList.add('selected');
+            if (!o.unlocked) div.classList.add('locked');
+            div.innerHTML = `
+                <div class="dresser-item-icon">${o.icon}</div>
+                <div class="dresser-item-name">${o.name}</div>
+                <div class="dresser-item-bonus">魅力 +${o.charmBonus}</div>
+                ${!o.unlocked ? '<div class="dresser-item-lock">🔒 逛街解锁</div>' : ''}
+            `;
+            if (o.unlocked) {
+                div.addEventListener('click', () => {
+                    this.dresser.setOutfit(o.id);
+                    this.renderDresserUI();
+                });
+            }
+            outfitGrid.appendChild(div);
+        }
+
+        // 发型
+        const hairGrid = document.getElementById('hairstyle-grid');
+        hairGrid.innerHTML = '';
+        for (const h of this.dresser.getAllHairstyles()) {
+            const div = document.createElement('div');
+            div.className = 'dresser-item';
+            if (h.id === this.dresser.currentHairstyle) div.classList.add('selected');
+            if (!h.unlocked) div.classList.add('locked');
+            div.innerHTML = `
+                <div class="dresser-item-icon">${h.icon}</div>
+                <div class="dresser-item-name">${h.name}</div>
+                <div class="dresser-item-bonus">魅力 +${h.charmBonus}</div>
+                ${!h.unlocked ? '<div class="dresser-item-lock">🔒 逛街解锁</div>' : ''}
+            `;
+            if (h.unlocked) {
+                div.addEventListener('click', () => {
+                    this.dresser.setHairstyle(h.id);
+                    this.renderDresserUI();
+                });
+            }
+            hairGrid.appendChild(div);
+        }
+
+        // 预览
+        document.getElementById('preview-charm-val').textContent = `+${this.dresser.getTotalCharmBonus()}`;
+        const prefsHtml = ['luchen','guyan','linxiao'].map(id => {
+            const char = this.characters[id];
+            const bonus = this.dresser.getCharPreferenceBonus(id);
+            const emoji = bonus > 3 ? '❤️❤️' : bonus > 0 ? '❤️' : bonus < 0 ? '💔' : '—';
+            return `${char?.emoji || ''} ${char?.name || id}: ${emoji}`;
+        }).join(' &nbsp;|&nbsp; ');
+        document.getElementById('preview-prefs').innerHTML = prefsHtml;
+    }
+
+    // ============================
+    // 属性详情界面
+    // ============================
+
+    openStatsScreen() {
+        this.renderStatsDetail();
+        document.getElementById('stats-screen').classList.add('active');
+    }
+    closeStatsScreen() {
+        document.getElementById('stats-screen').classList.remove('active');
+    }
+
+    renderStatsDetail() {
+        const grid = document.getElementById('stats-detail-grid');
+        grid.innerHTML = '';
+        const stats = this.schedule.stats;
+        const statKeys = ['intelligence','fitness','charm','art','social'];
+        const colors = { intelligence: 'stat-int', fitness: 'stat-fit', charm: 'stat-chr', art: 'stat-art', social: 'stat-soc' };
+
+        for (const key of statKeys) {
+            const val = stats[key] || 0;
+            const row = document.createElement('div');
+            row.className = 'stat-detail-row';
+            row.innerHTML = `
+                <span class="stat-detail-icon">${this.schedule.statIcons[key]}</span>
+                <span class="stat-detail-label">${this.schedule.statNames[key]}</span>
+                <div class="stat-detail-bar"><div class="stat-fill ${colors[key]}" style="width:${Math.min(100, val/200*100)}%"></div></div>
+                <span class="stat-detail-val">${val}/200</span>
+            `;
+            grid.appendChild(row);
+        }
+        // 压力
+        const stressRow = document.createElement('div');
+        stressRow.className = 'stat-detail-row';
+        stressRow.innerHTML = `
+            <span class="stat-detail-icon">😰</span>
+            <span class="stat-detail-label">压力</span>
+            <div class="stat-detail-bar"><div class="stat-fill stat-stress" style="width:${this.schedule.stress}%"></div></div>
+            <span class="stat-detail-val">${this.schedule.stress}/100</span>
+        `;
+        grid.appendChild(stressRow);
+
+        // 攻略条件
+        const reqList = document.getElementById('stats-requirements-list');
+        reqList.innerHTML = '';
+        const reqs = {
+            luchen: [['intelligence', 120, '学力'], ['art', 80, '艺术'], ['social', 60, '社交(加分)']],
+            guyan: [['art', 120, '艺术'], ['intelligence', 80, '学力']],
+            linxiao: [['fitness', 120, '体力'], ['social', 80, '社交'], ['charm', 60, '魅力(加分)']]
+        };
+        for (const [charId, charReqs] of Object.entries(reqs)) {
+            const char = this.characters[charId];
+            const div = document.createElement('div');
+            div.className = 'req-char';
+            const items = charReqs.map(([stat, threshold, label]) => {
+                const met = stats[stat] >= threshold;
+                return `<span class="${met ? 'req-met' : 'req-unmet'}">${label}≥${threshold}(${stats[stat]}) ${met ? '✅' : '❌'}</span>`;
+            }).join(' &nbsp; ');
+            const aff = this.state.affection[charId] || 0;
+            const affMet = aff >= 80;
+            div.innerHTML = `
+                <div class="req-char-name">${char?.emoji || ''} ${char?.name || charId} <span class="${affMet ? 'req-met' : 'req-unmet'}">好感${aff}/80 ${affMet ? '✅' : '❌'}</span></div>
+                <div class="req-char-items">${items}</div>
+            `;
+            reqList.appendChild(div);
+        }
+    }
+
+    // ============================
+    // 基础功能
+    // ============================
+
     jumpToScript(scriptId) {
         if (this.scripts[scriptId]) {
             this.state.currentScript = scriptId;
@@ -143,17 +679,15 @@ class OtomeGame {
         }
     }
 
-    /** 好感度变化 */
     changeAffection(charId, value) {
         if (this.state.affection[charId] !== undefined) {
             this.state.affection[charId] = Math.max(0, Math.min(100,
                 this.state.affection[charId] + value));
             this.updateAffectionUI();
-            this.showAffectionNotification(charId, value);
+            if (Math.abs(value) > 0) this.showAffectionNotification(charId, value);
         }
     }
 
-    /** 更新好感度 UI */
     updateAffectionUI() {
         for (const [charId, value] of Object.entries(this.state.affection)) {
             const item = document.getElementById(`aff-${charId}`);
@@ -164,132 +698,39 @@ class OtomeGame {
         }
     }
 
-    /** 显示好感度变化通知 */
     showAffectionNotification(charId, value) {
         const char = this.characters[charId];
         if (!char) return;
-
         const notif = document.getElementById('affection-notification');
         const text = document.getElementById('aff-notif-text');
-
         const sign = value > 0 ? '+' : '';
         text.textContent = `${char.emoji} ${char.name} 好感度 ${sign}${value}`;
-
         notif.className = 'affection-notification';
         notif.classList.add(value > 0 ? 'positive' : 'negative');
         notif.classList.remove('hidden');
-
-        setTimeout(() => {
-            notif.classList.add('hidden');
-        }, 1500);
+        setTimeout(() => notif.classList.add('hidden'), 1500);
     }
 
-    /** 显示结局 */
-    showEnding(node) {
-        const charId = node.charId;
-        const aff = this.state.affection[charId] || 0;
-        const char = this.characters[charId];
-
-        let endingType, endingEmoji, endingTitle, endingText, endingClass;
-
-        if (aff >= 80) {
-            endingType = '好结局';
-            endingEmoji = '💕';
-            endingClass = 'ending-good';
-            endingTitle = this.getGoodEndingTitle(charId);
-            endingText = this.getGoodEndingText(charId, char);
-        } else if (aff >= 40) {
-            endingType = '普通结局';
-            endingEmoji = '🌸';
-            endingClass = 'ending-normal';
-            endingTitle = this.getNormalEndingTitle(charId);
-            endingText = this.getNormalEndingText(charId, char);
-        } else {
-            endingType = '坏结局';
-            endingEmoji = '💔';
-            endingClass = 'ending-bad';
-            endingTitle = this.getBadEndingTitle(charId);
-            endingText = this.getBadEndingText(charId, char);
-        }
-
-        const endingScreen = document.getElementById('ending-screen');
-        endingScreen.className = `screen ${endingClass}`;
-        document.getElementById('ending-type').textContent = endingEmoji;
-        document.getElementById('ending-title').textContent = endingTitle;
-        document.getElementById('ending-text').textContent = endingText;
-
-        this.switchScreen('ending-screen');
-
-        // 记录已完成的结局
-        const endingKey = `${charId}_${aff >= 80 ? 'good' : aff >= 40 ? 'normal' : 'bad'}`;
-        if (!this.state.completedEndings.includes(endingKey)) {
-            this.state.completedEndings.push(endingKey);
-        }
+    showNotification(msg) {
+        const notif = document.getElementById('affection-notification');
+        const text = document.getElementById('aff-notif-text');
+        text.textContent = msg;
+        notif.className = 'affection-notification';
+        notif.classList.remove('hidden');
+        setTimeout(() => notif.classList.add('hidden'), 2000);
     }
 
-    getGoodEndingTitle(charId) {
-        const titles = {
-            luchen: '心之归处',
-            guyan: '星辰相伴',
-            linxiao: '阳光永恒'
-        };
-        return titles[charId] || '好结局';
-    }
-    getNormalEndingTitle(charId) {
-        const titles = {
-            luchen: '温柔以待',
-            guyan: '默默守望',
-            linxiao: '朋友以上'
-        };
-        return titles[charId] || '普通结局';
-    }
-    getBadEndingTitle(charId) {
-        const titles = {
-            luchen: '擦肩而过',
-            guyan: '沉默如初',
-            linxiao: '渐行渐远'
-        };
-        return titles[charId] || '坏结局';
-    }
-
-    getGoodEndingText(charId, char) {
-        const texts = {
-            luchen: `陆辰逸终于摘下了"完美学生会长"的面具，在你面前展露了真正的自己。毕业那天，他在樱花树下对你说："谢谢你让我知道，不完美也可以被爱。"从此，你们手牵着手，走向属于两个人的未来。`,
-            guyan: `顾晏时封闭已久的心门，终于为你缓缓打开。他带你去了姐姐最喜欢的星空观测点，说："她一定很高兴，因为我终于找到了想要守护的人。"夜空繁星闪烁，你们并肩而坐，从此不再孤独。`,
-            linxiao: `林笑寒用最灿烂的笑容，最真挚的心意，温暖了你的每一天。毕业典礼上，他在全校面前大喊："苏念念，我喜欢你！"虽然粗心大意的他忘了准备花束——但谁在乎呢？你笑着跑向他的怀抱。`
-        };
-        return texts[charId] || '';
-    }
-    getNormalEndingText(charId, char) {
-        const texts = {
-            luchen: `你和陆辰逸成为了很好的朋友。他偶尔会摘下面具和你聊天，但那份特别的感情，始终停留在了友谊的边界。也许在某个未来的春天，故事会有不同的走向。`,
-            guyan: `顾晏时愿意在图书馆为你留一个座位了。虽然他依旧安静，但你知道，他的世界里已经有了你的一角。这份静谧的情感，像星光一样微弱却恒久。`,
-            linxiao: `林笑寒始终是你最好的朋友，他的笑容依旧灿烂如阳光。但每次看到你的时候，他的眼神里总有一丝说不清道不明的温柔。也许有一天，他会鼓起勇气……`
-        };
-        return texts[charId] || '';
-    }
-    getBadEndingText(charId, char) {
-        const texts = {
-            luchen: `陆辰逸依旧是那个完美的学生会长，而你只是他礼貌微笑的对象之一。也许，你从未真正走进过他的世界。`,
-            guyan: `顾晏时依旧一个人坐在图书馆的角落。你们之间的距离，和第一天一样遥远。那扇紧闭的心门，终究没有为你打开。`,
-            linxiao: `林笑寒还是那个对谁都热情的阳光少年，但你们的关系始终没有更进一步。渐渐地，你们各自有了新的朋友，那段短暂的交集成为了记忆中的一抹亮色。`
-        };
-        return texts[charId] || '';
-    }
-
-    /** 切换画面 */
     switchScreen(screenId) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
         document.getElementById(screenId).classList.add('active');
     }
 
-    /** 返回标题 */
     backToTitle() {
         this.engine.hideAllCharacters();
+        this.mode = 'vn';
         this.switchScreen('title-screen');
     }
 
-    /** 暂停菜单 */
     openPauseMenu() {
         document.getElementById('pause-menu').classList.add('active');
     }
@@ -297,31 +738,44 @@ class OtomeGame {
         document.getElementById('pause-menu').classList.remove('active');
     }
 
-    /** 好感度面板 */
     toggleAffectionPanel() {
         const panel = document.getElementById('affection-panel');
         panel.classList.toggle('hidden');
     }
 
-    /** 存档画面 */
+    // ============================
+    // 存档系统
+    // ============================
+
     openSaveScreen() {
         document.getElementById('save-screen-title').textContent = '💾 存档';
         this.renderSaveSlots('save');
         document.getElementById('save-screen').classList.add('active');
     }
-
-    /** 读档画面 */
     openLoadScreen() {
         document.getElementById('save-screen-title').textContent = '📖 读档';
         this.renderSaveSlots('load');
         document.getElementById('save-screen').classList.add('active');
     }
-
     closeSaveScreen() {
         document.getElementById('save-screen').classList.remove('active');
     }
 
-    /** 渲染存档槽位 */
+    _getSaveData() {
+        return {
+            ...this.state,
+            mode: this.mode,
+            engineState: this.engine.getState(),
+            scheduleState: {
+                week: this.schedule.week,
+                timeSlot: this.schedule.timeSlot,
+                stats: { ...this.schedule.stats },
+                stress: this.schedule.stress
+            },
+            dresserState: this.dresser.serialize()
+        };
+    }
+
     renderSaveSlots(mode) {
         const container = document.getElementById('save-slots');
         container.innerHTML = '';
@@ -335,51 +789,34 @@ class OtomeGame {
 
             if (save) {
                 const affStr = Object.entries(save.affection || {})
-                    .map(([id, v]) => `${this.characters[id]?.emoji || ''}${v}`)
-                    .join(' ');
-                slot.innerHTML = `
-                    <div class="slot-info">
-                        <div class="slot-label">存档 ${i} — ${save.currentScript || '未知'}</div>
-                        <div class="slot-detail">${save.dateStr || '未知时间'} | ${affStr}</div>
-                    </div>
-                `;
+                    .map(([id, v]) => `${this.characters[id]?.emoji || ''}${v}`).join(' ');
+                const weekStr = save.scheduleState ? `第${save.scheduleState.week}周` : save.currentScript;
+                slot.innerHTML = `<div class="slot-info">
+                    <div class="slot-label">存档 ${i} — ${weekStr}</div>
+                    <div class="slot-detail">${save.dateStr || ''} | ${affStr}</div>
+                </div>`;
             } else {
                 slot.innerHTML = `<div class="slot-info"><div class="slot-empty">存档 ${i} — 空</div></div>`;
             }
 
             slot.addEventListener('click', () => {
                 if (mode === 'save') {
-                    SaveSystem.save(slotId, {
-                        ...this.state,
-                        engineState: this.engine.getState()
-                    });
+                    SaveSystem.save(slotId, this._getSaveData());
                     this.renderSaveSlots('save');
                 } else if (mode === 'load' && save) {
                     this.loadGameState(save);
                     this.closeSaveScreen();
                 }
             });
-
             container.appendChild(slot);
         }
     }
 
-    /** 快速存档 */
     quickSave() {
-        SaveSystem.quickSave({
-            ...this.state,
-            engineState: this.engine.getState()
-        });
-        this.showAffectionNotification('luchen', 0);
-        const text = document.getElementById('aff-notif-text');
-        text.textContent = '⚡ 快速存档完成';
-        const notif = document.getElementById('affection-notification');
-        notif.className = 'affection-notification';
-        notif.classList.remove('hidden');
-        setTimeout(() => notif.classList.add('hidden'), 1200);
+        SaveSystem.quickSave(this._getSaveData());
+        this.showNotification('⚡ 快速存档完成');
     }
 
-    /** 加载游戏状态 */
     loadGameState(save) {
         this.state = {
             currentScript: save.currentScript,
@@ -387,20 +824,40 @@ class OtomeGame {
             completedEndings: save.completedEndings || [],
             playerName: save.playerName || '苏念念'
         };
-        this.updateAffectionUI();
-        this.switchScreen('game-screen');
+        this.mode = save.mode || 'vn';
 
-        const script = this.scripts[this.state.currentScript];
-        if (script && save.engineState) {
-            this.engine.startScript(script, save.engineState.currentIndex);
+        // 恢复日程状态
+        if (save.scheduleState) {
+            this.schedule.week = save.scheduleState.week;
+            this.schedule.timeSlot = save.scheduleState.timeSlot;
+            this.schedule.stats = { ...save.scheduleState.stats };
+            this.schedule.stress = save.scheduleState.stress;
+        }
+        // 恢复打扮状态
+        if (save.dresserState) {
+            this.dresser.deserialize(save.dresserState);
+        }
+
+        this.updateAffectionUI();
+
+        if (this.mode === 'schedule') {
+            this.showScheduleScreen();
+        } else {
+            this.switchScreen('game-screen');
+            const script = this.scripts[this.state.currentScript];
+            if (script && save.engineState) {
+                this.engine.startScript(script, save.engineState.currentIndex);
+            }
         }
     }
 
-    /** 角色图鉴 */
+    // ============================
+    // 图鉴 & 视觉
+    // ============================
+
     openGallery() {
         const container = document.getElementById('gallery-cards');
         container.innerHTML = '';
-
         for (const char of Object.values(this.characters)) {
             const card = document.createElement('div');
             card.className = 'gallery-card';
@@ -418,32 +875,24 @@ class OtomeGame {
             `;
             container.appendChild(card);
         }
-
         document.getElementById('gallery-screen').classList.add('active');
     }
-
     closeGallery() {
         document.getElementById('gallery-screen').classList.remove('active');
     }
 
-    /** 创建樱花动画 */
     createSakura() {
         const container = document.querySelector('.sakura-falling');
         if (!container) return;
-
         const petals = ['🌸', '✿', '❀', '🏵️'];
         for (let i = 0; i < 20; i++) {
             const petal = document.createElement('span');
             petal.textContent = petals[Math.floor(Math.random() * petals.length)];
             petal.style.cssText = `
-                position: absolute;
-                left: ${Math.random() * 100}%;
-                top: -5%;
-                font-size: ${0.8 + Math.random() * 1.2}rem;
-                opacity: ${0.4 + Math.random() * 0.6};
-                animation: sakuraFall ${5 + Math.random() * 10}s linear infinite;
-                animation-delay: ${Math.random() * 10}s;
-                pointer-events: none;
+                position: absolute; left: ${Math.random()*100}%; top: -5%;
+                font-size: ${0.8+Math.random()*1.2}rem; opacity: ${0.4+Math.random()*0.6};
+                animation: sakuraFall ${5+Math.random()*10}s linear infinite;
+                animation-delay: ${Math.random()*10}s; pointer-events: none;
             `;
             container.appendChild(petal);
         }

@@ -1,0 +1,31 @@
+{
+  "actions": [
+    { "id": "study-liberal", "name": "学习文科", "icon": "📖", "location": "classroom", "stats": { "intelligence": 10 }, "stress": 8, "description": "认真复习语文和历史" },
+    { "id": "study-science", "name": "学习理科", "icon": "🔬", "location": "classroom", "stats": { "intelligence": 12, "fitness": -3 }, "stress": 12, "description": "钻研数学和物理" },
+    { "id": "study-english", "name": "学英语", "icon": "🌍", "location": "library", "stats": { "intelligence": 8, "social": 3 }, "stress": 6, "description": "背单词、练口语" },
+    { "id": "exercise", "name": "体育锻炼", "icon": "💪", "location": "playground", "stats": { "fitness": 12, "charm": 2 }, "stress": 5, "description": "跑步、做操、打球" },
+    { "id": "jogging", "name": "跑步", "icon": "🏃", "location": "playground", "stats": { "fitness": 8 }, "stress": 3, "description": "环校园慢跑" },
+    { "id": "shopping", "name": "逛街购物", "icon": "🛍️", "location": "outside", "stats": { "charm": 10 }, "stress": -10, "unlockOutfit": true, "description": "去商场买衣服、看潮流" },
+    { "id": "skincare", "name": "护肤美容", "icon": "✨", "location": "dorm", "stats": { "charm": 8 }, "stress": -5, "description": "做面膜、护肤保养" },
+    { "id": "music", "name": "练乐器", "icon": "🎵", "location": "music-room", "stats": { "art": 10 }, "stress": 5, "description": "练习钢琴或吉他" },
+    { "id": "drawing", "name": "画画写作", "icon": "🎨", "location": "classroom", "stats": { "art": 8, "intelligence": 2 }, "stress": 4, "description": "画速写或写随笔" },
+    { "id": "club", "name": "社团活动", "icon": "🗣️", "location": "various", "stats": { "social": 10 }, "stress": 3, "encounter": true, "description": "参加社团，认识新朋友" },
+    { "id": "help", "name": "帮助同学", "icon": "🤝", "location": "various", "stats": { "social": 8 }, "stress": 2, "affectionRandom": 5, "description": "帮忙补课、搬东西" },
+    { "id": "rest", "name": "休息", "icon": "😴", "location": "dorm", "stats": { "fitness": 5 }, "stress": -30, "description": "好好睡一觉，恢复精力" },
+    { "id": "date-luchen", "name": "约陆辰逸", "icon": "🔵", "location": "various", "stats": {}, "stress": -8, "weekendOnly": true, "charId": "luchen", "description": "和辰逸一起度过" },
+    { "id": "date-guyan", "name": "约顾晏时", "icon": "🟣", "location": "library", "stats": {}, "stress": -8, "weekendOnly": true, "charId": "guyan", "description": "和晏时一起度过" },
+    { "id": "date-linxiao", "name": "约林笑寒", "icon": "🟠", "location": "playground", "stats": {}, "stress": -8, "weekendOnly": true, "charId": "linxiao", "description": "和笑寒一起度过" }
+  ],
+  "specialEvents": [
+    { "week": 4, "id": "midterm-exam", "name": "📝 期中考试", "type": "exam", "statCheck": "intelligence", "threshold": 60, "description": "期中考试来了！考验学习成果的时候。" },
+    { "week": 6, "id": "sports-festival", "name": "🏅 体育节", "type": "sports", "statCheck": "fitness", "threshold": 70, "description": "星辰学院体育节！展现运动实力的时刻。" },
+    { "week": 8, "id": "final-exam", "name": "📝 期末考试", "type": "exam", "statCheck": "intelligence", "threshold": 80, "description": "期末考试，决定学期成绩！" },
+    { "week": 10, "id": "culture-festival", "name": "🎭 文化祭", "type": "culture", "statCheck": "art", "threshold": 70, "description": "一年一度的文化祭！才艺大展示。" },
+    { "week": 12, "id": "confession", "name": "💕 告白之日", "type": "ending", "description": "学期最后一天……是告白的最好时机。" }
+  ],
+  "encounters": [
+    { "charId": "luchen", "locations": ["classroom", "library", "hallway"], "dialogue": "陆辰逸正好经过，对你微微一笑。" },
+    { "charId": "guyan", "locations": ["library"], "dialogue": "你在图书馆看到了顾晏时，他似乎注意到了你。" },
+    { "charId": "linxiao", "locations": ["playground", "hallway"], "dialogue": "林笑寒笑着向你跑来：「嘿！又见面了！」" }
+  ]
+}

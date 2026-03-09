@@ -106,7 +106,93 @@
             <button class="menu-btn" id="btn-pause-save">💾 存档</button>
             <button class="menu-btn" id="btn-pause-load">📖 读档</button>
             <button class="menu-btn" id="btn-affection">💕 好感度</button>
+            <button class="menu-btn" id="btn-stats">📊 属性</button>
+            <button class="menu-btn" id="btn-open-dresser">👗 打扮</button>
             <button class="menu-btn" id="btn-back-title">🏠 返回标题</button>
+        </div>
+    </div>
+
+    <!-- ===== 日程安排界面 ===== -->
+    <div id="schedule-screen" class="screen">
+        <div class="schedule-container">
+            <!-- 顶部信息 -->
+            <div class="schedule-header">
+                <div class="schedule-time" id="schedule-time">第1周 · 上午</div>
+                <div class="schedule-progress">
+                    <div class="progress-bar"><div class="progress-fill" id="schedule-progress-fill"></div></div>
+                    <span class="progress-text" id="schedule-progress-text">0%</span>
+                </div>
+            </div>
+
+            <!-- 属性面板 -->
+            <div class="stats-panel" id="stats-panel">
+                <div class="stat-item"><span class="stat-icon">📖</span><span class="stat-label">学力</span><div class="stat-bar"><div class="stat-fill stat-int" id="stat-intelligence"></div></div><span class="stat-val" id="stat-val-intelligence">30</span></div>
+                <div class="stat-item"><span class="stat-icon">💪</span><span class="stat-label">体力</span><div class="stat-bar"><div class="stat-fill stat-fit" id="stat-fitness"></div></div><span class="stat-val" id="stat-val-fitness">30</span></div>
+                <div class="stat-item"><span class="stat-icon">✨</span><span class="stat-label">魅力</span><div class="stat-bar"><div class="stat-fill stat-chr" id="stat-charm"></div></div><span class="stat-val" id="stat-val-charm">30</span></div>
+                <div class="stat-item"><span class="stat-icon">🎨</span><span class="stat-label">艺术</span><div class="stat-bar"><div class="stat-fill stat-art" id="stat-art"></div></div><span class="stat-val" id="stat-val-art">30</span></div>
+                <div class="stat-item"><span class="stat-icon">🗣️</span><span class="stat-label">社交</span><div class="stat-bar"><div class="stat-fill stat-soc" id="stat-social"></div></div><span class="stat-val" id="stat-val-social">30</span></div>
+                <div class="stat-item stress-item"><span class="stat-icon">😰</span><span class="stat-label">压力</span><div class="stat-bar"><div class="stat-fill stat-stress" id="stat-stress"></div></div><span class="stat-val" id="stat-val-stress">0</span></div>
+            </div>
+
+            <!-- 当前穿搭 -->
+            <div class="current-outfit-bar">
+                <span id="current-outfit-display">👔 校服 · 🎀 高马尾</span>
+                <button class="small-btn" id="btn-schedule-dresser">👗 换装</button>
+            </div>
+
+            <!-- 行动选择 -->
+            <h3 class="section-title">选择今天的行动</h3>
+            <div class="action-grid" id="action-grid"></div>
+
+            <!-- 行动结果 -->
+            <div class="action-result hidden" id="action-result">
+                <div class="result-content" id="result-content"></div>
+                <button class="menu-btn" id="btn-next-period">继续 →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 打扮界面 ===== -->
+    <div id="dresser-screen" class="screen overlay">
+        <div class="dresser-container">
+            <h2>👗 打扮</h2>
+            <div class="dresser-section">
+                <h3>服装</h3>
+                <div class="dresser-grid" id="outfit-grid"></div>
+            </div>
+            <div class="dresser-section">
+                <h3>发型</h3>
+                <div class="dresser-grid" id="hairstyle-grid"></div>
+            </div>
+            <div class="dresser-preview">
+                <div class="preview-charm">总魅力加成: <span id="preview-charm-val">+0</span></div>
+                <div class="preview-prefs" id="preview-prefs"></div>
+            </div>
+            <button class="menu-btn" id="btn-dresser-back">确定</button>
+        </div>
+    </div>
+
+    <!-- ===== 属性详情界面 ===== -->
+    <div id="stats-screen" class="screen overlay">
+        <div class="stats-detail-container">
+            <h2>📊 属性详情</h2>
+            <div class="stats-detail-grid" id="stats-detail-grid"></div>
+            <div class="stats-requirements">
+                <h3>💕 攻略条件</h3>
+                <div id="stats-requirements-list"></div>
+            </div>
+            <button class="menu-btn" id="btn-stats-back">返回</button>
+        </div>
+    </div>
+
+    <!-- ===== 特殊事件界面 ===== -->
+    <div id="event-screen" class="screen">
+        <div class="event-container">
+            <div class="event-icon" id="event-icon">📝</div>
+            <h2 class="event-title" id="event-title"></h2>
+            <p class="event-desc" id="event-desc"></p>
+            <div class="event-result hidden" id="event-result"></div>
+            <button class="menu-btn" id="btn-event-continue">开始!</button>
         </div>
     </div>
 
@@ -127,6 +213,8 @@
 
     <script src="js/save.js"></script>
     <script src="js/engine.js"></script>
+    <script src="js/schedule.js"></script>
+    <script src="js/dresser.js"></script>
     <script src="js/game.js"></script>
 </body>
 </html>
