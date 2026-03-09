@@ -119,16 +119,16 @@ class AudioSystem {
     // 配音系统
     // ============================
 
-    /** 角色配音映射 */
+    /** 角色配音映射（每角色5种台词） */
     getVoiceMap() {
-        return {
-            luchen: { greeting: 'audio/voice/luchen_greeting.mp3', date: 'audio/voice/luchen_date.mp3', confession: 'audio/voice/luchen_confession.mp3' },
-            guyan: { greeting: 'audio/voice/guyan_greeting.mp3', date: 'audio/voice/guyan_date.mp3', confession: 'audio/voice/guyan_confession.mp3' },
-            linxiao: { greeting: 'audio/voice/linxiao_greeting.mp3', date: 'audio/voice/linxiao_date.mp3', confession: 'audio/voice/linxiao_confession.mp3' },
-            xinghe: { greeting: 'audio/voice/xinghe_greeting.mp3', date: 'audio/voice/xinghe_date.mp3', confession: 'audio/voice/xinghe_confession.mp3' },
-            xuanmo: { greeting: 'audio/voice/xuanmo_greeting.mp3', date: 'audio/voice/xuanmo_date.mp3', confession: 'audio/voice/xuanmo_confession.mp3' },
-            edwin: { greeting: 'audio/voice/edwin_greeting.mp3', date: 'audio/voice/edwin_date.mp3', confession: 'audio/voice/edwin_confession.mp3' }
-        };
+        const types = ['greeting', 'date', 'confession', 'jealous', 'comfort'];
+        const chars = ['luchen', 'guyan', 'linxiao', 'xinghe', 'xuanmo', 'edwin'];
+        const map = {};
+        chars.forEach(c => {
+            map[c] = {};
+            types.forEach(t => { map[c][t] = `audio/voice/${c}_${t}.mp3`; });
+        });
+        return map;
     }
 
     /** 播放角色配音 */
@@ -148,11 +148,17 @@ class AudioSystem {
     playVoiceForDialogue(charId, text) {
         if (!this.voiceEnabled || !charId) return;
 
-        // 文本匹配关键词
         const keywords = {
-            greeting: ['小心', '你没事吧', '你很吵', '好险', '偷看', '让开', '大家好'],
-            date: ['叫我辰逸', '送你', '有我在', '花送给你', '感谢你', '喝杯茶'],
-            confession: ['不完美也可以被爱', '不会再一个人', '比任何比赛', '只唱给你', '站在我身边', '看遍世界']
+            greeting: ['小心', '你没事吧', '好险', '偷看', '让开', '大家好', '欢迎', '转学生',
+                        '认识', '早安', '你好', '迟到', 'Good morning', '自我介绍'],
+            date:     ['图书馆', '自习', '一起', '请客', '弹吉他', '红茶', '散步', '比赛',
+                        '包场', '约会', '送你', '听我弹', '品尝', '跑步'],
+            confession: ['喜欢你', '爱你', '重要', '一个人', '比成绩', '只想给', 'I love you',
+                          '一辈子', '不缺', '唯独缺', '最想见到'],
+            jealous:  ['走得很近', '别人', '那个家伙', '那么开心', '亲近', 'jealous',
+                        '在意', '围着', '只看我', '允许'],
+            comfort:  ['靠在我', '别哭', '抱一下', '没关系', '欺负', '拥抱',
+                        'Come here', '画给你', '买给你', '我在']
         };
 
         for (const [lineType, words] of Object.entries(keywords)) {
