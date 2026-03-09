@@ -206,18 +206,10 @@ body {
     background: linear-gradient(180deg, #87CEEB 0%, #98D8C8 30%, #90EE90 60%, #F7DC6F 100%);
 }
 
-/* 合成场景模式：角色已绘入背景，平滑过渡 */
-.scene-background.composite-active {
-    transition: background-image 0.6s ease;
-}
-.composite-active .character-area {
-    display: none;
-}
-
 /* 角色显示区域 */
 .character-area {
     position: absolute;
-    bottom: 180px;
+    bottom: 160px;
     left: 0; right: 0;
     display: flex;
     justify-content: center;
@@ -229,9 +221,9 @@ body {
 
 .character-sprite {
     text-align: center;
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     opacity: 0;
-    transform: translateY(30px) scale(0.97);
+    transform: translateY(40px) scale(0.95);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -242,21 +234,16 @@ body {
     transform: translateY(0) scale(1);
 }
 .character-sprite .char-img {
-    width: 320px;
+    width: 380px;
     height: auto;
-    max-height: 480px;
+    max-height: 560px;
     object-fit: contain;
-    /* 四周渐变消融，让角色自然融入背景 */
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 45%, transparent 100%),
-                        linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-    -webkit-mask-composite: source-in;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 45%, transparent 100%),
-                linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-    mask-composite: intersect;
-    /* 色彩融合 */
-    filter: drop-shadow(0 0 30px rgba(0,0,0,0.15));
-    mix-blend-mode: normal;
-    opacity: 0.92;
+    /* 底部柔和消融，顶部保持完整 */
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+    /* 环境光阴影 */
+    filter: drop-shadow(0 4px 25px rgba(0,0,0,0.3))
+            drop-shadow(0 0 60px rgba(0,0,0,0.15));
 }
 .character-sprite .char-emoji {
     display: none;
