@@ -350,6 +350,7 @@ class OtomeGame {
 
     showSpecialEvent(event) {
         this._currentEvent = event;
+        this._eventResolved = false;
         this.audio.playBgm(event.type === 'ending' ? 'romantic' : 'tension');
         const icons = { exam: '📝', sports: '🏅', culture: '🎭', ending: '💕' };
         document.getElementById('event-icon').textContent = icons[event.type] || '🌟';
@@ -370,6 +371,14 @@ class OtomeGame {
             return;
         }
 
+        // 如果已经显示了结果，点击继续进入日程
+        if (this._eventResolved) {
+            this._eventResolved = false;
+            this._currentEvent = null;
+            this.showScheduleScreen();
+            return;
+        }
+
         const result = this.schedule.resolveSpecialEvent(event);
         const resultEl = document.getElementById('event-result');
         const statName = this.schedule.statNames[result.stat] || result.stat;
@@ -385,12 +394,7 @@ class OtomeGame {
         resultEl.innerHTML = html;
         resultEl.classList.remove('hidden');
         document.getElementById('btn-event-continue').textContent = '继续 →';
-        document.getElementById('btn-event-continue').onclick = () => {
-            document.getElementById('btn-event-continue').onclick = null;
-            document.getElementById('btn-event-continue').addEventListener('click', () => this.resolveEvent());
-            this._currentEvent = null;
-            this.showScheduleScreen();
-        };
+        this._eventResolved = true;
     }
 
     // ============================

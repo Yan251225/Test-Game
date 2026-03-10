@@ -218,12 +218,13 @@ class VNEngine {
 
     /** 切换场景 */
     changeScene(node) {
-        // 移除所有背景类和合成模式
+        // 移除所有背景类，清除之前的内联背景
         this.sceneBg.className = 'scene-background';
+        this.sceneBg.style.backgroundImage = '';
 
         if (node.bg) {
             this._lastSceneBg = node.bg;
-            // 检测自定义背景图
+            // 尝试加载自定义背景图（按优先级）
             const exts = ['png', 'jpg', 'webp'];
             let found = false;
             for (const ext of exts) {
@@ -239,7 +240,7 @@ class VNEngine {
                     }
                 };
             }
-            // 同时设置CSS类作为回退
+            // CSS类作为回退
             this.sceneBg.classList.add(`bg-${node.bg}`);
         }
 
